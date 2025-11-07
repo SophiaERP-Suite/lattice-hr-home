@@ -118,7 +118,7 @@ const Pricing = () => {
                           <h3>Basic Plan</h3>
                           <p>Great for small clinics starting to hire.</p>
                           <h2>
-                            &#8358;5000/<span>monthly</span>
+                            &#8358;5,000/<span>monthly</span>
                           </h2>
 
                           <div className="list-heading">
@@ -202,7 +202,7 @@ const Pricing = () => {
                           <h3>Standard Plan</h3>
                           <p>Ideal for growing healthcare teams.</p>
                           <h2>
-                            &#8358;7000/<span>monthly</span>
+                            &#8358;7,000/<span>monthly</span>
                           </h2>
 
                           <div className="list-heading">
@@ -288,7 +288,7 @@ const Pricing = () => {
                             Perfect for hospitals with continuous hiring needs.
                           </p>
                           <h2>
-                            &#8358;10000/<span>monthly</span>
+                            &#8358;10,000/<span>monthly</span>
                           </h2>
 
                           <div className="list-heading">
@@ -376,7 +376,7 @@ const Pricing = () => {
                           <h3>Basic Plan</h3>
                           <p>Great for small clinics starting to hire.</p>
                           <h2>
-                            &#8358;40000/<span>yearly</span>
+                            &#8358;40,000/<span>yearly</span>
                           </h2>
 
                           <div className="list-heading">
@@ -460,7 +460,7 @@ const Pricing = () => {
                           <h3>Standard Plan</h3>
                           <p>Ideal for growing healthcare teams.</p>
                           <h2>
-                            &#8358;60000/<span>yearly</span>
+                            &#8358;60,000/<span>yearly</span>
                           </h2>
 
                           <div className="list-heading">
@@ -546,7 +546,7 @@ const Pricing = () => {
                             Perfect for hospitals with continuous hiring needs.
                           </p>
                           <h2>
-                            &#8358;80000/<span>yearly</span>
+                            &#8358;80,000/<span>yearly</span>
                           </h2>
 
                           <div className="list-heading">

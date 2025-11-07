@@ -691,7 +691,7 @@ const Register = () => {
                                               to hire.
                                             </p>
                                             <h2>
-                                              &#8358;5000/<span>monthly</span>
+                                              &#8358;5,000/<span>monthly</span>
                                             </h2>
 
                                             <div className="list-heading">
@@ -778,7 +778,7 @@ const Register = () => {
                                               teams.
                                             </p>
                                             <h2>
-                                              &#8358;7000/<span>monthly</span>
+                                              &#8358;7,000/<span>monthly</span>
                                             </h2>
 
                                             <div className="list-heading">
@@ -864,7 +864,7 @@ const Register = () => {
                                               continuous hiring needs.
                                             </p>
                                             <h2>
-                                              &#8358;10000/<span>monthly</span>
+                                              &#8358;10,000/<span>monthly</span>
                                             </h2>
 
                                             <div className="list-heading">
@@ -954,7 +954,7 @@ const Register = () => {
                                               to hire.
                                             </p>
                                             <h2>
-                                              &#8358;40000/<span>yearly</span>
+                                              &#8358;40,000/<span>yearly</span>
                                             </h2>
 
                                             <div className="list-heading">
@@ -1041,7 +1041,7 @@ const Register = () => {
                                               teams.
                                             </p>
                                             <h2>
-                                              &#8358;60000/<span>yearly</span>
+                                              &#8358;60,000/<span>yearly</span>
                                             </h2>
 
                                             <div className="list-heading">
