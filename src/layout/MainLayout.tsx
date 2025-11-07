@@ -11,9 +11,14 @@ import "../assets/main/css/main.css";
 import { useEffect, useState } from "react";
 import Header from "../components/main/Header";
 import Footer from "../components/main/Footer";
+import { ProfileContext } from "../utils/main/Contexts";
 
 const MainLayout = () => {
   const [registeredScripts, setRegisteredScripts] = useState<boolean>(false);
+
+  const [profileType, setProfileType] = useState<"employer" | "candidate">(
+    "candidate"
+  );
 
   useEffect(() => {
     const scriptUrls = [
@@ -36,7 +41,7 @@ const MainLayout = () => {
         await new Promise((resolve, reject) => {
           const script = document.createElement("script");
           script.src = src;
-          script.defer = true;
+          script.async = true;
           script.onload = resolve;
           script.onerror = reject;
           document.body.appendChild(script);
@@ -76,7 +81,10 @@ const MainLayout = () => {
       <Header />
 
       <main>
-        <Outlet />
+        <ProfileContext.Provider value={{ profileType, setProfileType }}>
+          {" "}
+          <Outlet />
+        </ProfileContext.Provider>
       </main>
 
       <Footer />

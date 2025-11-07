@@ -27726,3 +27726,139 @@ progress::-moz-progress-bar {
   flex-direction: column;
   row-gap: 10px;
 }
+
+.profile-photo-box figure {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  column-gap: 20px;
+}
+
+.profile-photo-box figure img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-photo-box figure figcaption {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.profile-photo-box figure figcaption h6 {
+  color: gray;
+  font-weight: 600;
+}
+
+.status-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.status-box .status-heading {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.status-box .status-heading span {
+  color: grey;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.status-box .status-progress-box {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  margin-top: 10px;
+}
+
+.status-box .status-progress-box span {
+  font-weight: 600;
+}
+
+.status-box .status-progress-box progress {
+  width: 100%;
+  height: 7px;
+  border: none;
+  border-radius: 20px;
+  background-color: #eee;
+  overflow: hidden;
+}
+
+
+.compliance-checklist li {
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.compliance-checklist li input {
+  accent-color: var(--ztc-bg-bg-6);
+  pointer-events: none;
+
+}
+
+
+.uploaded-documents {
+  display: flex;
+  flex-direction: column;
+}
+
+.uploaded-documents .uploaded-item {
+  display: flex;
+  column-gap: 10px;
+  align-items: baseline;
+}
+
+
+.uploaded-documents .uploaded-item>span {
+  font-weight: 600;
+  color: gray;
+  font-size: 18px;
+}
+
+.uploaded-documents .uploaded-item .uploaded-item-details {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.uploaded-documents .uploaded-item .uploaded-item-details span {
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.uploaded-documents .uploaded-item .uploaded-item-details time {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.uploaded-documents .uploaded-item .uploaded-item-details time svg {
+  width: 18px;
+  height: 18px;
+}
+
+.uploaded-documents .uploaded-item .uploaded-item-details a {
+  text-transform: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  justify-content: center;
+  column-gap: 10px;
+}
+
+
+.uploaded-documents .uploaded-item .uploaded-item-details a::after {
+  border-radius: 8px;
+
+}
