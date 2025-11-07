@@ -1,4 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ProfileContext } from "../../utils/main/Contexts";
 // register, package, pay
 //  const disabledPaths = ["register"];
 
@@ -20,8 +22,12 @@ const Register = () => {
     "card" | "transfer" | "paypal"
   >("card");
 
+  const { setProfileType } = useContext(ProfileContext);
+
   const registerRef = useRef<HTMLDivElement>(null!);
   const registerFormRef = useRef<HTMLDivElement>(null!);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (registerFormRef.current) {
@@ -50,6 +56,11 @@ const Register = () => {
     setRegisterStage((prev) => ({ ...prev, [registerType]: stage }));
 
     if (registerRef.current) registerRef.current.scrollIntoView();
+  };
+
+  const navigateToProfile = () => {
+    setProfileType(registerType);
+    navigate("/profile");
   };
 
   return (
@@ -227,9 +238,9 @@ const Register = () => {
                     </div>
 
                     <div className="col-lg-6 col-md-6">
-                      <label>Age:</label>
+                      <label>Date of Birth:</label>
                       <div className="input-area">
-                        <input type="text" placeholder="Age" />
+                        <input type="date" />
                       </div>
                     </div>
 
@@ -317,10 +328,10 @@ const Register = () => {
                     <div className="col-lg-12 col-md-12">
                       <div className="input-area">
                         <a
-                          href="/profile"
+                          onClick={navigateToProfile}
                           type="submit"
                           className="vl-btn1 w-100 text-center"
-                          style={{ marginTop: "30px" }}
+                          style={{ marginTop: "30px", cursor: "pointer" }}
                         >
                           Submit <i className="fa-solid fa-arrow-right"></i>
                         </a>
@@ -1455,10 +1466,10 @@ const Register = () => {
                       <div className="col-lg-6 col-md-6">
                         <div className="input-area">
                           <a
-                            href="/profile"
+                            onClick={navigateToProfile}
                             type="submit"
                             className="vl-btn1 w-100 text-center"
-                            style={{ marginTop: "30px" }}
+                            style={{ marginTop: "30px", cursor: "pointer" }}
                           >
                             Confirm & Pay{" "}
                             <i className="fa-solid fa-arrow-right"></i>

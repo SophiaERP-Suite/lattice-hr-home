@@ -219,12 +219,12 @@ const Jobs = () => {
                             <span>Lagos, Nigeria</span>
                           </div>
 
-                          <div className="job-vacancy-box">
+                          {/* <div className="job-vacancy-box">
                             <progress value="50" max="100"></progress>
                             <span>
                               20 applied of <span>40 vacancy</span>
                             </span>
-                          </div>
+                          </div> */}
 
                           <div className="job-box-btn">
                             <a href="/job-details" className="vl-btn2">
