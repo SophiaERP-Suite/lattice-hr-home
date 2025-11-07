@@ -32,7 +32,7 @@ const Header = () => {
             className="vl-header-area vl-transparent-header"
           >
             <div
-              className="container"
+              className="container mobile-head-bg"
               style={{ maxWidth: "100%", padding: "0 50px" }}
             >
               <div
@@ -53,7 +53,7 @@ const Header = () => {
                   <div className="vl-main-menu text-center">
                     <nav className="vl-mobile-menu-active">
                       <ul>
-                        <li className="has-dropdown">
+                        <li className="has-dropdown home-nav-link">
                           <a href="/home">Home </a>
                         </li>
                         <li className="has-dropdown">
@@ -163,11 +163,11 @@ const Header = () => {
             className="vl-header-area vl-transparent-header"
           >
             <div
-              className="container"
+              className="container mobile-head-bg"
               style={{ maxWidth: "100%", padding: "0 50px" }}
             >
               <div
-                className="row align-items-center"
+                className="row align-items-center mobile-head-bg"
                 style={{ justifyContent: "space-between", flexWrap: "nowrap" }}
               >
                 <div className="col-lg-2 col-md-6 col-6">
@@ -184,7 +184,7 @@ const Header = () => {
                   <div className="vl-main-menu text-center">
                     <nav className="vl-mobile-menu-active">
                       <ul>
-                        <li className="has-dropdown">
+                        <li className="has-dropdown home-nav-link">
                           <a href="/home">Home </a>
                         </li>
                         <li className="has-dropdown">
@@ -310,6 +310,14 @@ const Header = () => {
 
             <div className="vl-offcanvas-menu d-lg-none mb-40">
               <nav></nav>
+
+              <nav className="cart-mobile">
+                <ul>
+                  <li>
+                    <a href="#">Cart</a>
+                  </li>
+                </ul>
+              </nav>
             </div>
 
             <div className="space20"></div>
@@ -319,17 +327,18 @@ const Header = () => {
               <span>
                 <a href="#">
                   {" "}
-                  <i className="fa-regular fa-envelope"></i> +57 9954 6476
+                  <i className="fa-regular fa-envelope"></i> +234 805 678 9947
                 </a>
               </span>
               <span>
                 <a href="#">
-                  <i className="fa-solid fa-phone"></i> hello@exdos.com
+                  <i className="fa-solid fa-phone"></i> contact@lattice.com
                 </a>
               </span>
               <span>
                 <a href="#">
-                  <i className="fa-solid fa-location-dot"></i> Bhemeara,Kushtia
+                  <i className="fa-solid fa-location-dot"></i> 22 Adeola Odeku
+                  Street, Victoria Island, Lagos, Nigeria
                 </a>
               </span>
             </div>

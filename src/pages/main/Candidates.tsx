@@ -677,7 +677,7 @@ const Candidates = () => {
                   <div className="col-lg-7">
                     <div className="cta-heading">
                       <h2 data-aos="zoom-in" data-aos-duration="900">
-                        Advance Your Career, Shape Your Future.
+                        Empower Your Team, Shape Your Future
                       </h2>
                       <div className="row">
                         <div
@@ -706,7 +706,10 @@ const Candidates = () => {
                             <div className="text">
                               <p>Call Us 24/7</p>
                               <div className="space16"></div>
-                              <a href="tel:+1234567890">+123 456 7890</a>
+                              <a href="tel:+2348056789947">
+                                {" "}
+                                +234 805 678 9947
+                              </a>
                             </div>
                           </div>
                         </div>
@@ -736,8 +739,8 @@ const Candidates = () => {
                             <div className="text">
                               <p>Mail Us Anytime</p>
                               <div className="space16"></div>
-                              <a href="mailto:Staffx@gmail.com">
-                                Staffx@gmail.com
+                              <a href="mailto: contact@lattice.com">
+                                contact@lattice.com
                               </a>
                             </div>
                           </div>
