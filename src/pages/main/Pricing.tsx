@@ -5,7 +5,8 @@ const Pricing = () => {
       <div
         className="inner-header-area"
         style={{
-          backgroundImage: "url(/assets/main/img/all-images/bg/hero-bg7.png)",
+          backgroundImage:
+            "url(/assets/main/img/all-images/bg/lattice_pricing.jpg)",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
