@@ -28,12 +28,7 @@ const Pricing = () => {
             </div>
             <div className="col-lg-1"></div>
             <div className="col-lg-4">
-              <div className="imges">
-                <img
-                  src="/assets/main/img/all-images/hero/hero-img11.webp"
-                  alt=""
-                />
-              </div>
+              <div className="imges"></div>
             </div>
           </div>
         </div>
