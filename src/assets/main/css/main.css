@@ -27534,8 +27534,6 @@ progress::-moz-progress-bar {
   flex-direction: column;
   row-gap: 5px;
   z-index: 2;
-  max-height: 50vh;
-  overflow: auto;
   display: none;
 }
 
@@ -27583,4 +27581,148 @@ progress::-moz-progress-bar {
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.10);
   padding: 0 16px 50px;
   margin-top: 10px;
+}
+
+.register-form select {
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+  background: var(--ztc-bg-bg-4);
+}
+
+
+.register-form select:focus {
+  border: 2px solid var(--ztc-bg-bg-6);
+}
+
+.self-interview-container>div {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
+.self-interview-container>div label {
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.self-interview-container>div button {
+  width: fit-content;
+  margin-left: 10px;
+  text-transform: none;
+  border-radius: 8px;
+  padding: 16px 30px;
+  background: var(--ztc-bg-bg-6);
+  border: none;
+  color: white;
+}
+
+.self-interview-container>div button::after {
+  border-radius: 8px;
+}
+
+
+
+.checkbox-div {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+
+
+.checkbox-div input[type="checkbox"] {
+  accent-color: var(--ztc-bg-bg-6);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.checkbox-div label {
+  cursor: pointer;
+}
+
+.checkbox-div label a {
+  cursor: pointer;
+  color: var(--ztc-bg-bg-6);
+}
+
+
+.payment-package-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+.payment-package-container .payment-package-box {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
+.payment-package-container .payment-package-box h4 {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.payment-package-container .payment-package-box .payment-package-features {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  margin-left: 25px;
+}
+
+
+
+.payment-package-container .payment-package-box .payment-package-features ul li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 22px;
+}
+
+
+.payment-package-container .payment-package-box .payment-package-features ul li::before {
+  content: "\f00c";
+  /* Font Awesome check icon */
+  font-family: "FontAwesome";
+  font-weight: 900;
+  /* needed for solid icons */
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #28a745;
+  /* green tick */
+}
+
+.payment-package-container .vl-btn3 {
+  cursor: pointer !important;
+}
+
+.payment-summary ul li {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.payment-summary ul li label {
+  color: gray;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+
+.payment-summary ul li span {
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.bank-transfer-info {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
 }

@@ -11,6 +11,7 @@ import Candidates from "../pages/main/Candidates";
 import Pricing from "../pages/main/Pricing";
 import Login from "../pages/main/Login";
 import Register from "../pages/main/Register";
+import Profile from "../pages/main/Profile";
 
 function AppRoutes() {
   return (
@@ -28,6 +29,7 @@ function AppRoutes() {
         <Route path="pricing" element={<Pricing />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
+        <Route path="profile" element={<Profile />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
