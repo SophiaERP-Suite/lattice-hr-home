@@ -563,19 +563,45 @@ const JobDetails = () => {
                       </div>
 
                       <h6>Review Uploaded Files</h6>
-                      <ul className="compliance-checklist">
+                      <ul className="compliance-checklist application-form">
                         <li>
-                          <input type="checkbox" defaultChecked={true} /> CV
+                          <input
+                            type="checkbox"
+                            id="cv"
+                            defaultChecked={true}
+                          />{" "}
+                          <label htmlFor="cv">CV</label>
                         </li>
                         <li>
-                          <input type="checkbox" defaultChecked={true} />{" "}
-                          Qualification Certificates
+                          <input
+                            type="checkbox"
+                            id="cert"
+                            defaultChecked={true}
+                          />{" "}
+                          <label htmlFor="cert">
+                            Qualification Certificates
+                          </label>
                         </li>
                         <li>
-                          <input type="checkbox" defaultChecked={true} /> ID
-                          Verification
+                          <input
+                            type="checkbox"
+                            id="verify"
+                            defaultChecked={true}
+                          />{" "}
+                          ID
+                          <label htmlFor="verify">Verification</label>
                         </li>
                       </ul>
+
+                      <h6>Declaration</h6>
+
+                      <div className="col-lg-12 col-md-12 checkbox-div">
+                        <input type="checkbox" id="terms-and-condition" />
+                        <label htmlFor="terms-and-condition">
+                          I agree to share my verified profile with this
+                          employer
+                        </label>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -584,14 +610,13 @@ const JobDetails = () => {
 
             <div className="modal-footer">
               <button
-                type="button"
-                className="btn btn-secondary"
+                type="submit"
+                className="vl-btn1 w-100"
                 data-bs-dismiss="modal"
+                aria-label="Close"
+                style={{ marginTop: "30px", border: "none" }}
               >
-                Close
-              </button>
-              <button type="button" className="btn btn-primary">
-                Save changes
+                Submit <i className="fa-solid fa-arrow-right"></i>
               </button>
             </div>
           </div>

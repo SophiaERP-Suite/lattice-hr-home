@@ -64,7 +64,7 @@ const Contact = () => {
                 <div className="text">
                   <h4>Our Email</h4>
                   <div className="space14"></div>
-                  <a href="mailto:info@staffx.com">info@staffx.com</a>
+                  <a href="mailto:info@staffx.com"> contact@lattice.com</a>
                 </div>
               </div>
             </div>
@@ -91,7 +91,7 @@ const Contact = () => {
                 <div className="text">
                   <h4>Call</h4>
                   <div className="space14"></div>
-                  <a href="tel:+11234567890">+1 123 456 7890</a>
+                  <a href="tel:+11234567890"> +234 805 678 9947</a>
                 </div>
               </div>
             </div>
@@ -125,7 +125,10 @@ const Contact = () => {
                 <div className="text">
                   <h4>our location</h4>
                   <div className="space14"></div>
-                  <a href="#">1800 Abbot Kinney Blvd</a>
+                  <a href="#">
+                    {" "}
+                    22 Adeola Odeku Street, Victoria Island, Lagos, Nigeria
+                  </a>
                 </div>
               </div>
             </div>
@@ -264,7 +267,7 @@ const Contact = () => {
             <div className="col-lg-12">
               <div className="contact-maps-area">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d4506257.120552435!2d88.67021924228865!3d21.954385721237916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1704088968016!5m2!1sen!2sbd"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253682.46310757624!2d3.1191427001003134!3d6.5483693711779205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos!5e0!3m2!1sen!2sng!4v1762353991000!5m2!1sen!2sng"
                   width="600"
                   height="450"
                   style={{ border: "0" }}

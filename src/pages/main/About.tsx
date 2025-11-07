@@ -650,7 +650,10 @@ const About = () => {
                             <div className="text">
                               <p>Call Us 24/7</p>
                               <div className="space16"></div>
-                              <a href="tel:+1234567890">+123 456 7890</a>
+                              <a href="tel:+2348056789947">
+                                {" "}
+                                +234 805 678 9947
+                              </a>
                             </div>
                           </div>
                         </div>
@@ -680,8 +683,8 @@ const About = () => {
                             <div className="text">
                               <p>Mail Us Anytime</p>
                               <div className="space16"></div>
-                              <a href="mailto:Staffx@gmail.com">
-                                Staffx@gmail.com
+                              <a href="mailto: contact@lattice.com">
+                                contact@lattice.com
                               </a>
                             </div>
                           </div>

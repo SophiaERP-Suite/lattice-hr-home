@@ -3963,7 +3963,7 @@ only screen and (min-width: 768px) and (max-width: 991px),
 
 .homepage2-body .vl-offcanvas {
   position: fixed;
-  background: var(--ztc-bg-bg-5);
+  background: var(--ztc-bg-bg-7);
   width: 450px;
   z-index: 99;
   right: 0;
@@ -27860,5 +27860,52 @@ progress::-moz-progress-bar {
 
 .uploaded-documents .uploaded-item .uploaded-item-details a::after {
   border-radius: 8px;
+
+}
+
+.application-form input[type="checkbox"] {
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.icons {
+  flex-shrink: 0;
+}
+
+.cart-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .home-nav-link {
+    display: none !important;
+  }
+
+  .homepage1-body .vl-main-menu ul>li>a {
+    padding: 0 8px;
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  .cart-mobile {
+    display: block;
+  }
+
+  .cart-container {
+    display: none;
+  }
+
+  .mobile-head-bg {
+    padding: 0 20px !important;
+  }
+
+}
+
+
+@media screen and (max-width: 500px) {
+  .selected-country-name {
+    display: none;
+  }
 
 }

@@ -105,7 +105,7 @@ const Footer = () => {
               <h3>Contact Us</h3>
               <ul>
                 <li>
-                  <a href="tel:+11234567890">
+                  <a href="tel:+2348056789947">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -152,7 +152,7 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:medicaxhospital@com">
+                  <a href="mailto:contact@lattice.com">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
