@@ -1331,7 +1331,7 @@ const Home = () => {
                           <h3>Basic Plan</h3>
                           <p>Great for small clinics starting to hire.</p>
                           <h2>
-                            &#8358;5000/<span>monthly</span>
+                            &#8358;5,000/<span>monthly</span>
                           </h2>
 
                           <div className="list-heading">
@@ -1415,7 +1415,7 @@ const Home = () => {
                           <h3>Standard Plan</h3>
                           <p>Ideal for growing healthcare teams.</p>
                           <h2>
-                            &#8358;7000/<span>monthly</span>
+                            &#8358;7,000/<span>monthly</span>
                           </h2>
 
                           <div className="list-heading">
@@ -1501,7 +1501,7 @@ const Home = () => {
                             Perfect for hospitals with continuous hiring needs.
                           </p>
                           <h2>
-                            &#8358;10000/<span>monthly</span>
+                            &#8358;10,000/<span>monthly</span>
                           </h2>
 
                           <div className="list-heading">
@@ -1589,7 +1589,7 @@ const Home = () => {
                           <h3>Basic Plan</h3>
                           <p>Great for small clinics starting to hire.</p>
                           <h2>
-                            &#8358;40000/<span>yearly</span>
+                            &#8358;40,000/<span>yearly</span>
                           </h2>
 
                           <div className="list-heading">
@@ -1673,7 +1673,7 @@ const Home = () => {
                           <h3>Standard Plan</h3>
                           <p>Ideal for growing healthcare teams.</p>
                           <h2>
-                            &#8358;60000/<span>yearly</span>
+                            &#8358;60,000/<span>yearly</span>
                           </h2>
 
                           <div className="list-heading">
@@ -1759,7 +1759,7 @@ const Home = () => {
                             Perfect for hospitals with continuous hiring needs.
                           </p>
                           <h2>
-                            &#8358;80000/<span>yearly</span>
+                            &#8358;80,000/<span>yearly</span>
                           </h2>
 
                           <div className="list-heading">
@@ -2085,7 +2085,10 @@ const Home = () => {
                             <div className="text">
                               <p>Call Us 24/7</p>
                               <div className="space16"></div>
-                              <a href="tel:+1234567890">+123 456 7890</a>
+                              <a href="tel:+2348056789947">
+                                {" "}
+                                +234 805 678 9947
+                              </a>
                             </div>
                           </div>
                         </div>
@@ -2115,8 +2118,8 @@ const Home = () => {
                             <div className="text">
                               <p>Mail Us Anytime</p>
                               <div className="space16"></div>
-                              <a href="mailto:Staffx@gmail.com">
-                                Staffx@gmail.com
+                              <a href="mailto: contact@lattice.com">
+                                contact@lattice.com
                               </a>
                             </div>
                           </div>

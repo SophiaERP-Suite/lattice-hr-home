@@ -3963,7 +3963,7 @@ only screen and (min-width: 768px) and (max-width: 991px),
 
 .homepage2-body .vl-offcanvas {
   position: fixed;
-  background: var(--ztc-bg-bg-5);
+  background: var(--ztc-bg-bg-7);
   width: 450px;
   z-index: 99;
   right: 0;
@@ -27534,8 +27534,6 @@ progress::-moz-progress-bar {
   flex-direction: column;
   row-gap: 5px;
   z-index: 2;
-  max-height: 50vh;
-  overflow: auto;
   display: none;
 }
 
@@ -27583,4 +27581,331 @@ progress::-moz-progress-bar {
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.10);
   padding: 0 16px 50px;
   margin-top: 10px;
+}
+
+.register-form select {
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+  background: var(--ztc-bg-bg-4);
+}
+
+
+.register-form select:focus {
+  border: 2px solid var(--ztc-bg-bg-6);
+}
+
+.self-interview-container>div {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
+.self-interview-container>div label {
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.self-interview-container>div button {
+  width: fit-content;
+  margin-left: 10px;
+  text-transform: none;
+  border-radius: 8px;
+  padding: 16px 30px;
+  background: var(--ztc-bg-bg-6);
+  border: none;
+  color: white;
+}
+
+.self-interview-container>div button::after {
+  border-radius: 8px;
+}
+
+
+
+.checkbox-div {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+
+
+.checkbox-div input[type="checkbox"] {
+  accent-color: var(--ztc-bg-bg-6);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.checkbox-div label {
+  cursor: pointer;
+}
+
+.checkbox-div label a {
+  cursor: pointer;
+  color: var(--ztc-bg-bg-6);
+}
+
+
+.payment-package-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+.payment-package-container .payment-package-box {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
+.payment-package-container .payment-package-box h4 {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.payment-package-container .payment-package-box .payment-package-features {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  margin-left: 25px;
+}
+
+
+
+.payment-package-container .payment-package-box .payment-package-features ul li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 22px;
+}
+
+
+.payment-package-container .payment-package-box .payment-package-features ul li::before {
+  content: "\f00c";
+  /* Font Awesome check icon */
+  font-family: "FontAwesome";
+  font-weight: 900;
+  /* needed for solid icons */
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #28a745;
+  /* green tick */
+}
+
+.payment-package-container .vl-btn3 {
+  cursor: pointer !important;
+}
+
+.payment-summary ul li {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.payment-summary ul li label {
+  color: gray;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+
+.payment-summary ul li span {
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.bank-transfer-info {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.profile-photo-box figure {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  column-gap: 20px;
+}
+
+.profile-photo-box figure img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-photo-box figure figcaption {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.profile-photo-box figure figcaption h6 {
+  color: gray;
+  font-weight: 600;
+}
+
+.status-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.status-box .status-heading {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.status-box .status-heading span {
+  color: grey;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.status-box .status-progress-box {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  margin-top: 10px;
+}
+
+.status-box .status-progress-box span {
+  font-weight: 600;
+}
+
+.status-box .status-progress-box progress {
+  width: 100%;
+  height: 7px;
+  border: none;
+  border-radius: 20px;
+  background-color: #eee;
+  overflow: hidden;
+}
+
+
+.compliance-checklist li {
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.compliance-checklist li input {
+  accent-color: var(--ztc-bg-bg-6);
+  pointer-events: none;
+
+}
+
+
+.uploaded-documents {
+  display: flex;
+  flex-direction: column;
+}
+
+.uploaded-documents .uploaded-item {
+  display: flex;
+  column-gap: 10px;
+  align-items: baseline;
+}
+
+
+.uploaded-documents .uploaded-item>span {
+  font-weight: 600;
+  color: gray;
+  font-size: 18px;
+}
+
+.uploaded-documents .uploaded-item .uploaded-item-details {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.uploaded-documents .uploaded-item .uploaded-item-details span {
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.uploaded-documents .uploaded-item .uploaded-item-details time {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.uploaded-documents .uploaded-item .uploaded-item-details time svg {
+  width: 18px;
+  height: 18px;
+}
+
+.uploaded-documents .uploaded-item .uploaded-item-details a {
+  text-transform: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  justify-content: center;
+  column-gap: 10px;
+}
+
+
+.uploaded-documents .uploaded-item .uploaded-item-details a::after {
+  border-radius: 8px;
+
+}
+
+.application-form input[type="checkbox"] {
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.icons {
+  flex-shrink: 0;
+}
+
+.cart-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .home-nav-link {
+    display: none !important;
+  }
+
+  .homepage1-body .vl-main-menu ul>li>a {
+    padding: 0 8px;
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  .cart-mobile {
+    display: block;
+  }
+
+  .cart-container {
+    display: none;
+  }
+
+  .mobile-head-bg {
+    padding: 0 20px !important;
+  }
+
+}
+
+
+@media screen and (max-width: 500px) {
+  .selected-country-name {
+    display: none;
+  }
+
 }

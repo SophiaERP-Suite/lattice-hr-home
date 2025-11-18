@@ -141,7 +141,12 @@ const JobDetails = () => {
                 <div className="space16"></div>
 
                 <div className="job-box-btn">
-                  <a href="#" className="vl-btn2">
+                  <a
+                    style={{ cursor: "pointer" }}
+                    className="vl-btn2"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                  >
                     Apply Now
                     <span>
                       <i className="fa-solid fa-arrow-right"></i>
@@ -450,12 +455,12 @@ const JobDetails = () => {
                             <span>Lagos, Nigeria</span>
                           </div>
 
-                          <div className="job-vacancy-box">
+                          {/* <div className="job-vacancy-box">
                             <progress value="50" max="100"></progress>
                             <span>
                               20 applied of <span>40 vacancy</span>
                             </span>
-                          </div>
+                          </div> */}
 
                           <div className="job-box-btn">
                             <a href="/job-details" className="vl-btn2">
@@ -478,6 +483,145 @@ const JobDetails = () => {
       </div>
 
       {/*===== RELATED JOB AREA END =======*/}
+
+      {/* Modal */}
+      <div
+        className="modal fade"
+        id="exampleModal"
+        tabIndex={-1}
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="exampleModalLabel">
+                Application Form
+              </h1>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            <div
+              className="modal-body"
+              style={{ paddingLeft: 0, paddingRight: 0 }}
+            >
+              <div className="contact-inner-area">
+                <div className="container">
+                  <div
+                    className="contact-main-boxarea register-form"
+                    style={{ boxShadow: "none" }}
+                  >
+                    <div className="row" style={{ rowGap: "20px" }}>
+                      <div className="col-lg-12 col-md-12">
+                        <label>Position:</label>
+                        <div className="input-area">
+                          <input
+                            type="text"
+                            placeholder="Position"
+                            value={"Pediatric Doctor"}
+                            readOnly
+                          />
+                        </div>
+                      </div>
+
+                      <div className="col-lg-12 col-md-12">
+                        <label>Cover Letter:</label>
+                        <div className="input-area">
+                          <input type="file" />
+                        </div>
+                      </div>
+
+                      <div className="col-lg-12 col-md-12">
+                        <label>Preferred Start Date:</label>
+                        <div className="input-area">
+                          <input type="date" />
+                        </div>
+                      </div>
+
+                      <div className="col-lg-12 col-md-12">
+                        <label>Availability</label>
+                        <div className="input-area">
+                          <select>
+                            <option value="immediate">Immediate</option>
+                            <option value="1-week">Within 1 week</option>
+                            <option value="2-weeks">Within 2 weeks</option>
+                            <option value="1-month">Within 1 month</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div className="col-lg-12 col-md-12">
+                        <label>Upload Additional Documents:</label>
+                        <div className="input-area">
+                          <input type="file" />
+                        </div>
+                      </div>
+
+                      <h6>Review Uploaded Files</h6>
+                      <ul className="compliance-checklist application-form">
+                        <li>
+                          <input
+                            type="checkbox"
+                            id="cv"
+                            defaultChecked={true}
+                          />{" "}
+                          <label htmlFor="cv">CV</label>
+                        </li>
+                        <li>
+                          <input
+                            type="checkbox"
+                            id="cert"
+                            defaultChecked={true}
+                          />{" "}
+                          <label htmlFor="cert">
+                            Qualification Certificates
+                          </label>
+                        </li>
+                        <li>
+                          <input
+                            type="checkbox"
+                            id="verify"
+                            defaultChecked={true}
+                          />{" "}
+                          ID
+                          <label htmlFor="verify">Verification</label>
+                        </li>
+                      </ul>
+
+                      <h6>Declaration</h6>
+
+                      <div className="col-lg-12 col-md-12 checkbox-div">
+                        <input type="checkbox" id="terms-and-condition" />
+                        <label htmlFor="terms-and-condition">
+                          I agree to share my verified profile with this
+                          employer
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="modal-footer">
+              <button
+                type="submit"
+                className="vl-btn1 w-100"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                style={{ marginTop: "30px", border: "none" }}
+              >
+                Submit <i className="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

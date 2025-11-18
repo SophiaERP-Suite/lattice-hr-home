@@ -7,6 +7,7 @@ const secondFooterPages = [
   "employer-profile",
   "login",
   "register",
+  "profile",
 ];
 
 const Footer = () => {
@@ -104,7 +105,7 @@ const Footer = () => {
               <h3>Contact Us</h3>
               <ul>
                 <li>
-                  <a href="tel:+11234567890">
+                  <a href="tel:+2348056789947">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -120,7 +121,7 @@ const Footer = () => {
                         strokeLinejoin="round"
                       />
                     </svg>{" "}
-                    +1 123 456 7890
+                    +234 805 678 9947
                   </a>
                 </li>
                 <li>
@@ -147,11 +148,11 @@ const Footer = () => {
                         strokeLinejoin="round"
                       />
                     </svg>{" "}
-                    421 Allen, Mexico 4233
+                    22 Adeola Odeku Street, Victoria Island, Lagos, Nigeria
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:medicaxhospital@com">
+                  <a href="mailto:contact@lattice.com">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -167,7 +168,7 @@ const Footer = () => {
                         strokeLinejoin="round"
                       />
                     </svg>{" "}
-                    satffxsupport@com
+                    contact@lattice.com
                   </a>
                 </li>
               </ul>
