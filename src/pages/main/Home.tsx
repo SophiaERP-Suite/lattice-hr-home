@@ -3,6 +3,11 @@ import element2 from "../../assets/main/img/elements/elements2.png"
 import element3 from "../../assets/main/img/elements/elements3.png"
 import element4 from "../../assets/main/img/elements/elements4.png"
 import hero3 from "../../assets/main/img/all-images/hero/hero-img3.png"
+import checkSvg from "../../assets/main/img/icons/check1.svg"
+import about2 from "../../assets/main/img/all-images/about/about-img2.png"
+import about3 from "../../assets/main/img/all-images/about/about-img3.png"
+import aboutSvg3 from "../../assets/main/img/icons/about-icons3.svg"
+import aboutSvg4 from "../../assets/main/img/icons/about-icons4.svg"
 
 const Home = () => {
   // add country selecto to header
@@ -190,7 +195,7 @@ const Home = () => {
             <div className="col-lg-6">
               <div className="about-images-area">
                 <div className="ot-widget-area aniamtion-key-1">
-                  <img src="../../assets/main/img/icons/check1.svg" alt="" />
+                  <img src={checkSvg} alt="" />
                   <p>Empowering the community.</p>
                 </div>
                 <div className="row">
@@ -202,7 +207,7 @@ const Home = () => {
                   >
                     <div className="img1">
                       <img
-                        src="../../assets/main/img/all-images/about/about-img2.png"
+                        src={about2}
                         alt=""
                       />
                     </div>
@@ -218,7 +223,7 @@ const Home = () => {
                       <div className="space100 d-md-block d-none"></div>
                       <div className="space30 d-md-none d-block"></div>
                       <img
-                        src="../../assets/main/img/all-images/about/about-img3.png"
+                        src={about3}
                         alt=""
                       />
                     </div>
@@ -269,7 +274,7 @@ const Home = () => {
                   data-aos-duration="1200"
                 >
                   <div className="icons">
-                    <img src="../../assets/main/img/icons/about-icons3.svg" alt="" />
+                    <img src={aboutSvg3} alt="" />
                   </div>
                   <div className="text-area">
                     <a href="#">Committed to Connecting Talent with Purpose</a>
@@ -288,7 +293,7 @@ const Home = () => {
                   data-aos-duration="1300"
                 >
                   <div className="icons">
-                    <img src="../../assets/main/img/icons/about-icons4.svg" alt="" />
+                    <img src={aboutSvg4} alt="" />
                   </div>
                   <div className="text-area">
                     <a href="#">Building a New Standard in Recruitment</a>
