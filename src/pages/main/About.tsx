@@ -1,4 +1,12 @@
 import { NavLink } from "react-router-dom";
+import wIcons10 from "../../assets/main/img/icons/w-icons10.svg"
+import hero11 from "../../assets/main/img/all-images/hero/hero-img11.webp"
+import about9 from "../../assets/main/img/all-images/about/about-img9.webp"
+import about3 from "../../assets/main/img/icons/about-icons3.svg"
+import about4 from "../../assets/main/img/icons/about-icons4.svg"
+import choose1 from "../../assets/main/img/all-images/others/choose-img1.webp"
+import element5 from "../../assets/main/img/elements/elements5.png"
+import wIcons8 from "../../assets/main/img/icons/w-icons8.svg"
 
 const About = () => {
   return (
@@ -31,7 +39,7 @@ const About = () => {
             <div className="col-lg-4">
               <div className="imges">
                 <img
-                  src="../../assets/main/img/all-images/hero/hero-img11.webp"
+                  src={hero11}
                   alt=""
                 />
               </div>
@@ -48,7 +56,7 @@ const About = () => {
               <div className="about-widget-area1 heading1">
                 <div className="img1">
                   <img
-                    src="../../assets/main/img/all-images/about/about-img9.webp"
+                    src={about9}
                     alt=""
                   />
                 </div>
@@ -59,7 +67,7 @@ const About = () => {
                   data-aos-duration="1200"
                 >
                   <div className="icons">
-                    <img src="../../assets/main/img/icons/about-icons3.svg" alt="" />
+                    <img src={about3} alt="" />
                   </div>
                   <div className="text-area">
                     <a href="#">Committed to Connecting Talent with Purpose</a>
@@ -78,7 +86,7 @@ const About = () => {
                   data-aos-duration="1300"
                 >
                   <div className="icons">
-                    <img src="../../assets/main/img/icons/about-icons4.svg" alt="" />
+                    <img src={about4} alt="" />
                   </div>
                   <div className="text-area">
                     <a href="#"> Building a New Standard in Recruitment</a>
@@ -333,7 +341,7 @@ const About = () => {
                     <div className="col-lg-6">
                       <div className="img1">
                         <img
-                          src="../../assets/main/img/all-images/others/choose-img1.webp"
+                          src={choose1}
                           alt=""
                         />
                       </div>
@@ -435,7 +443,7 @@ const About = () => {
                     <div className="col-lg-6">
                       <div className="img1">
                         <img
-                          src="../../assets/main/img/all-images/others/choose-img1.webp"
+                          src={choose1}
                           alt=""
                         />
                       </div>
@@ -507,7 +515,7 @@ const About = () => {
               >
                 <div className="text-end">
                   <div className="icons">
-                    <img src="../../assets/main/img/icons/w-icons8.svg" alt="" />
+                    <img src={wIcons8} alt="" />
                   </div>
                 </div>
                 <div className="space70 d-lg-block d-none"></div>
@@ -531,7 +539,7 @@ const About = () => {
                 <div className="space30 d-lg-none d-block"></div>
                 <div className="text-end">
                   <div className="icons">
-                    <img src="../../assets/main/img/icons/w-icons10.svg" alt="" />
+                    <img src={wIcons10} alt="" />
                   </div>
                 </div>
                 <div className="space70 d-lg-block d-none"></div>
@@ -564,7 +572,7 @@ const About = () => {
                 <div className="space30 d-lg-none d-block"></div>
                 <div className="text-start">
                   <div className="icons">
-                    <img src="../../assets/main/img/icons/w-icons8.svg" alt="" />
+                    <img src={wIcons8} alt="" />
                   </div>
                 </div>
                 <div className="space70 d-lg-block d-none"></div>
@@ -586,7 +594,7 @@ const About = () => {
                 <div className="space30 d-lg-none d-block"></div>
                 <div className="text-start">
                   <div className="icons">
-                    <img src="../../assets/main/img/icons/w-icons10.svg" alt="" />
+                    <img src={wIcons10} alt="" />
                   </div>
                 </div>
               </div>
@@ -610,7 +618,7 @@ const About = () => {
                       data-aos-duration="900"
                     >
                       <img
-                        src="../../assets/main/img/elements/elements5.png"
+                        src={element5}
                         alt=""
                         className="elements5"
                       />

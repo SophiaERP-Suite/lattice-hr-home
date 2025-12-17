@@ -8,6 +8,8 @@ import about2 from "../../assets/main/img/all-images/about/about-img2.png"
 import about3 from "../../assets/main/img/all-images/about/about-img3.png"
 import aboutSvg3 from "../../assets/main/img/icons/about-icons3.svg"
 import aboutSvg4 from "../../assets/main/img/icons/about-icons4.svg"
+import wIcons8 from "../../assets/main/img/icons/w-icons8.svg"
+import wIcons10 from "../../assets/main/img/icons/w-icons10.svg"
 
 const Home = () => {
   // add country selecto to header
@@ -384,7 +386,7 @@ const Home = () => {
               >
                 <div className="text-end">
                   <div className="icons">
-                    <img src="../../assets/main/img/icons/w-icons8.svg" alt="" />
+                    <img src={wIcons8} alt="" />
                   </div>
                 </div>
                 <div className="space70 d-lg-block d-none"></div>
@@ -408,7 +410,7 @@ const Home = () => {
                 <div className="space30 d-lg-none d-block"></div>
                 <div className="text-end">
                   <div className="icons">
-                    <img src="../../assets/main/img/icons/w-icons10.svg" alt="" />
+                    <img src={wIcons10} alt="" />
                   </div>
                 </div>
                 <div className="space70 d-lg-block d-none"></div>
@@ -444,7 +446,7 @@ const Home = () => {
                 <div className="space30 d-lg-none d-block"></div>
                 <div className="text-start">
                   <div className="icons">
-                    <img src="../../assets/main/img/icons/w-icons8.svg" alt="" />
+                    <img src={wIcons8} alt="" />
                   </div>
                 </div>
                 <div className="space70 d-lg-block d-none"></div>
@@ -468,7 +470,7 @@ const Home = () => {
                 <div className="space30 d-lg-none d-block"></div>
                 <div className="text-start">
                   <div className="icons">
-                    <img src="../../assets/main/img/icons/w-icons10.svg" alt="" />
+                    <img src={wIcons10} alt="" />
                   </div>
                 </div>
               </div>
@@ -537,7 +539,7 @@ const Home = () => {
               >
                 <div className="text-end">
                   <div className="icons">
-                    <img src="../../assets/main/img/icons/w-icons8.svg" alt="" />
+                    <img src={wIcons8} alt="" />
                   </div>
                 </div>
                 <div className="space70 d-lg-block d-none"></div>
@@ -561,7 +563,7 @@ const Home = () => {
                 <div className="space30 d-lg-none d-block"></div>
                 <div className="text-end">
                   <div className="icons">
-                    <img src="../../assets/main/img/icons/w-icons10.svg" alt="" />
+                    <img src={wIcons10} alt="" />
                   </div>
                 </div>
                 <div className="space70 d-lg-block d-none"></div>
@@ -598,7 +600,7 @@ const Home = () => {
                 <div className="space30 d-lg-none d-block"></div>
                 <div className="text-start">
                   <div className="icons">
-                    <img src="../../assets/main/img/icons/w-icons8.svg" alt="" />
+                    <img src={wIcons8} alt="" />
                   </div>
                 </div>
                 <div className="space70 d-lg-block d-none"></div>
@@ -623,7 +625,7 @@ const Home = () => {
                 <div className="space30 d-lg-none d-block"></div>
                 <div className="text-start">
                   <div className="icons">
-                    <img src="../../assets/main/img/icons/w-icons10.svg" alt="" />
+                    <img src={wIcons10} alt="" />
                   </div>
                 </div>
               </div>

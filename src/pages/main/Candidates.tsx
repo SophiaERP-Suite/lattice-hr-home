@@ -1,4 +1,8 @@
 import { NavLink } from "react-router-dom";
+import hero7 from "../../assets/main/img/all-images/bg/hero-bg7.png"
+import hero11 from "../../assets/main/img/all-images/hero/hero-img11.webp"
+import wIcons8 from "../../assets/main/img/icons/w-icons8.svg"
+import bIcons4 from "../../assets/main/img/icons/bene-icons4.svg"
 
 const Candidates = () => {
   return (
@@ -7,7 +11,7 @@ const Candidates = () => {
       <div
         className="inner-header-area"
         style={{
-          backgroundImage: "url(/assets/main/img/all-images/bg/hero-bg7.png)",
+          backgroundImage: hero7,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
@@ -31,7 +35,7 @@ const Candidates = () => {
             <div className="col-lg-4">
               <div className="imges">
                 <img
-                  src="../../assets/main/img/all-images/hero/hero-img11.webp"
+                  src={hero11}
                   alt=""
                 />
               </div>
@@ -100,7 +104,7 @@ const Candidates = () => {
               >
                 <div className="text-end">
                   <div className="icons">
-                    <img src="../../assets/main/img/icons/w-icons8.svg" alt="" />
+                    <img src={wIcons8} alt="" />
                   </div>
                 </div>
                 <div className="space70 d-lg-block d-none"></div>
@@ -163,7 +167,7 @@ const Candidates = () => {
                 <div className="space30 d-lg-none d-block"></div>
                 <div className="text-start">
                   <div className="icons">
-                    <img src="../../assets/main/img/icons/w-icons8.svg" alt="" />
+                    <img src={wIcons8} alt="" />
                   </div>
                 </div>
                 <div className="space70 d-lg-block d-none"></div>
@@ -274,7 +278,7 @@ const Candidates = () => {
                       <span className="button-content">
                         <span className="icons">
                           <img
-                            src="../../assets/main/img/icons/bene-icons4.svg"
+                            src={bIcons4}
                             alt=""
                           />
                         </span>

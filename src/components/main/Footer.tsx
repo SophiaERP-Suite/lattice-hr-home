@@ -1,4 +1,5 @@
 import { NavLink, useLocation } from "react-router-dom";
+import logo1 from "../../assets/main/img/logo/logo1.png"
 
 const secondFooterPages = [
   "jobs",
@@ -25,7 +26,7 @@ const Footer = () => {
         <div className="row">
           <div className="col-lg-3 col-md-6">
             <div className="footer-logo-area">
-              <img src="../../assets/main/img/logo/logo1.png" alt="" />
+              <img src={logo1} alt="" />
               <div className="space16"></div>
               <p>
                 We’re dedicated to providing reliable staffing solutions that
