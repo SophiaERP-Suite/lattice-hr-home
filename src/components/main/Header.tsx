@@ -64,7 +64,7 @@ const Header = () => {
                           <a href="/one/home">Home </a>
                         </li>
                         <li className="has-dropdown">
-                          <a href="/one/jobs">Jobs</a>
+                          <NavLink to="/jobs">Jobs</NavLink>
                         </li>
 
                         <li>
@@ -72,15 +72,15 @@ const Header = () => {
                         </li>
 
                         <li>
-                          <a href="/one/candidates">Candidates</a>
+                          <NavLink to="/candidates">Candidates</NavLink>
                         </li>
 
                         <li>
-                          <a href="/one/pricing">Pricing</a>
+                          <NavLink to="/pricing">Pricing</NavLink>
                         </li>
 
                         <li>
-                          <a href="/one/login">Login</a>
+                          <NavLink to="/login">Login</NavLink>
                         </li>
                       </ul>
                     </nav>
@@ -89,12 +89,12 @@ const Header = () => {
                 <div className="col-lg-2 col-md-6 col-6 top-right-nav">
                   <div className="vl-hero-btn d-none d-lg-block text-end">
                     <div className="hero-btn1">
-                      <a href="/one/register" className="vl-btn2">
+                      <NavLink to="/register" className="vl-btn2">
                         Get started
                         <span>
                           <i className="fa-solid fa-arrow-right"></i>
                         </span>
-                      </a>
+                      </NavLink>
                     </div>
                   </div>
 
@@ -179,9 +179,9 @@ const Header = () => {
               >
                 <div className="col-lg-2 col-md-6 col-6">
                   <div className="vl-logo">
-                    <a href="/one/home">
+                    <NavLink to="/home">
                       <img src={logo1} alt="" />
-                    </a>
+                    </NavLink>
                   </div>
                 </div>
                 <div
@@ -192,10 +192,10 @@ const Header = () => {
                     <nav className="vl-mobile-menu-active">
                       <ul>
                         <li className="has-dropdown home-nav-link">
-                          <a href="/one/home">Home </a>
+                          <NavLink to="/home">Home </NavLink>
                         </li>
                         <li className="has-dropdown">
-                          <a href="/one/jobs">Jobs</a>
+                          <NavLink to="/jobs">Jobs</NavLink>
                         </li>
 
                         <li>
@@ -203,15 +203,15 @@ const Header = () => {
                         </li>
 
                         <li>
-                          <a href="/one/candidates">Candidates</a>
+                          <NavLink to="/candidates">Candidates</NavLink>
                         </li>
 
                         <li>
-                          <a href="/one/pricing">Pricing</a>
+                          <NavLink to="/pricing">Pricing</NavLink>
                         </li>
 
                         <li>
-                          <a href="/one/login">Login</a>
+                          <NavLink to="/login">Login</NavLink>
                         </li>
                       </ul>
                     </nav>
@@ -220,12 +220,12 @@ const Header = () => {
                 <div className="col-lg-2 col-md-6 col-6 top-right-nav">
                   <div className="vl-hero-btn d-none d-lg-block text-end">
                     <div className="hero-btn1">
-                      <a href="/one/register" className="vl-btn2">
+                      <NavLink to="/register" className="vl-btn2">
                         Get started
                         <span>
                           <i className="fa-solid fa-arrow-right"></i>
                         </span>
-                      </a>
+                      </NavLink>
                     </div>
                   </div>
 
