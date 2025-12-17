@@ -1,3 +1,9 @@
+import hero2 from "../../assets/main/img/all-images/hero/hero-img2.png"
+import element2 from "../../assets/main/img/elements/elements2.png"
+import element3 from "../../assets/main/img/elements/elements3.png"
+import element4 from "../../assets/main/img/elements/elements4.png"
+import hreo3 from "../../assets/main/img/all-images/hero/hero-img3.png"
+
 const Home = () => {
   // add country selecto to header
   return (
@@ -8,22 +14,22 @@ const Home = () => {
           <div className="hero2-slider-area">
             <div className="img1">
               <img
-                src="../../assets/main/img/all-images/hero/hero-img2.png"
+                src={hero2}
                 alt=""
               />
             </div>
             <img
-              src="../../assets/main/img/elements/elements2.png"
+              src={element2}
               alt=""
               className="elements2"
             />
             <img
-              src="../../assets/main/img/elements/elements3.png"
+              src={element3}
               alt=""
               className="elements3"
             />
             <img
-              src="../../assets/main/img/elements/elements4.png"
+              src={element4}
               alt=""
               className="elements4"
             />
@@ -87,22 +93,22 @@ const Home = () => {
           <div className="hero2-slider-area">
             <div className="img1">
               <img
-                src="../../assets/main/img/all-images/hero/hero-img3.png"
+                src={hero3}
                 alt=""
               />
             </div>
             <img
-              src="../../assets/main/img/elements/elements2.png"
+              src={element2}
               alt=""
               className="elements2"
             />
             <img
-              src="../../assets/main/img/elements/elements3.png"
+              src={element3}
               alt=""
               className="elements3"
             />
             <img
-              src="../../assets/main/img/elements/elements4.png"
+              src={element4}
               alt=""
               className="elements4"
             />
