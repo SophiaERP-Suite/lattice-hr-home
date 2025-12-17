@@ -61,26 +61,26 @@ const Header = () => {
                     <nav className="vl-mobile-menu-active">
                       <ul>
                         <li className="has-dropdown home-nav-link">
-                          <NavLink to="/home">Home </NavLink>
+                          <a href="/one/home">Home </a>
                         </li>
                         <li className="has-dropdown">
-                          <NavLink to="/jobs">Jobs</NavLink>
+                          <a href="/one/jobs">Jobs</a>
                         </li>
 
                         <li>
-                          <NavLink to="/employers">Employers</NavLink>
+                          <a href="/one/employers">Employers</a>
                         </li>
 
                         <li>
-                          <NavLink to="/candidates">Candidates</NavLink>
+                          <a href="/one/candidates">Candidates</a>
                         </li>
 
                         <li>
-                          <NavLink to="/pricing">Pricing</NavLink>
+                          <a href="/one/pricing">Pricing</a>
                         </li>
 
                         <li>
-                          <NavLink to="/login">Login</NavLink>
+                          <a href="/one/login">Login</a>
                         </li>
                       </ul>
                     </nav>
@@ -89,12 +89,12 @@ const Header = () => {
                 <div className="col-lg-2 col-md-6 col-6 top-right-nav">
                   <div className="vl-hero-btn d-none d-lg-block text-end">
                     <div className="hero-btn1">
-                      <NavLink to="/register" className="vl-btn2">
+                      <a href="/one/register" className="vl-btn2">
                         Get started
                         <span>
                           <i className="fa-solid fa-arrow-right"></i>
                         </span>
-                      </NavLink>
+                      </a>
                     </div>
                   </div>
 
@@ -179,9 +179,9 @@ const Header = () => {
               >
                 <div className="col-lg-2 col-md-6 col-6">
                   <div className="vl-logo">
-                    <NavLink to="/home">
+                    <a href="/one/home">
                       <img src={logo1} alt="" />
-                    </NavLink>
+                    </a>
                   </div>
                 </div>
                 <div
@@ -192,26 +192,26 @@ const Header = () => {
                     <nav className="vl-mobile-menu-active">
                       <ul>
                         <li className="has-dropdown home-nav-link">
-                          <NavLink to="/home">Home </NavLink>
+                          <a href="/one/home">Home </a>
                         </li>
                         <li className="has-dropdown">
-                          <NavLink to="/jobs">Jobs</NavLink>
+                          <a href="/one/jobs">Jobs</a>
                         </li>
 
                         <li>
-                          <NavLink to="/employers">Employers</NavLink>
+                          <a href="/one/employers">Employers</a>
                         </li>
 
                         <li>
-                          <NavLink to="/candidates">Candidates</NavLink>
+                          <a href="/one/candidates">Candidates</a>
                         </li>
 
                         <li>
-                          <NavLink to="/pricing">Pricing</NavLink>
+                          <a href="/one/pricing">Pricing</a>
                         </li>
 
                         <li>
-                          <NavLink to="/login">Login</NavLink>
+                          <a href="/one/login">Login</a>
                         </li>
                       </ul>
                     </nav>
@@ -220,12 +220,12 @@ const Header = () => {
                 <div className="col-lg-2 col-md-6 col-6 top-right-nav">
                   <div className="vl-hero-btn d-none d-lg-block text-end">
                     <div className="hero-btn1">
-                      <NavLink to="/register" className="vl-btn2">
+                      <a href="/one/register" className="vl-btn2">
                         Get started
                         <span>
                           <i className="fa-solid fa-arrow-right"></i>
                         </span>
-                      </NavLink>
+                      </a>
                     </div>
                   </div>
 
