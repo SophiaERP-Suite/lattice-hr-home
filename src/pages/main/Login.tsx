@@ -1,4 +1,7 @@
 import { NavLink } from "react-router-dom";
+import hero7 from "../../assets/main/img/all-images/bg/hero-bg7.png"
+import hero11 from "../../assets/main/img/all-images/hero/hero-img11.webp"
+import ot11 from "../../assets/main/img/all-images/others/ot-img1.webp"
 
 const Login = () => {
   return (
@@ -7,7 +10,7 @@ const Login = () => {
       <div
         className="inner-header-area"
         style={{
-          backgroundImage: "url(../../assets/main/img/all-images/bg/hero-bg7.png)",
+          backgroundImage: hero7,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
@@ -31,7 +34,7 @@ const Login = () => {
             <div className="col-lg-4">
               <div className="imges">
                 <img
-                  src="../../assets/main/img/all-images/hero/hero-img11.webp"
+                  src={hero11}
                   alt=""
                 />
               </div>
@@ -80,7 +83,7 @@ const Login = () => {
                 data-aos-duration="900"
               >
                 <img
-                  src="../../assets/main/img/all-images/others/ot-img1.webp"
+                  src={ot11}
                   alt=""
                   style={{ borderRadius: "8px" }}
                 />

@@ -1,12 +1,8 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ProfileContext } from "../../utils/main/Contexts";
-// register, package, pay
-//  const disabledPaths = ["register"];
-
-//   const pagePath = window.pathname.split("/").filter((value) => value)[0];
-
-// if (disabledPaths.includes(pagePath)) return;
+import hero7 from "../../assets/main/img/all-images/bg/hero-bg7.png"
+import hero11 from "../../assets/main/img/all-images/hero/hero-img11.webp"
 
 const Register = () => {
   const [registerType, setRegisterType] = useState<"candidate" | "employer">(
@@ -69,7 +65,7 @@ const Register = () => {
       <div
         className="inner-header-area"
         style={{
-          backgroundImage: "url(/assets/main/img/all-images/bg/hero-bg7.png)",
+          backgroundImage: hero7,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
@@ -93,7 +89,7 @@ const Register = () => {
             <div className="col-lg-4">
               <div className="imges">
                 <img
-                  src="../../assets/main/img/all-images/hero/hero-img11.webp"
+                  src={hero11}
                   alt=""
                 />
               </div>

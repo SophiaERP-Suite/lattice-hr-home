@@ -10,6 +10,8 @@ import aboutSvg3 from "../../assets/main/img/icons/about-icons3.svg"
 import aboutSvg4 from "../../assets/main/img/icons/about-icons4.svg"
 import wIcons8 from "../../assets/main/img/icons/w-icons8.svg"
 import wIcons10 from "../../assets/main/img/icons/w-icons10.svg"
+import element5 from "../../assets/main/img/elements/elements5.png"
+import cta1 from "../../assets/main/img/all-images/cta/cta-img1.png"
 
 const Home = () => {
   // add country selecto to header
@@ -2056,12 +2058,12 @@ const Home = () => {
                       data-aos-duration="900"
                     >
                       <img
-                        src="../../assets/main/img/elements/elements5.png"
+                        src={element5}
                         alt=""
                         className="elements5"
                       />
                       <img
-                        src="../../assets/main/img/all-images/cta/cta-img1.png"
+                        src={cta1}
                         alt=""
                       />
                     </div>

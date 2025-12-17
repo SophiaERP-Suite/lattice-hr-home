@@ -1,6 +1,9 @@
 import { NavLink } from "react-router-dom";
 import hero7 from "../../assets/main/img/all-images/bg/hero-bg7.png"
 import hero11 from "../../assets/main/img/all-images/hero/hero-img11.webp"
+import blog23 from "../../assets/main/img/all-images/blog/blog-img23.webp"
+import blog25 from "../../assets/main/img/all-images/blog/blog-img25.webp"
+import download from "../../assets/main/img/logo/download.png"
 
 const EmployerDetails = () => {
   return (
@@ -81,7 +84,7 @@ const EmployerDetails = () => {
 
                 <div className="img1">
                   <img
-                    src="../../assets/main/img/all-images/blog/blog-img23.webp"
+                    src={blog23}
                     alt=""
                   />
                 </div>
@@ -91,7 +94,7 @@ const EmployerDetails = () => {
                   <div className="col-lg-6 col-md-6">
                     <div className="img1">
                       <img
-                        src="../../assets/main/img/all-images/blog/blog-img25.webp"
+                        src={blog25}
                         alt=""
                       />
                     </div>
@@ -101,7 +104,7 @@ const EmployerDetails = () => {
                   <div className="col-lg-6 col-md-6">
                     <div className="img1">
                       <img
-                        src="../../assets/main/img/all-images/blog/blog-img25.webp"
+                        src={blog25}
                         alt=""
                       />
                     </div>
@@ -427,7 +430,7 @@ const EmployerDetails = () => {
                       <div className="service9-boxarea">
                         <div className="job-box-head">
                           <div className="job-logo">
-                            <img src="../../assets/main/img/logo/download.png" />
+                            <img src={download} />
                           </div>
                         </div>
 

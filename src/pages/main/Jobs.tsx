@@ -1,4 +1,7 @@
 import { NavLink } from "react-router-dom";
+import hero7 from "../../assets/main/img/all-images/bg/hero-bg7.png"
+import hero11 from "../../assets/main/img/all-images/hero/hero-img11.webp"
+import download from "../../assets/main/img/logo/download.png"
 
 const Jobs = () => {
   return (
@@ -7,7 +10,7 @@ const Jobs = () => {
       <div
         className="inner-header-area"
         style={{
-          backgroundImage: "url(/assets/main/img/all-images/bg/hero-bg7.png)",
+          backgroundImage: hero7,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
@@ -31,7 +34,7 @@ const Jobs = () => {
             <div className="col-lg-4">
               <div className="imges">
                 <img
-                  src="../../assets/main/img/all-images/hero/hero-img11.webp"
+                  src={hero11}
                   alt=""
                 />
               </div>
@@ -196,7 +199,7 @@ const Jobs = () => {
                       <div className="service9-boxarea">
                         <div className="job-box-head">
                           <div className="job-logo">
-                            <img src="../../assets/main/img/logo/download.png" />
+                            <img src={download} />
                           </div>
 
                           <div className="job-box-details">

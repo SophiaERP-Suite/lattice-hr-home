@@ -1,4 +1,7 @@
 import { NavLink } from "react-router-dom";
+import pricing from "../../assets/main/img/all-images/bg/lattice_pricing.jpg"
+import element5 from "../../assets/main/img/elements/elements5.png"
+import cta1 from "../../assets/main/img/all-images/cta/cta-img1.png"
 
 const Pricing = () => {
   return (
@@ -7,8 +10,7 @@ const Pricing = () => {
       <div
         className="inner-header-area"
         style={{
-          backgroundImage:
-            "url(/assets/main/img/all-images/bg/lattice_pricing.jpg)",
+          backgroundImage: pricing,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
@@ -830,12 +832,12 @@ const Pricing = () => {
                       data-aos-duration="900"
                     >
                       <img
-                        src="../../assets/main/img/elements/elements5.png"
+                        src={element5}
                         alt=""
                         className="elements5"
                       />
                       <img
-                        src="../../assets/main/img/all-images/cta/cta-img1.png"
+                        src={cta1}
                         alt=""
                       />
                     </div>

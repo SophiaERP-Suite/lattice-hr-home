@@ -3,6 +3,13 @@ import hero7 from "../../assets/main/img/all-images/bg/hero-bg7.png"
 import hero11 from "../../assets/main/img/all-images/hero/hero-img11.webp"
 import wIcons8 from "../../assets/main/img/icons/w-icons8.svg"
 import bIcons4 from "../../assets/main/img/icons/bene-icons4.svg"
+import wIcons10 from "../../assets/main/img/icons/w-icons10.svg"
+import bIcons3 from "../../assets/main/img/icons/bene-icons3.svg"
+import bIcons2 from "../../assets/main/img/icons/bene-icons2.svg"
+import bIcons1 from "../../assets/main/img/icons/bene-icons1.svg"
+import benefit1 from "../../assets/main/img/all-images/benefit/benefit-img1.png"
+import element5 from "../../assets/main/img/elements/elements5.png"
+import cta1 from "../../assets/main/img/all-images/cta/cta-img1.png"
 
 const Candidates = () => {
   return (
@@ -128,7 +135,7 @@ const Candidates = () => {
                 <div className="space30 d-lg-none d-block"></div>
                 <div className="text-end">
                   <div className="icons">
-                    <img src="../../assets/main/img/icons/w-icons10.svg" alt="" />
+                    <img src={wIcons10} alt="" />
                   </div>
                 </div>
                 <div className="space70 d-lg-block d-none"></div>
@@ -194,7 +201,7 @@ const Candidates = () => {
                 <div className="space30 d-lg-none d-block"></div>
                 <div className="text-start">
                   <div className="icons">
-                    <img src="../../assets/main/img/icons/w-icons10.svg" alt="" />
+                    <img src={wIcons10} alt="" />
                   </div>
                 </div>
               </div>
@@ -311,7 +318,7 @@ const Candidates = () => {
                       <span className="button-content">
                         <span className="icons">
                           <img
-                            src="../../assets/main/img/icons/bene-icons3.svg"
+                            src={bIcons3}
                             alt=""
                           />
                         </span>
@@ -346,7 +353,7 @@ const Candidates = () => {
                       <span className="button-content">
                         <span className="icons">
                           <img
-                            src="../../assets/main/img/icons/bene-icons2.svg"
+                            src={bIcons2}
                             alt=""
                           />
                         </span>
@@ -381,7 +388,7 @@ const Candidates = () => {
                       <span className="button-content">
                         <span className="icons">
                           <img
-                            src="../../assets/main/img/icons/bene-icons1.svg"
+                            src={bIcons1}
                             alt=""
                           />
                         </span>
@@ -414,7 +421,7 @@ const Candidates = () => {
                   >
                     <div className="images">
                       <img
-                        src="../../assets/main/img/all-images/benefit/benefit-img1.png"
+                        src={benefit1}
                         alt=""
                       />
                     </div>
@@ -428,7 +435,7 @@ const Candidates = () => {
                   >
                     <div className="images">
                       <img
-                        src="../../assets/main/img/all-images/benefit/benefit-img1.png"
+                        src={benefit1}
                         alt=""
                       />
                     </div>
@@ -442,7 +449,7 @@ const Candidates = () => {
                   >
                     <div className="images">
                       <img
-                        src="../../assets/main/img/all-images/benefit/benefit-img1.png"
+                        src={benefit1}
                         alt=""
                       />
                     </div>
@@ -456,7 +463,7 @@ const Candidates = () => {
                   >
                     <div className="images">
                       <img
-                        src="../../assets/main/img/all-images/benefit/benefit-img1.png"
+                        src={benefit1}
                         alt=""
                       />
                     </div>
@@ -670,12 +677,12 @@ const Candidates = () => {
                       data-aos-duration="900"
                     >
                       <img
-                        src="../../assets/main/img/elements/elements5.png"
+                        src={element5}
                         alt=""
                         className="elements5"
                       />
                       <img
-                        src="../../assets/main/img/all-images/cta/cta-img1.png"
+                        src={cta1}
                         alt=""
                       />
                     </div>
