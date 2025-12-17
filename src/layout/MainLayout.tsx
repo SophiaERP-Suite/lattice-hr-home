@@ -22,17 +22,17 @@ const MainLayout = () => {
 
   useEffect(() => {
     const scriptUrls = [
-      "/assets/main/js/plugins/jquery-3-7-1.min.js",
-      "/assets/main/js/plugins/bootstrap.min.js",
-      "/assets/main/js/plugins/fontawesome.js",
-      "/assets/main/js/plugins/aos.js",
-      "/assets/main/js/plugins/counter.js",
-      "/assets/main/js/plugins/magnific-popup.js",
-      "/assets/main/js/plugins/nice-select.js",
-      "/assets/main/js/plugins/waypoints.js",
-      "/assets/main/js/plugins/slick-slider.js",
-      "/assets/main/js/plugins/circle-progress.js",
-      "/assets/main/js/main.js",
+      "../assets/main/js/plugins/jquery-3-7-1.min.js",
+      "../assets/main/js/plugins/bootstrap.min.js",
+      "../assets/main/js/plugins/fontawesome.js",
+      "../assets/main/js/plugins/aos.js",
+      "../assets/main/js/plugins/counter.js",
+      "../assets/main/js/plugins/magnific-popup.js",
+      "../assets/main/js/plugins/nice-select.js",
+      "../assets/main/js/plugins/waypoints.js",
+      "../assets/main/js/plugins/slick-slider.js",
+      "../assets/main/js/plugins/circle-progress.js",
+      "../assets/main/js/main.js",
     ];
 
     // Load all scripts sequentially
