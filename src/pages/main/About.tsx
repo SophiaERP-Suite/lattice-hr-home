@@ -7,6 +7,7 @@ import about4 from "../../assets/main/img/icons/about-icons4.svg"
 import choose1 from "../../assets/main/img/all-images/others/choose-img1.webp"
 import element5 from "../../assets/main/img/elements/elements5.png"
 import wIcons8 from "../../assets/main/img/icons/w-icons8.svg"
+import hero7 from "../../assets/main/img/all-images/bg/hero-bg7.png"
 
 const About = () => {
   return (
@@ -15,7 +16,7 @@ const About = () => {
       <div
         className="inner-header-area"
         style={{
-          backgroundImage: "url(/assets/main/img/all-images/bg/hero-bg7.png)",
+          backgroundImage: `url(${hero7})`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",

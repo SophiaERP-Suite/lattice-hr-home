@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import hero7 from "../../assets/main/img/all-images/bg/hero-bg7.png"
 
 const JobDetails = () => {
   return (
@@ -7,7 +8,7 @@ const JobDetails = () => {
       <div
         className="inner-header-area"
         style={{
-          backgroundImage: "url(/assets/main/img/all-images/bg/hero-bg7.png)",
+          backgroundImage: `url(${hero7})`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",

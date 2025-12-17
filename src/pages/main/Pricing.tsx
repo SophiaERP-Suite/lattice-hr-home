@@ -10,7 +10,7 @@ const Pricing = () => {
       <div
         className="inner-header-area"
         style={{
-          backgroundImage: pricing,
+          backgroundImage: `url(${pricing})`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",

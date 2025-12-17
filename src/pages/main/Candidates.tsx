@@ -18,7 +18,7 @@ const Candidates = () => {
       <div
         className="inner-header-area"
         style={{
-          backgroundImage: hero7,
+          backgroundImage: `url(${hero7})`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",

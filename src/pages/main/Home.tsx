@@ -12,6 +12,11 @@ import wIcons8 from "../../assets/main/img/icons/w-icons8.svg"
 import wIcons10 from "../../assets/main/img/icons/w-icons10.svg"
 import element5 from "../../assets/main/img/elements/elements5.png"
 import cta1 from "../../assets/main/img/all-images/cta/cta-img1.png"
+import element8 from "../../assets/main/img/elements/elements8.png"
+import wImg11 from "../../assets/main/img/all-images/work/w-img1.webp"
+import wImg2 from "../../assets/main/img/all-images/work/w-img2.webp"
+import wImg3 from "../../assets/main/img/all-images/work/w-img3.webp"
+import wImg4 from "../../assets/main/img/all-images/work/w-img4.webp"
 
 const Home = () => {
   // add country selecto to header
@@ -1160,13 +1165,13 @@ const Home = () => {
             >
               <div className="work-single-boxarea">
                 <img
-                  src="../../assets/main/img/elements/elements8.png"
+                  src={element8}
                   alt=""
                   className="elements4"
                 />
                 <div className="img1">
                   <img
-                    src="../../assets/main/img/all-images/work/w-img1.webp"
+                    src={wImg11}
                     alt=""
                   />
                 </div>
@@ -1188,13 +1193,13 @@ const Home = () => {
             >
               <div className="work-single-boxarea">
                 <img
-                  src="../../assets/main/img/elements/elements8.png"
+                  src={element8}
                   alt=""
                   className="elements4 d-lg-block d-none"
                 />
                 <div className="img1">
                   <img
-                    src="../../assets/main/img/all-images/work/w-img2.webp"
+                    src={wImg2}
                     alt=""
                   />
                 </div>
@@ -1214,13 +1219,13 @@ const Home = () => {
             >
               <div className="work-single-boxarea">
                 <img
-                  src="../../assets/main/img/elements/elements8.png"
+                  src={element8}
                   alt=""
                   className="elements4"
                 />
                 <div className="img1">
                   <img
-                    src="../../assets/main/img/all-images/work/w-img3.webp"
+                    src={wImg3}
                     alt=""
                   />
                 </div>
@@ -1240,13 +1245,13 @@ const Home = () => {
             >
               <div className="work-single-boxarea box2">
                 <img
-                  src="../../assets/main/img/elements/elements8.png"
+                  src={element8}
                   alt=""
                   className="elements4"
                 />
                 <div className="img1">
                   <img
-                    src="../../assets/main/img/all-images/work/w-img4.webp"
+                    src={wImg4}
                     alt=""
                   />
                 </div>
