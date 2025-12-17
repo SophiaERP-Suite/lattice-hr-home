@@ -2,7 +2,7 @@ import hero2 from "../../assets/main/img/all-images/hero/hero-img2.png"
 import element2 from "../../assets/main/img/elements/elements2.png"
 import element3 from "../../assets/main/img/elements/elements3.png"
 import element4 from "../../assets/main/img/elements/elements4.png"
-import hreo3 from "../../assets/main/img/all-images/hero/hero-img3.png"
+import hero3 from "../../assets/main/img/all-images/hero/hero-img3.png"
 
 const Home = () => {
   // add country selecto to header
