@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
 
-import "./assets/main/css/plugins/bootstrap.min.css";
-import "./assets/main/css/plugins/aos.css";
-import "./assets/main/css/plugins/fontawesome.css";
-import "./assets/main/css/plugins/magnific-popup.css";
-import "./assets/main/css/plugins/slick-slider.css";
-import "./assets/main/css/plugins/nice-select.css";
-import "./assets/main/css/main.css";
+import "../assets/main/css/plugins/bootstrap.min.css";
+import "../assets/main/css/plugins/aos.css";
+import "../assets/main/css/plugins/fontawesome.css";
+import "../assets/main/css/plugins/magnific-popup.css";
+import "../assets/main/css/plugins/slick-slider.css";
+import "../assets/main/css/plugins/nice-select.css";
+import "../assets/main/css/main.css";
 
 import { useEffect, useState } from "react";
 import Header from "../components/main/Header";
