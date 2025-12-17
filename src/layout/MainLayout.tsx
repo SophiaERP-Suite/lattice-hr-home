@@ -1,13 +1,5 @@
 import { Outlet } from "react-router-dom";
 
-import "../assets/main/css/plugins/bootstrap.min.css";
-import "../assets/main/css/plugins/aos.css";
-import "../assets/main/css/plugins/fontawesome.css";
-import "../assets/main/css/plugins/magnific-popup.css";
-import "../assets/main/css/plugins/slick-slider.css";
-import "../assets/main/css/plugins/nice-select.css";
-import "../assets/main/css/main.css";
-
 import { useEffect, useState } from "react";
 import Header from "../components/main/Header";
 import Footer from "../components/main/Footer";
@@ -22,17 +14,17 @@ const MainLayout = () => {
 
   useEffect(() => {
     const scriptUrls = [
-      "./assets/main/js/plugins/jquery-3-7-1.min.js",
-      "./assets/main/js/plugins/bootstrap.min.js",
-      "./assets/main/js/plugins/fontawesome.js",
-      "./assets/main/js/plugins/aos.js",
-      "./assets/main/js/plugins/counter.js",
-      "./assets/main/js/plugins/magnific-popup.js",
-      "./assets/main/js/plugins/nice-select.js",
-      "./assets/main/js/plugins/waypoints.js",
-      "./assets/main/js/plugins/slick-slider.js",
-      "./assets/main/js/plugins/circle-progress.js",
-      "./assets/main/js/main.js",
+      "/one/assets/main/js/plugins/jquery-3-7-1.min.js",
+      "/one/assets/main/js/plugins/bootstrap.min.js",
+      "/one/assets/main/js/plugins/fontawesome.js",
+      "/one/assets/main/js/plugins/aos.js",
+      "/one/assets/main/js/plugins/counter.js",
+      "/one/assets/main/js/plugins/magnific-popup.js",
+      "/one/assets/main/js/plugins/nice-select.js",
+      "/one/assets/main/js/plugins/waypoints.js",
+      "/one/assets/main/js/plugins/slick-slider.js",
+      "/one/assets/main/js/plugins/circle-progress.js",
+      "/one/assets/main/js/main.js",
     ];
 
     // Load all scripts sequentially
@@ -52,13 +44,6 @@ const MainLayout = () => {
     };
 
     if (!registeredScripts) loadScriptsSequentially();
-
-    return () => {
-      scriptUrls.forEach((src) => {
-        const script = document.querySelector(`script[src="${src}"]`);
-        if (script) script.remove();
-      });
-    };
   }, []);
 
   return (

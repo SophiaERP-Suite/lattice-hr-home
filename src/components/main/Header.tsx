@@ -61,14 +61,14 @@ const Header = () => {
                     <nav className="vl-mobile-menu-active">
                       <ul>
                         <li className="has-dropdown home-nav-link">
-                          <a href="/one/home">Home </a>
+                          <NavLink to="/home">Home </NavLink>
                         </li>
                         <li className="has-dropdown">
                           <NavLink to="/jobs">Jobs</NavLink>
                         </li>
 
                         <li>
-                          <a href="/one/employers">Employers</a>
+                          <NavLink to="/employers">Employers</NavLink>
                         </li>
 
                         <li>
@@ -199,7 +199,7 @@ const Header = () => {
                         </li>
 
                         <li>
-                          <a href="/one/employers">Employers</a>
+                          <NavLink to="/employers">Employers</NavLink>
                         </li>
 
                         <li>
