@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const secondFooterPages = [
   "jobs",
@@ -64,18 +64,18 @@ const Footer = () => {
               <h3>Quick Links</h3>
               <ul>
                 <li>
-                  <a href="/about">About Us</a>
+                  <NavLink to="/about">About Us</NavLink>
                 </li>
 
                 <li>
-                  <a href="/register">Get Started</a>
+                  <NavLink to="/register">Get Started</NavLink>
                 </li>
                 <li>
-                  <a href="/contact">Contact Us</a>
+                  <NavLink to="/contact">Contact Us</NavLink>
                 </li>
 
                 <li>
-                  <a href="/pricing">Pricing</a>
+                  <NavLink to="/pricing">Pricing</NavLink>
                 </li>
               </ul>
             </div>
@@ -87,13 +87,13 @@ const Footer = () => {
               <h3>Job Links</h3>
               <ul>
                 <li>
-                  <a href="/jobs">Find Jobs</a>
+                  <NavLink to="/jobs">Find Jobs</NavLink>
                 </li>
                 <li>
-                  <a href="/candidates">Candidates</a>
+                  <NavLink to="/candidates">Candidates</NavLink>
                 </li>
                 <li>
-                  <a href="/employers">View Employers</a>
+                  <NavLink to="/employers">View Employers</NavLink>
                 </li>
               </ul>
             </div>

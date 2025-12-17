@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const EmployerDetails = () => {
   return (
     <>
@@ -18,9 +20,9 @@ const EmployerDetails = () => {
                 <h1>Nova Health</h1>
                 <div className="space20"></div>
                 <div>
-                  <a href="/">
+                  <NavLink to="/home">
                     Home <i className="fa-solid fa-angle-right"></i>
-                  </a>{" "}
+                  </NavLink>{" "}
                   <span>Employer Details</span>
                 </div>
               </div>
@@ -29,7 +31,7 @@ const EmployerDetails = () => {
             <div className="col-lg-4">
               <div className="imges">
                 <img
-                  src="/assets/main/img/all-images/hero/hero-img11.webp"
+                  src="../../assets/main/img/all-images/hero/hero-img11.webp"
                   alt=""
                 />
               </div>
@@ -77,7 +79,7 @@ const EmployerDetails = () => {
 
                 <div className="img1">
                   <img
-                    src="/assets/main/img/all-images/blog/blog-img23.webp"
+                    src="../../assets/main/img/all-images/blog/blog-img23.webp"
                     alt=""
                   />
                 </div>
@@ -87,7 +89,7 @@ const EmployerDetails = () => {
                   <div className="col-lg-6 col-md-6">
                     <div className="img1">
                       <img
-                        src="/assets/main/img/all-images/blog/blog-img25.webp"
+                        src="../../assets/main/img/all-images/blog/blog-img25.webp"
                         alt=""
                       />
                     </div>
@@ -97,7 +99,7 @@ const EmployerDetails = () => {
                   <div className="col-lg-6 col-md-6">
                     <div className="img1">
                       <img
-                        src="/assets/main/img/all-images/blog/blog-img25.webp"
+                        src="../../assets/main/img/all-images/blog/blog-img25.webp"
                         alt=""
                       />
                     </div>
@@ -423,7 +425,7 @@ const EmployerDetails = () => {
                       <div className="service9-boxarea">
                         <div className="job-box-head">
                           <div className="job-logo">
-                            <img src="/assets/main/img/logo/download.png" />
+                            <img src="../../assets/main/img/logo/download.png" />
                           </div>
                         </div>
 

@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const Login = () => {
   return (
     <>
@@ -5,7 +7,7 @@ const Login = () => {
       <div
         className="inner-header-area"
         style={{
-          backgroundImage: "url(/assets/main/img/all-images/bg/hero-bg7.png)",
+          backgroundImage: "url(../../assets/main/img/all-images/bg/hero-bg7.png)",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
@@ -18,9 +20,9 @@ const Login = () => {
                 <h1>Login</h1>
                 <div className="space20"></div>
                 <div>
-                  <a href="/">
+                  <NavLink to="/home">
                     Home <i className="fa-solid fa-angle-right"></i>
-                  </a>{" "}
+                  </NavLink>{" "}
                   <span>Login</span>
                 </div>
               </div>
@@ -29,7 +31,7 @@ const Login = () => {
             <div className="col-lg-4">
               <div className="imges">
                 <img
-                  src="/assets/main/img/all-images/hero/hero-img11.webp"
+                  src="../../assets/main/img/all-images/hero/hero-img11.webp"
                   alt=""
                 />
               </div>
@@ -78,7 +80,7 @@ const Login = () => {
                 data-aos-duration="900"
               >
                 <img
-                  src="/assets/main/img/all-images/others/ot-img1.webp"
+                  src="../../assets/main/img/all-images/others/ot-img1.webp"
                   alt=""
                   style={{ borderRadius: "8px" }}
                 />
@@ -121,12 +123,11 @@ const Login = () => {
                   >
                     <p>
                       Don't have an account?{" "}
-                      <a
-                        href="/register"
+                      <NavLink to="/register"
                         style={{ color: "var(--ztc-bg-bg-6)" }}
                       >
                         Sign Up
-                      </a>
+                      </NavLink>
                     </p>
                   </div>
 

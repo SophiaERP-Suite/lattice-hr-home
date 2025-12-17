@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const Pricing = () => {
   return (
     <>
@@ -19,9 +21,9 @@ const Pricing = () => {
                 <h1>Pricing</h1>
                 <div className="space20"></div>
                 <div>
-                  <a href="/">
+                  <NavLink to="/home">
                     Home <i className="fa-solid fa-angle-right"></i>
-                  </a>{" "}
+                  </NavLink>{" "}
                   <span>Pricing</span>
                 </div>
               </div>
@@ -828,12 +830,12 @@ const Pricing = () => {
                       data-aos-duration="900"
                     >
                       <img
-                        src="/assets/main/img/elements/elements5.png"
+                        src="../../assets/main/img/elements/elements5.png"
                         alt=""
                         className="elements5"
                       />
                       <img
-                        src="/assets/main/img/all-images/cta/cta-img1.png"
+                        src="../../assets/main/img/all-images/cta/cta-img1.png"
                         alt=""
                       />
                     </div>

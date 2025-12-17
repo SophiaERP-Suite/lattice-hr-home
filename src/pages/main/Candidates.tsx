@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const Candidates = () => {
   return (
     <>
@@ -18,9 +20,9 @@ const Candidates = () => {
                 <h1>Candidates</h1>
                 <div className="space20"></div>
                 <div>
-                  <a href="/">
+                  <NavLink to="/home">
                     Home <i className="fa-solid fa-angle-right"></i>
-                  </a>{" "}
+                  </NavLink>{" "}
                   <span>Candidates</span>
                 </div>
               </div>
@@ -29,7 +31,7 @@ const Candidates = () => {
             <div className="col-lg-4">
               <div className="imges">
                 <img
-                  src="/assets/main/img/all-images/hero/hero-img11.webp"
+                  src="../../assets/main/img/all-images/hero/hero-img11.webp"
                   alt=""
                 />
               </div>
@@ -98,7 +100,7 @@ const Candidates = () => {
               >
                 <div className="text-end">
                   <div className="icons">
-                    <img src="/assets/main/img/icons/w-icons8.svg" alt="" />
+                    <img src="../../assets/main/img/icons/w-icons8.svg" alt="" />
                   </div>
                 </div>
                 <div className="space70 d-lg-block d-none"></div>
@@ -122,7 +124,7 @@ const Candidates = () => {
                 <div className="space30 d-lg-none d-block"></div>
                 <div className="text-end">
                   <div className="icons">
-                    <img src="/assets/main/img/icons/w-icons10.svg" alt="" />
+                    <img src="../../assets/main/img/icons/w-icons10.svg" alt="" />
                   </div>
                 </div>
                 <div className="space70 d-lg-block d-none"></div>
@@ -161,7 +163,7 @@ const Candidates = () => {
                 <div className="space30 d-lg-none d-block"></div>
                 <div className="text-start">
                   <div className="icons">
-                    <img src="/assets/main/img/icons/w-icons8.svg" alt="" />
+                    <img src="../../assets/main/img/icons/w-icons8.svg" alt="" />
                   </div>
                 </div>
                 <div className="space70 d-lg-block d-none"></div>
@@ -188,7 +190,7 @@ const Candidates = () => {
                 <div className="space30 d-lg-none d-block"></div>
                 <div className="text-start">
                   <div className="icons">
-                    <img src="/assets/main/img/icons/w-icons10.svg" alt="" />
+                    <img src="../../assets/main/img/icons/w-icons10.svg" alt="" />
                   </div>
                 </div>
               </div>
@@ -272,7 +274,7 @@ const Candidates = () => {
                       <span className="button-content">
                         <span className="icons">
                           <img
-                            src="/assets/main/img/icons/bene-icons4.svg"
+                            src="../../assets/main/img/icons/bene-icons4.svg"
                             alt=""
                           />
                         </span>
@@ -305,7 +307,7 @@ const Candidates = () => {
                       <span className="button-content">
                         <span className="icons">
                           <img
-                            src="/assets/main/img/icons/bene-icons3.svg"
+                            src="../../assets/main/img/icons/bene-icons3.svg"
                             alt=""
                           />
                         </span>
@@ -340,7 +342,7 @@ const Candidates = () => {
                       <span className="button-content">
                         <span className="icons">
                           <img
-                            src="/assets/main/img/icons/bene-icons2.svg"
+                            src="../../assets/main/img/icons/bene-icons2.svg"
                             alt=""
                           />
                         </span>
@@ -375,7 +377,7 @@ const Candidates = () => {
                       <span className="button-content">
                         <span className="icons">
                           <img
-                            src="/assets/main/img/icons/bene-icons1.svg"
+                            src="../../assets/main/img/icons/bene-icons1.svg"
                             alt=""
                           />
                         </span>
@@ -408,7 +410,7 @@ const Candidates = () => {
                   >
                     <div className="images">
                       <img
-                        src="/assets/main/img/all-images/benefit/benefit-img1.png"
+                        src="../../assets/main/img/all-images/benefit/benefit-img1.png"
                         alt=""
                       />
                     </div>
@@ -422,7 +424,7 @@ const Candidates = () => {
                   >
                     <div className="images">
                       <img
-                        src="/assets/main/img/all-images/benefit/benefit-img1.png"
+                        src="../../assets/main/img/all-images/benefit/benefit-img1.png"
                         alt=""
                       />
                     </div>
@@ -436,7 +438,7 @@ const Candidates = () => {
                   >
                     <div className="images">
                       <img
-                        src="/assets/main/img/all-images/benefit/benefit-img1.png"
+                        src="../../assets/main/img/all-images/benefit/benefit-img1.png"
                         alt=""
                       />
                     </div>
@@ -450,7 +452,7 @@ const Candidates = () => {
                   >
                     <div className="images">
                       <img
-                        src="/assets/main/img/all-images/benefit/benefit-img1.png"
+                        src="../../assets/main/img/all-images/benefit/benefit-img1.png"
                         alt=""
                       />
                     </div>
@@ -664,12 +666,12 @@ const Candidates = () => {
                       data-aos-duration="900"
                     >
                       <img
-                        src="/assets/main/img/elements/elements5.png"
+                        src="../../assets/main/img/elements/elements5.png"
                         alt=""
                         className="elements5"
                       />
                       <img
-                        src="/assets/main/img/all-images/cta/cta-img1.png"
+                        src="../../assets/main/img/all-images/cta/cta-img1.png"
                         alt=""
                       />
                     </div>

@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const About = () => {
   return (
     <>
@@ -18,9 +20,9 @@ const About = () => {
                 <h1>About Us</h1>
                 <div className="space20"></div>
                 <div>
-                  <a href="/">
+                  <NavLink to="/home">
                     Home <i className="fa-solid fa-angle-right"></i>
-                  </a>{" "}
+                  </NavLink>{" "}
                   <span>About Us</span>
                 </div>
               </div>
@@ -29,7 +31,7 @@ const About = () => {
             <div className="col-lg-4">
               <div className="imges">
                 <img
-                  src="/assets/main/img/all-images/hero/hero-img11.webp"
+                  src="../../assets/main/img/all-images/hero/hero-img11.webp"
                   alt=""
                 />
               </div>
@@ -46,7 +48,7 @@ const About = () => {
               <div className="about-widget-area1 heading1">
                 <div className="img1">
                   <img
-                    src="/assets/main/img/all-images/about/about-img9.webp"
+                    src="../../assets/main/img/all-images/about/about-img9.webp"
                     alt=""
                   />
                 </div>
@@ -57,7 +59,7 @@ const About = () => {
                   data-aos-duration="1200"
                 >
                   <div className="icons">
-                    <img src="/assets/main/img/icons/about-icons3.svg" alt="" />
+                    <img src="../../assets/main/img/icons/about-icons3.svg" alt="" />
                   </div>
                   <div className="text-area">
                     <a href="#">Committed to Connecting Talent with Purpose</a>
@@ -76,7 +78,7 @@ const About = () => {
                   data-aos-duration="1300"
                 >
                   <div className="icons">
-                    <img src="/assets/main/img/icons/about-icons4.svg" alt="" />
+                    <img src="../../assets/main/img/icons/about-icons4.svg" alt="" />
                   </div>
                   <div className="text-area">
                     <a href="#"> Building a New Standard in Recruitment</a>
@@ -137,7 +139,7 @@ const About = () => {
                 <div className="space32"></div>
                 <div className="img1">
                   <img
-                    src="/assets/main/img/all-images/about/about-img10.webp"
+                    src="../../assets/main/img/all-images/about/about-img10.webp"
                     alt=""
                   />
                 </div>
@@ -260,12 +262,12 @@ const About = () => {
                         >
                           <div className="icons">
                             <img
-                              src="/assets/main/img/icons/c-icons1.svg"
+                              src="../../assets/main/img/icons/c-icons1.svg"
                               alt=""
                             />
                           </div>
                           <div className="text-area">
-                            <a href="service-single.html">
+                            <a href="#">
                               Building Stronger Teams
                             </a>
                             <div className="space16"></div>
@@ -284,12 +286,12 @@ const About = () => {
                         >
                           <div className="icons">
                             <img
-                              src="/assets/main/img/icons/c-icons2.svg"
+                              src="../../assets/main/img/icons/c-icons2.svg"
                               alt=""
                             />
                           </div>
                           <div className="text-area">
-                            <a href="service-single.html">
+                            <a href="#">
                               Creating Meaningful Connections
                             </a>
                             <div className="space16"></div>
@@ -309,12 +311,12 @@ const About = () => {
                         >
                           <div className="icons">
                             <img
-                              src="/assets/main/img/icons/c-icons3.svg"
+                              src="../../assets/main/img/icons/c-icons3.svg"
                               alt=""
                             />
                           </div>
                           <div className="text-area">
-                            <a href="service-single.html">
+                            <a href="#">
                               Driving Excellence Through Innovation
                             </a>
                             <div className="space16"></div>
@@ -331,7 +333,7 @@ const About = () => {
                     <div className="col-lg-6">
                       <div className="img1">
                         <img
-                          src="/assets/main/img/all-images/others/choose-img1.webp"
+                          src="../../assets/main/img/all-images/others/choose-img1.webp"
                           alt=""
                         />
                       </div>
@@ -362,12 +364,12 @@ const About = () => {
                         >
                           <div className="icons">
                             <img
-                              src="/assets/main/img/icons/c-icons1.svg"
+                              src="../../assets/main/img/icons/c-icons1.svg"
                               alt=""
                             />
                           </div>
                           <div className="text-area">
-                            <a href="service-single.html">
+                            <a href="#">
                               Connecting People, Powering Progress
                             </a>
                             <div className="space16"></div>
@@ -386,7 +388,7 @@ const About = () => {
                         >
                           <div className="icons">
                             <img
-                              src="/assets/main/img/icons/c-icons2.svg"
+                              src="../../assets/main/img/icons/c-icons2.svg"
                               alt=""
                             />
                           </div>
@@ -411,7 +413,7 @@ const About = () => {
                         >
                           <div className="icons">
                             <img
-                              src="/assets/main/img/icons/c-icons3.svg"
+                              src="../../assets/main/img/icons/c-icons3.svg"
                               alt=""
                             />
                           </div>
@@ -433,7 +435,7 @@ const About = () => {
                     <div className="col-lg-6">
                       <div className="img1">
                         <img
-                          src="/assets/main/img/all-images/others/choose-img1.webp"
+                          src="../../assets/main/img/all-images/others/choose-img1.webp"
                           alt=""
                         />
                       </div>
@@ -505,7 +507,7 @@ const About = () => {
               >
                 <div className="text-end">
                   <div className="icons">
-                    <img src="/assets/main/img/icons/w-icons8.svg" alt="" />
+                    <img src="../../assets/main/img/icons/w-icons8.svg" alt="" />
                   </div>
                 </div>
                 <div className="space70 d-lg-block d-none"></div>
@@ -529,7 +531,7 @@ const About = () => {
                 <div className="space30 d-lg-none d-block"></div>
                 <div className="text-end">
                   <div className="icons">
-                    <img src="/assets/main/img/icons/w-icons10.svg" alt="" />
+                    <img src="../../assets/main/img/icons/w-icons10.svg" alt="" />
                   </div>
                 </div>
                 <div className="space70 d-lg-block d-none"></div>
@@ -562,7 +564,7 @@ const About = () => {
                 <div className="space30 d-lg-none d-block"></div>
                 <div className="text-start">
                   <div className="icons">
-                    <img src="/assets/main/img/icons/w-icons8.svg" alt="" />
+                    <img src="../../assets/main/img/icons/w-icons8.svg" alt="" />
                   </div>
                 </div>
                 <div className="space70 d-lg-block d-none"></div>
@@ -584,7 +586,7 @@ const About = () => {
                 <div className="space30 d-lg-none d-block"></div>
                 <div className="text-start">
                   <div className="icons">
-                    <img src="/assets/main/img/icons/w-icons10.svg" alt="" />
+                    <img src="../../assets/main/img/icons/w-icons10.svg" alt="" />
                   </div>
                 </div>
               </div>
@@ -608,12 +610,12 @@ const About = () => {
                       data-aos-duration="900"
                     >
                       <img
-                        src="/assets/main/img/elements/elements5.png"
+                        src="../../assets/main/img/elements/elements5.png"
                         alt=""
                         className="elements5"
                       />
                       <img
-                        src="/assets/main/img/all-images/cta/cta-img1.png"
+                        src="../../assets/main/img/all-images/cta/cta-img1.png"
                         alt=""
                       />
                     </div>

@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const Jobs = () => {
   return (
     <>
@@ -18,9 +20,9 @@ const Jobs = () => {
                 <h1>Jobs</h1>
                 <div className="space20"></div>
                 <div>
-                  <a href="/">
+                  <NavLink to="/home">
                     Home <i className="fa-solid fa-angle-right"></i>
-                  </a>{" "}
+                  </NavLink>{" "}
                   <span>Jobs</span>
                 </div>
               </div>
@@ -29,7 +31,7 @@ const Jobs = () => {
             <div className="col-lg-4">
               <div className="imges">
                 <img
-                  src="/assets/main/img/all-images/hero/hero-img11.webp"
+                  src="../../assets/main/img/all-images/hero/hero-img11.webp"
                   alt=""
                 />
               </div>
@@ -194,7 +196,7 @@ const Jobs = () => {
                       <div className="service9-boxarea">
                         <div className="job-box-head">
                           <div className="job-logo">
-                            <img src="/assets/main/img/logo/download.png" />
+                            <img src="../../assets/main/img/logo/download.png" />
                           </div>
 
                           <div className="job-box-details">

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ProfileContext } from "../../utils/main/Contexts";
 // register, package, pay
 //  const disabledPaths = ["register"];
@@ -82,9 +82,9 @@ const Register = () => {
                 <h1>Register</h1>
                 <div className="space20"></div>
                 <div>
-                  <a href="/">
+                  <NavLink to="/home">
                     Home <i className="fa-solid fa-angle-right"></i>
-                  </a>{" "}
+                  </NavLink>{" "}
                   <span>Register</span>
                 </div>
               </div>
@@ -93,7 +93,7 @@ const Register = () => {
             <div className="col-lg-4">
               <div className="imges">
                 <img
-                  src="/assets/main/img/all-images/hero/hero-img11.webp"
+                  src="../../assets/main/img/all-images/hero/hero-img11.webp"
                   alt=""
                 />
               </div>
@@ -316,12 +316,11 @@ const Register = () => {
                     >
                       <p>
                         Already have an account?{" "}
-                        <a
-                          href="/login"
+                        <NavLink to="/login"
                           style={{ color: "var(--ztc-bg-bg-6)" }}
                         >
                           Login
-                        </a>
+                        </NavLink>
                       </p>
                     </div>
 
@@ -580,12 +579,11 @@ const Register = () => {
                       >
                         <p>
                           Already have an account?{" "}
-                          <a
-                            href="/login"
+                          <NavLink to="/login"
                             style={{ color: "var(--ztc-bg-bg-6)" }}
                           >
                             Login
-                          </a>
+                          </NavLink>
                         </p>
                       </div>
 

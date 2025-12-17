@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
 import { useState } from "react";
 
@@ -11,7 +11,7 @@ const Header = () => {
 
   const [country, setCountry] = useState<{ name: string; src: string }>({
     name: "NGN",
-    src: "/assets/main/img/countries/nigeria.png",
+    src: "../../assets/main/img/countries/nigeria.png",
   });
 
   const changeCountry = (e: React.MouseEvent<HTMLLIElement>) => {
@@ -41,9 +41,9 @@ const Header = () => {
               >
                 <div className="col-lg-2 col-md-6 col-6">
                   <div className="vl-logo">
-                    <a href="index.html">
-                      <img src="/assets/main/img/logo/logo1.png" alt="" />
-                    </a>
+                    <NavLink to="/home">
+                      <img src="../../assets/main/img/logo/logo1.png" alt="" />
+                    </NavLink>
                   </div>
                 </div>
                 <div
@@ -54,26 +54,26 @@ const Header = () => {
                     <nav className="vl-mobile-menu-active">
                       <ul>
                         <li className="has-dropdown home-nav-link">
-                          <a href="/home">Home </a>
+                          <NavLink to="/home">Home </NavLink>
                         </li>
                         <li className="has-dropdown">
-                          <a href="/jobs">Jobs</a>
+                          <NavLink to="/jobs">Jobs</NavLink>
                         </li>
 
                         <li>
-                          <a href="/employers">Employers</a>
+                          <NavLink to="/employers">Employers</NavLink>
                         </li>
 
                         <li>
-                          <a href="/candidates">Candidates</a>
+                          <NavLink to="/candidates">Candidates</NavLink>
                         </li>
 
                         <li>
-                          <a href="/pricing">Pricing</a>
+                          <NavLink to="/pricing">Pricing</NavLink>
                         </li>
 
                         <li>
-                          <a href="/login">Login</a>
+                          <NavLink to="/login">Login</NavLink>
                         </li>
                       </ul>
                     </nav>
@@ -82,12 +82,12 @@ const Header = () => {
                 <div className="col-lg-2 col-md-6 col-6 top-right-nav">
                   <div className="vl-hero-btn d-none d-lg-block text-end">
                     <div className="hero-btn1">
-                      <a href="/register" className="vl-btn2">
+                      <NavLink to="/register" className="vl-btn2">
                         Get started
                         <span>
                           <i className="fa-solid fa-arrow-right"></i>
                         </span>
-                      </a>
+                      </NavLink>
                     </div>
                   </div>
 
@@ -103,14 +103,14 @@ const Header = () => {
                     <ul className="country-selector-list">
                       <li data-value="ngn" onClick={changeCountry}>
                         <img
-                          src="/assets/main/img/countries/nigeria.png"
+                          src="../../assets/main/img/countries/nigeria.png"
                           alt=""
                         />{" "}
                         <span>NGN</span>
                       </li>
                       <li data-value="gbp" onClick={changeCountry}>
                         <img
-                          src="/assets/main/img/countries/britain.png"
+                          src="../../assets/main/img/countries/britain.png"
                           alt=""
                         />{" "}
                         <span>GBP</span>
@@ -121,21 +121,21 @@ const Header = () => {
                       </li>{" "}
                       <li data-value="ghs" onClick={changeCountry}>
                         <img
-                          src="/assets/main/img/countries/ghana.png"
+                          src="../../assets/main/img/countries/ghana.png"
                           alt=""
                         />{" "}
                         <span>GHS</span>
                       </li>{" "}
                       <li data-value="cad" onClick={changeCountry}>
                         <img
-                          src="/assets/main/img/countries/canada.png"
+                          src="../../assets/main/img/countries/canada.png"
                           alt=""
                         />{" "}
                         <span>CAD</span>
                       </li>{" "}
                       <li data-value="zar" onClick={changeCountry}>
                         <img
-                          src="/assets/main/img/countries/south-africa.jpeg"
+                          src="../../assets/main/img/countries/south-africa.jpeg"
                           alt=""
                         />{" "}
                         <span>ZAR</span>
@@ -172,9 +172,9 @@ const Header = () => {
               >
                 <div className="col-lg-2 col-md-6 col-6">
                   <div className="vl-logo">
-                    <a href="index.html">
-                      <img src="/assets/main/img/logo/logo1.png" alt="" />
-                    </a>
+                    <NavLink to="/home">
+                      <img src="../../assets/main/img/logo/logo1.png" alt="" />
+                    </NavLink>
                   </div>
                 </div>
                 <div
@@ -185,26 +185,26 @@ const Header = () => {
                     <nav className="vl-mobile-menu-active">
                       <ul>
                         <li className="has-dropdown home-nav-link">
-                          <a href="/home">Home </a>
+                          <NavLink to="/home">Home </NavLink>
                         </li>
                         <li className="has-dropdown">
-                          <a href="/jobs">Jobs</a>
+                          <NavLink to="/jobs">Jobs</NavLink>
                         </li>
 
                         <li>
-                          <a href="/employers">Employers</a>
+                          <NavLink to="/employers">Employers</NavLink>
                         </li>
 
                         <li>
-                          <a href="/candidates">Candidates</a>
+                          <NavLink to="/candidates">Candidates</NavLink>
                         </li>
 
                         <li>
-                          <a href="/pricing">Pricing</a>
+                          <NavLink to="/pricing">Pricing</NavLink>
                         </li>
 
                         <li>
-                          <a href="/login">Login</a>
+                          <NavLink to="/login">Login</NavLink>
                         </li>
                       </ul>
                     </nav>
@@ -213,12 +213,12 @@ const Header = () => {
                 <div className="col-lg-2 col-md-6 col-6 top-right-nav">
                   <div className="vl-hero-btn d-none d-lg-block text-end">
                     <div className="hero-btn1">
-                      <a href="/register" className="vl-btn2">
+                      <NavLink to="/register" className="vl-btn2">
                         Get started
                         <span>
                           <i className="fa-solid fa-arrow-right"></i>
                         </span>
-                      </a>
+                      </NavLink>
                     </div>
                   </div>
 
@@ -234,14 +234,14 @@ const Header = () => {
                     <ul className="country-selector-list">
                       <li data-value="ngn" onClick={changeCountry}>
                         <img
-                          src="/assets/main/img/countries/nigeria.png"
+                          src="../../assets/main/img/countries/nigeria.png"
                           alt=""
                         />{" "}
                         <span>NGN</span>
                       </li>
                       <li data-value="gbp" onClick={changeCountry}>
                         <img
-                          src="/assets/main/img/countries/britain.png"
+                          src="../../assets/main/img/countries/britain.png"
                           alt=""
                         />{" "}
                         <span>GBP</span>
@@ -252,21 +252,21 @@ const Header = () => {
                       </li>{" "}
                       <li data-value="ghs" onClick={changeCountry}>
                         <img
-                          src="/assets/main/img/countries/ghana.png"
+                          src="../../assets/main/img/countries/ghana.png"
                           alt=""
                         />{" "}
                         <span>GHS</span>
                       </li>{" "}
                       <li data-value="cad" onClick={changeCountry}>
                         <img
-                          src="/assets/main/img/countries/canada.png"
+                          src="../../assets/main/img/countries/canada.png"
                           alt=""
                         />{" "}
                         <span>CAD</span>
                       </li>{" "}
                       <li data-value="zar" onClick={changeCountry}>
                         <img
-                          src="/assets/main/img/countries/south-africa.jpeg"
+                          src="../../assets/main/img/countries/south-africa.jpeg"
                           alt=""
                         />{" "}
                         <span>ZAR</span>
@@ -297,9 +297,9 @@ const Header = () => {
           <div className="vl-offcanvas-wrapper">
             <div className="vl-offcanvas-header d-flex justify-content-between align-items-center mb-90">
               <div className="vl-offcanvas-logo">
-                <a href="index.html">
-                  <img src="/assets/main/img/logo/logo1.png" alt="" />
-                </a>
+                <NavLink to="/home">
+                  <img src="../../assets/main/img/logo/logo1.png" alt="" />
+                </NavLink>
               </div>
               <div className="vl-offcanvas-close">
                 <button className="vl-offcanvas-close-toggle">

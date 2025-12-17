@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const Contact = () => {
   return (
     <>
@@ -18,9 +20,9 @@ const Contact = () => {
                 <h1>Contact Us</h1>
                 <div className="space20"></div>
                 <div>
-                  <a href="/">
+                  <NavLink to="/home">
                     Home <i className="fa-solid fa-angle-right"></i>
-                  </a>{" "}
+                  </NavLink>{" "}
                   <span>Contact Us</span>
                 </div>
               </div>
@@ -29,7 +31,7 @@ const Contact = () => {
             <div className="col-lg-4">
               <div className="imges">
                 <img
-                  src="/assets/main/img/all-images/hero/hero-img11.webp"
+                  src="../../assets/main/img/all-images/hero/hero-img11.webp"
                   alt=""
                 />
               </div>
@@ -296,12 +298,12 @@ const Contact = () => {
                       data-aos-duration="900"
                     >
                       <img
-                        src="/assets/main/img/elements/elements5.png"
+                        src="../../assets/main/img/elements/elements5.png"
                         alt=""
                         className="elements5"
                       />
                       <img
-                        src="/assets/main/img/all-images/cta/cta-img1.png"
+                        src="../../assets/main/img/all-images/cta/cta-img1.png"
                         alt=""
                       />
                     </div>

@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { ProfileContext } from "../../utils/main/Contexts";
+import { NavLink } from "react-router-dom";
 
 const Profile = () => {
   const { profileType } = useContext(ProfileContext);
@@ -14,7 +15,7 @@ const Profile = () => {
       <div
         className="inner-header-area"
         style={{
-          backgroundImage: "url(/assets/main/img/all-images/bg/hero-bg7.png)",
+          backgroundImage: "url(../../assets/main/img/all-images/bg/hero-bg7.png)",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
@@ -27,9 +28,9 @@ const Profile = () => {
                 <h1>Profile</h1>
                 <div className="space20"></div>
                 <div>
-                  <a href="/">
+                  <NavLink to="/home">
                     Home <i className="fa-solid fa-angle-right"></i>
-                  </a>{" "}
+                  </NavLink>{" "}
                   <span>Profile</span>
                 </div>
               </div>
@@ -38,7 +39,7 @@ const Profile = () => {
             <div className="col-lg-4">
               <div className="imges">
                 <img
-                  src="/assets/main/img/all-images/hero/hero-img11.webp"
+                  src="../../assets/main/img/all-images/hero/hero-img11.webp"
                   alt=""
                 />
               </div>
@@ -60,7 +61,7 @@ const Profile = () => {
 
                   <div className="profile-photo-box">
                     <figure>
-                      <img src="/assets/main/img/users/user1.jpeg" />
+                      <img src="../../assets/main/img/users/user1.jpeg" />
 
                       <figcaption>
                         <h4>Joseph Benson</h4>
@@ -496,7 +497,7 @@ const Profile = () => {
 
                   <div className="profile-photo-box">
                     <figure>
-                      <img src="/assets/main/img/users/company.jpeg" />
+                      <img src="../../assets/main/img/users/company.jpeg" />
 
                       <figcaption>
                         <h4>Nova Health</h4>
