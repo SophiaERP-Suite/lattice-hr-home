@@ -1,6 +1,13 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
 import { useState } from "react";
+import logo1 from "../../assets/main/img/logo/logo1.png"
+import nigeria from "../../assets/main/img/countries/nigeria.png"
+import britain from "../../assets/main/img/countries/britain.png"
+import ghana from "../../assets/main/img/countries/ghana.png"
+import canada from "../../assets/main/img/countries/canada.png"
+import southAfrica from "../../assets/main/img/countries/south-africa.jpeg"
+import usflag from "../../assets/main/img/countries/usa.png"
 
 const bannerPages = ["home"];
 
@@ -11,7 +18,7 @@ const Header = () => {
 
   const [country, setCountry] = useState<{ name: string; src: string }>({
     name: "NGN",
-    src: "../../assets/main/img/countries/nigeria.png",
+    src: nigeria,
   });
 
   const changeCountry = (e: React.MouseEvent<HTMLLIElement>) => {
@@ -42,7 +49,7 @@ const Header = () => {
                 <div className="col-lg-2 col-md-6 col-6">
                   <div className="vl-logo">
                     <NavLink to="/home">
-                      <img src="../../assets/main/img/logo/logo1.png" alt="" />
+                      <img src={logo1} alt="" />
                     </NavLink>
                   </div>
                 </div>
@@ -103,39 +110,39 @@ const Header = () => {
                     <ul className="country-selector-list">
                       <li data-value="ngn" onClick={changeCountry}>
                         <img
-                          src="../../assets/main/img/countries/nigeria.png"
+                          src={nigeria}
                           alt=""
                         />{" "}
                         <span>NGN</span>
                       </li>
                       <li data-value="gbp" onClick={changeCountry}>
                         <img
-                          src="../../assets/main/img/countries/britain.png"
+                          src={britain}
                           alt=""
                         />{" "}
                         <span>GBP</span>
                       </li>
                       <li data-value="usd" onClick={changeCountry}>
-                        <img src="/assets/main/img/countries/usa.png" alt="" />{" "}
+                        <img src={usflag} alt="" />{" "}
                         <span>USD</span>
                       </li>{" "}
                       <li data-value="ghs" onClick={changeCountry}>
                         <img
-                          src="../../assets/main/img/countries/ghana.png"
+                          src={ghana}
                           alt=""
                         />{" "}
                         <span>GHS</span>
                       </li>{" "}
                       <li data-value="cad" onClick={changeCountry}>
                         <img
-                          src="../../assets/main/img/countries/canada.png"
+                          src={canada}
                           alt=""
                         />{" "}
                         <span>CAD</span>
                       </li>{" "}
                       <li data-value="zar" onClick={changeCountry}>
                         <img
-                          src="../../assets/main/img/countries/south-africa.jpeg"
+                          src={southAfrica}
                           alt=""
                         />{" "}
                         <span>ZAR</span>
@@ -173,7 +180,7 @@ const Header = () => {
                 <div className="col-lg-2 col-md-6 col-6">
                   <div className="vl-logo">
                     <NavLink to="/home">
-                      <img src="../../assets/main/img/logo/logo1.png" alt="" />
+                      <img src={logo1} alt="" />
                     </NavLink>
                   </div>
                 </div>
@@ -234,39 +241,39 @@ const Header = () => {
                     <ul className="country-selector-list">
                       <li data-value="ngn" onClick={changeCountry}>
                         <img
-                          src="../../assets/main/img/countries/nigeria.png"
+                          src={nigeria}
                           alt=""
                         />{" "}
                         <span>NGN</span>
                       </li>
                       <li data-value="gbp" onClick={changeCountry}>
                         <img
-                          src="../../assets/main/img/countries/britain.png"
+                          src={britain}
                           alt=""
                         />{" "}
                         <span>GBP</span>
                       </li>
                       <li data-value="usd" onClick={changeCountry}>
-                        <img src="/assets/main/img/countries/usa.png" alt="" />{" "}
+                        <img src={usflag} alt="" />{" "}
                         <span>USD</span>
                       </li>{" "}
                       <li data-value="ghs" onClick={changeCountry}>
                         <img
-                          src="../../assets/main/img/countries/ghana.png"
+                          src={ghana}
                           alt=""
                         />{" "}
                         <span>GHS</span>
                       </li>{" "}
                       <li data-value="cad" onClick={changeCountry}>
                         <img
-                          src="../../assets/main/img/countries/canada.png"
+                          src={canada}
                           alt=""
                         />{" "}
                         <span>CAD</span>
                       </li>{" "}
                       <li data-value="zar" onClick={changeCountry}>
                         <img
-                          src="../../assets/main/img/countries/south-africa.jpeg"
+                          src={southAfrica}
                           alt=""
                         />{" "}
                         <span>ZAR</span>
@@ -298,7 +305,7 @@ const Header = () => {
             <div className="vl-offcanvas-header d-flex justify-content-between align-items-center mb-90">
               <div className="vl-offcanvas-logo">
                 <NavLink to="/home">
-                  <img src="../../assets/main/img/logo/logo1.png" alt="" />
+                  <img src={logo1} alt="" />
                 </NavLink>
               </div>
               <div className="vl-offcanvas-close">

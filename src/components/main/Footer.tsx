@@ -25,7 +25,7 @@ const Footer = () => {
         <div className="row">
           <div className="col-lg-3 col-md-6">
             <div className="footer-logo-area">
-              <img src="/assets/main/img/logo/logo1.png" alt="" />
+              <img src="../../assets/main/img/logo/logo1.png" alt="" />
               <div className="space16"></div>
               <p>
                 We’re dedicated to providing reliable staffing solutions that
