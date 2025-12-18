@@ -1,5 +1,9 @@
 (function ($) {
-  $(document).ready(function () {
+  /**
+   * Initialize all components in a given context.
+   * @param {HTMLElement|jQuery} context - Optional context to initialize within, default is document
+   */
+  function initComponents(context = document) {
     //========== HEADER ACTIVE STRATS ============= //
     var $header = $("#vl-header-sticky");
     var $window = $(window);
@@ -114,368 +118,397 @@
 
     //========== NICE SELECT ============= //
     $("select").niceSelect();
-  });
 
-  //========== TESTIMONIAL AREA ============= //
-  // SLIDER //
-  $(".case-slider-area").slick({
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    dots: false,
-    arrows: true,
-    centerMode: false,
-    focusOnSelect: true,
-    loop: true,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    infinite: true,
-    prevArrow: $(".next-arrow"),
-    nextArrow: $(".prev-arrow"),
-    responsive: [
+    // ========= SLIDERS =========
+    const sliderSettings = [
       {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-        },
-      },
-      {
-        breakpoint: 769,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  });
-
-  // SLIDER //
-  $(".testimonial-slider").slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    dots: false,
-    arrows: true,
-    centerMode: false,
-    focusOnSelect: true,
-    loop: true,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    infinite: true,
-    prevArrow: $(".next-arrow1"),
-    nextArrow: $(".prev-arrow1"),
-  });
-
-  // SLIDER //
-  $(".hero-main-slider").slick({
-    autoplay: true,
-    autoplaySpeed: 1500,
-    speed: 2000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    pauseOnHover: false,
-    dots: false,
-    arrows: true,
-    pauseOnDotsHover: true,
-    cssEase: "linear",
-    fade: true,
-    draggable: true,
-    prevArrow: $(".next-arrow-hero"),
-    nextArrow: $(".prev-arrow-hero"),
-  });
-
-  // SLIDER //
-  $(".testimonial-bottom-slider").slick({
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    dots: false,
-    arrows: false,
-    centerMode: false,
-    focusOnSelect: true,
-    loop: true,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    infinite: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
+        selector: ".case-slider-area",
+        options: {
           slidesToShow: 3,
           slidesToScroll: 1,
+          dots: false,
+          arrows: true,
+          centerMode: false,
+          focusOnSelect: true,
+          loop: true,
+          autoplay: true,
+          autoplaySpeed: 2000,
           infinite: true,
+          prevArrow: $(".next-arrow"),
+          nextArrow: $(".prev-arrow"),
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                infinite: true,
+              },
+            },
+            {
+              breakpoint: 769,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+              },
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+              },
+            },
+          ],
         },
       },
       {
-        breakpoint: 769,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
+        selector: ".testimonial-slider",
+        options: {
           slidesToShow: 1,
           slidesToScroll: 1,
-        },
-      },
-    ],
-  });
-
-  // SLIDER //
-  $(".team-slider-boxarea").slick({
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    dots: false,
-    arrows: true,
-    centerMode: false,
-    focusOnSelect: true,
-    loop: true,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    infinite: true,
-    prevArrow: $(".t-prev-area"),
-    nextArrow: $(".t-next-area"),
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1,
+          dots: false,
+          arrows: true,
+          centerMode: false,
+          focusOnSelect: true,
+          loop: true,
+          autoplay: true,
+          autoplaySpeed: 2000,
           infinite: true,
+          prevArrow: $(".next-arrow1"),
+          nextArrow: $(".prev-arrow1"),
         },
       },
       {
-        breakpoint: 769,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
+        selector: ".hero-main-slider",
+        options: {
+          autoplay: true,
+          autoplaySpeed: 1500,
+          speed: 2000,
           slidesToShow: 1,
           slidesToScroll: 1,
+          pauseOnHover: false,
+          dots: false,
+          arrows: true,
+          pauseOnDotsHover: true,
+          cssEase: "linear",
+          fade: true,
+          draggable: true,
+          prevArrow: $(".next-arrow-hero"),
+          nextArrow: $(".prev-arrow-hero"),
         },
       },
-    ],
-  });
-
-  // SLIDER //
-  $(".cas3-widget-slider-area").slick({
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    dots: false,
-    arrows: true,
-    centerMode: false,
-    focusOnSelect: true,
-    loop: true,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    infinite: true,
-    prevArrow: $(".next-arrow-case3"),
-    nextArrow: $(".prev-arrow-case3"),
-    responsive: [
       {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
+        selector: ".testimonial-bottom-slider",
+        options: {
+          slidesToShow: 3,
           slidesToScroll: 1,
+          dots: false,
+          arrows: false,
+          centerMode: false,
+          focusOnSelect: true,
+          loop: true,
+          autoplay: true,
+          autoplaySpeed: 2000,
           infinite: true,
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                infinite: true,
+              },
+            },
+            {
+              breakpoint: 769,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+              },
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+              },
+            },
+          ],
         },
       },
       {
-        breakpoint: 769,
-        settings: {
-          slidesToShow: 2,
+        selector: ".team-slider-boxarea",
+        options: {
+          slidesToShow: 3,
           slidesToScroll: 1,
+          dots: false,
+          arrows: true,
+          centerMode: false,
+          focusOnSelect: true,
+          loop: true,
+          autoplay: true,
+          autoplaySpeed: 2000,
+          infinite: true,
+          prevArrow: $(".t-prev-area"),
+          nextArrow: $(".t-next-area"),
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                infinite: true,
+              },
+            },
+            {
+              breakpoint: 769,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+              },
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+              },
+            },
+          ],
         },
       },
       {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
+        selector: ".cas3-widget-slider-area",
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        dots: false,
+        arrows: true,
+        centerMode: false,
+        focusOnSelect: true,
+        loop: true,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        infinite: true,
+        prevArrow: $(".next-arrow-case3"),
+        nextArrow: $(".prev-arrow-case3"),
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              infinite: true,
+            },
+          },
+          {
+            breakpoint: 769,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+            },
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            },
+          },
+        ],
       },
-    ],
-  });
-
-  // SLIDER //
-  $(".brand-images-slider").slick({
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    dots: false,
-    arrows: false,
-    centerMode: false,
-    focusOnSelect: true,
-    loop: true,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    infinite: true,
-    responsive: [
       {
-        breakpoint: 1024,
-        settings: {
+        selector: ".brand-images-slider",
+        options: {
           slidesToShow: 5,
           slidesToScroll: 1,
+          dots: false,
+          arrows: false,
+          centerMode: false,
+          focusOnSelect: true,
+          loop: true,
+          autoplay: true,
+          autoplaySpeed: 2000,
           infinite: true,
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 5,
+                slidesToScroll: 1,
+                infinite: true,
+              },
+            },
+            {
+              breakpoint: 769,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+              },
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+              },
+            },
+          ],
         },
       },
       {
-        breakpoint: 769,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  });
-
-  // SLIDER //
-  $(".testimonial4-images").slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    loop: true,
-    focusOnSelect: true,
-    vertical: false,
-    asNavFor: ".testimonial4-contetnt-area",
-    infinite: true,
-    fade: true,
-  });
-
-  $(".testimonial4-contetnt-area").slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    asNavFor: ".testimonial4-images",
-    dots: false,
-    arrows: true,
-    centerMode: false,
-    focusOnSelect: true,
-    loop: true,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    prevArrow: $(".prev-arrow-testi4"),
-    nextArrow: $(".next-arrow-testi4"),
-  });
-
-  // SLIDER //
-  $(".service-widget-slider-area").slick({
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    dots: false,
-    arrows: true,
-    centerMode: false,
-    focusOnSelect: true,
-    loop: true,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    infinite: true,
-    prevArrow: $(".next-arrow-ser4"),
-    nextArrow: $(".prev-arrow-ser4"),
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          infinite: true,
-        },
-      },
-      {
-        breakpoint: 769,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
+        selector: ".testimonial4-images",
+        options: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          arrows: false,
+          autoplay: true,
+          autoplaySpeed: 2000,
+          loop: true,
+          focusOnSelect: true,
+          vertical: false,
+          asNavFor: ".testimonial4-contetnt-area",
+          infinite: true,
+          fade: true,
         },
       },
-    ],
-  });
-
-  $(".testimonial7-contetnt-area").slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    loop: true,
-    focusOnSelect: true,
-    vertical: false,
-    infinite: true,
-    fade: false,
-    dots: true,
-  });
-
-  // SLIDER //
-  $(".testimonial8-slider").slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    asNavFor: ".brand-images-area",
-    dots: false,
-    arrows: false,
-    centerMode: false,
-    focusOnSelect: true,
-    loop: true,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    infinite: true,
-  });
-
-  $(".brand-images-area").slick({
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    asNavFor: ".testimonial8-slider",
-    dots: false,
-    arrows: false,
-    centerMode: false,
-    focusOnSelect: true,
-    loop: true,
-    responsive: [
       {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 2,
+        selector: ".testimonial4-contetnt-area",
+        options: {
+          slidesToShow: 1,
           slidesToScroll: 1,
+          asNavFor: ".testimonial4-images",
+          dots: false,
+          arrows: true,
+          centerMode: false,
+          focusOnSelect: true,
+          loop: true,
+          autoplay: true,
+          autoplaySpeed: 2000,
+          prevArrow: $(".prev-arrow-testi4"),
+          nextArrow: $(".next-arrow-testi4"),
         },
       },
-    ],
-  });
+      {
+        selector: ".service-widget-slider-area",
+        options: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          dots: false,
+          arrows: true,
+          centerMode: false,
+          focusOnSelect: true,
+          loop: true,
+          autoplay: true,
+          autoplaySpeed: 2000,
+          infinite: true,
+          prevArrow: $(".next-arrow-ser4"),
+          nextArrow: $(".prev-arrow-ser4"),
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                infinite: true,
+              },
+            },
+            {
+              breakpoint: 769,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+              },
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+              },
+            },
+          ],
+        },
+      },
+      {
+        selector: ".testimonial7-contetnt-area",
+        options: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          autoplay: true,
+          autoplaySpeed: 2000,
+          loop: true,
+          focusOnSelect: true,
+          vertical: false,
+          infinite: true,
+          fade: false,
+          dots: true,
+        },
+      },
+      {
+        selector: ".testimonial8-slider",
+        options: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          asNavFor: ".brand-images-area",
+          dots: false,
+          arrows: false,
+          centerMode: false,
+          focusOnSelect: true,
+          loop: true,
+          autoplay: true,
+          autoplaySpeed: 2000,
+          infinite: true,
+        },
+      },
+      {
+        selector: ".brand-images-area",
+        options: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          asNavFor: ".testimonial8-slider",
+          dots: false,
+          arrows: false,
+          centerMode: false,
+          focusOnSelect: true,
+          loop: true,
+          responsive: [
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+              },
+            },
+          ],
+        },
+      },
+    ];
 
-  //========== PRELOADER ============= //
-  $(window).on("load", function (event) {
-    setTimeout(function () {
-      $(".preloader").fadeToggle();
-    }, 200);
-  });
+    sliderSettings.forEach(({ selector, options }) => {
+      const $slider = $(selector, context);
+      if ($slider.length && !$slider.hasClass("slick-initialized")) {
+        $slider.slick({
+          ...options,
+        });
+      }
+    });
+
+    //========== PRELOADER ============= //
+    $(window).on("load", function (event) {
+      setTimeout(function () {
+        $(".preloader").fadeToggle();
+      }, 200);
+    });
+
+    // ========= COUNTER UP =========
+    const $counter = $(".counter", context);
+    if ($counter.length) $counter.countUp();
+  }
+
+  $(document).ready(() => initComponents());
+
+  // Export initComponents so it can be called manually after dynamic content render
+  window.initComponents = initComponents;
 })(jQuery);
-
-//========== COUNTER UP============= //
-const ucounter = $(".counter");
-if (ucounter.length > 0) {
-  ucounter.countUp();
-}
