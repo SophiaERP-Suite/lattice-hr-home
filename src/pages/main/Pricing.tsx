@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import pricing from "../../assets/main/img/all-images/bg/lattice_pricing.jpg"
+import hero7 from "../../assets/main/img/all-images/bg/hero-bg7.png"
 import element5 from "../../assets/main/img/elements/elements5.png"
 import cta1 from "../../assets/main/img/all-images/cta/cta-img1.png"
 
@@ -10,7 +10,7 @@ const Pricing = () => {
       <div
         className="inner-header-area"
         style={{
-          backgroundImage: `url(${pricing})`,
+          backgroundImage: `url(${hero7})`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
