@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import hero7 from "../../assets/main/img/all-images/bg/hero-bg7.png"
 import element5 from "../../assets/main/img/elements/elements5.png"
+import hero11 from "../../assets/main/img/all-images/hero/hero-img11.webp"
 import cta1 from "../../assets/main/img/all-images/cta/cta-img1.png"
 
 const Pricing = () => {
@@ -32,7 +33,12 @@ const Pricing = () => {
             </div>
             <div className="col-lg-1"></div>
             <div className="col-lg-4">
-              <div className="imges"></div>
+              <div className="imges">
+                <img
+                  src={hero11}
+                  alt=""
+                />
+              </div>
             </div>
           </div>
         </div>
