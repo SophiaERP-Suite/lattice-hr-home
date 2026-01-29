@@ -10,8 +10,11 @@ import EmployerProfile from "../pages/main//EmployerProfile";
 import Candidates from "../pages/main/Candidates";
 import Pricing from "../pages/main/Pricing";
 import Login from "../pages/main/Login";
-import Register from "../pages/main/Register";
+import RegisterUser from "../pages/main/Register";
 import Profile from "../pages/main/Profile";
+import SelectPackage from "../pages/main/Packages";
+import PackageDetailsView from "../pages/main/PackageDetails";
+import PaymentRedirect from "../pages/main/PaymentRedirect";
 
 function AppRoutes() {
   return (
@@ -27,8 +30,11 @@ function AppRoutes() {
         <Route path="employer-profile" element={<EmployerProfile />} />
         <Route path="candidates" element={<Candidates />} />
         <Route path="pricing" element={<Pricing />} />
+        <Route path="PaymentRedirect/:tx_ref" element={<PaymentRedirect />} />
+        <Route path="package/:id" element={<SelectPackage />} />
+        <Route path="package/:id/:packageId" element={<PackageDetailsView />} />
         <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
+        <Route path="register" element={<RegisterUser />} />
         <Route path="profile" element={<Profile />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
