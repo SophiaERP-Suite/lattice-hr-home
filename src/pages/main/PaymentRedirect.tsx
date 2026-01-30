@@ -89,7 +89,7 @@ const PaymentRedirect = () => {
                   data-aos-duration="1000">
                     <div className="flex justify-center mb-2">
                         <p className="text-center bg-orange-300 p-2 rounded-full">
-                            <Clock size={60} color="#ffffff" />
+                            <Clock size={60} color="#ffb445" />
                         </p>
                     </div>
                     <h3  className="text-center">Payment Processing</h3>

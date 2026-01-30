@@ -8,10 +8,13 @@ import ghana from "../../assets/main/img/countries/ghana.png"
 import canada from "../../assets/main/img/countries/canada.png"
 import southAfrica from "../../assets/main/img/countries/south-africa.jpeg"
 import usflag from "../../assets/main/img/countries/usa.png"
+import { useAuth } from "../../utils/Auth/useAuth";
+import { User } from "lucide-react";
 
 const bannerPages = ["home"];
 
 const Header = () => {
+  const { user } = useAuth();
   const pagePath = useLocation()
     .pathname.split("/")
     .filter((value) => value)[0];
@@ -78,25 +81,40 @@ const Header = () => {
                         <li>
                           <NavLink to="/pricing">Pricing</NavLink>
                         </li>
-
-                        <li>
-                          <NavLink to="/login">Login</NavLink>
-                        </li>
+                        {
+                          !user && (
+                            <li>
+                              <NavLink to="/login">Login</NavLink>
+                            </li>
+                          )
+                        }
                       </ul>
                     </nav>
                   </div>
                 </div>
                 <div className="col-lg-2 col-md-6 col-6 top-right-nav">
-                  <div className="vl-hero-btn d-none d-lg-block text-end">
-                    <div className="hero-btn1">
-                      <NavLink to="/register" className="vl-btn2">
-                        Get started
-                        <span>
-                          <i className="fa-solid fa-arrow-right"></i>
-                        </span>
-                      </NavLink>
-                    </div>
-                  </div>
+                  {
+                    user ? (
+                      <div className="vl-hero-btn d-none d-lg-block text-end">
+                        <div className="hero-btn1">
+                          <a href="https://latticehr.techiefy.co.uk/one/lhr_emp/" className="vl-btn2">
+                            <User /> Hello, { user.userFirstName }
+                          </a>
+                        </div>
+                      </div>
+                    ) : (
+                        <div className="vl-hero-btn d-none d-lg-block text-end">
+                          <div className="hero-btn1">
+                            <NavLink to="/register" className="vl-btn2">
+                              Get started
+                              <span>
+                                <i className="fa-solid fa-arrow-right"></i>
+                              </span>
+                            </NavLink>
+                          </div>
+                        </div>
+                    )
+                  }
 
                   <div className="country-selector">
                     <span className="selected-country">
@@ -209,25 +227,40 @@ const Header = () => {
                         <li>
                           <NavLink to="/pricing">Pricing</NavLink>
                         </li>
-
-                        <li>
-                          <NavLink to="/login">Login</NavLink>
-                        </li>
+                        {
+                          !user && (
+                            <li>
+                              <NavLink to="/login">Login</NavLink>
+                            </li>
+                          )
+                        }
                       </ul>
                     </nav>
                   </div>
                 </div>
                 <div className="col-lg-2 col-md-6 col-6 top-right-nav">
-                  <div className="vl-hero-btn d-none d-lg-block text-end">
-                    <div className="hero-btn1">
-                      <NavLink to="/register" className="vl-btn2">
-                        Get started
-                        <span>
-                          <i className="fa-solid fa-arrow-right"></i>
-                        </span>
-                      </NavLink>
-                    </div>
-                  </div>
+                  {
+                    user ? (
+                      <div className="vl-hero-btn d-none d-lg-block text-end">
+                        <div className="hero-btn1">
+                          <a href="https://latticehr.techiefy.co.uk/one/lhr_emp/" className="vl-btn2">
+                            <User /> Hello, { user.userFirstName }
+                          </a>
+                        </div>
+                      </div>
+                    ) : (
+                        <div className="vl-hero-btn d-none d-lg-block text-end">
+                          <div className="hero-btn1">
+                            <NavLink to="/register" className="vl-btn2">
+                              Get started
+                              <span>
+                                <i className="fa-solid fa-arrow-right"></i>
+                              </span>
+                            </NavLink>
+                          </div>
+                        </div>
+                    )
+                  }
 
                   <div className="country-selector">
                     <span className="selected-country">

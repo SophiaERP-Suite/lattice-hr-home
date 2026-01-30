@@ -8,6 +8,8 @@ import { fetchCitiesByStateId, fetchCountries, fetchJobSectors, fetchStatesByCou
 import { handleCreateEmployer } from "../../utils/ReponseHandlers";
 import { toast, ToastContainer } from 'react-toastify';
 import Hashids from "hashids";
+import { useAuth } from "../../utils/Auth/useAuth";
+import type { AuthData } from "../../utils/Auth/auth.types";
 
 interface EmployerRegister{
   BusinessName: string;
@@ -81,6 +83,7 @@ function RegisterUser() {
     control,
     name: 'StateId',
   });
+  const { login } = useAuth();
 
   useEffect(() => {
     fetchCountries()
@@ -260,7 +263,9 @@ function RegisterUser() {
       const res = await submitEmployerData(formData);
       const resStat = await handleCreateEmployer(res, loader, text, { toast }, reset);
       if (resStat?.status === 200 || resStat?.status === 201) {
-        const orgId = resStat.data?.employerId ?? 0;
+        const data: AuthData = (resStat.data as unknown) as AuthData;
+        login(data);
+        const orgId = data.user.employerId ?? 0;
         navigate(`/package/${hashIds.encode(orgId)}`);
       }
       
@@ -566,10 +571,10 @@ function RegisterUser() {
                     <div className="space16"></div>
 
                     <div className="row" style={{ rowGap: "30px" }}>
-                      <h5>Company Details</h5>
+                      <h5>Business Details</h5>
 
                       <div className="col-lg-6 col-md-6">
-                        <label>Business Name:</label>
+                        <label>Business Name</label>
                         <div className="input-area">
                         <input type="text" placeholder="Business Name"
                           className="form-control"
@@ -583,7 +588,7 @@ function RegisterUser() {
                         <p className='error-msg'>{ errors.BusinessName?.message }</p>
                       </div>
                       <div className="col-lg-6 col-md-6">
-                        <label>Business Logo:</label>
+                        <label>Business Logo</label>
                         <div className="input-area">
                         <input type="file" placeholder="Business Logo"
                           className="form-control"
@@ -598,7 +603,7 @@ function RegisterUser() {
                       </div>
                     
                       <div className="col-lg-6 col-md-6">
-                        <label>Job Sector:</label>
+                        <label>Job Sector</label>
                         <div className="input-area">
                           <select
                             className="form-control"
@@ -619,7 +624,7 @@ function RegisterUser() {
                         <p className='error-msg'>{ errors.JobSectorId?.message }</p>
                       </div>
                       <div className="col-lg-6 col-md-6">
-                        <label>Company Size:</label>
+                        <label>Company Size</label>
                         <div className="input-area">
                           <select
                             className="form-control"
@@ -629,7 +634,7 @@ function RegisterUser() {
                               required: 'Required'
                             })
                           }>
-                            <option value="">-- Select Company Size --</option>
+                            <option value="">Select Company Size</option>
                             <option value="small">
                               1 - 50 employees (Small)
                             </option>
@@ -645,11 +650,11 @@ function RegisterUser() {
                       </div>
                     
                     <div className="col-lg-6 col-md-6">
-                      <label>Company Registration Number:</label>
+                      <label>Business Registration Number</label>
                       <div className="input-area">
                         <input
                           type="text"
-                          placeholder="Company Registration Number"
+                          placeholder="Business Registration Number"
                           {
                           ...register('RegistrationNo', {
                               required: 'Required'
@@ -662,7 +667,7 @@ function RegisterUser() {
 
                     
                       <div className="col-lg-6 col-md-6">
-                        <label>Website:</label>
+                        <label>Website</label>
                         <div className="input-area">
                           <input type="text" placeholder="Website"
                           {
@@ -675,7 +680,7 @@ function RegisterUser() {
                       </div>
 
                       <div className="col-lg-6 col-md-6">
-                        <label>Country:</label>
+                        <label>Country</label>
                         <div className="input-area">
                           <select
                             className="form-control"
@@ -685,7 +690,7 @@ function RegisterUser() {
                               required: 'Required'
                             })
                           }>
-                            <option value="">-- Select Country --</option>
+                            <option value="">Select Country</option>
                             {
                               countries.map((data, index) => (
                                 <option key={index} value={data.countryId}>{data.name}</option>
@@ -697,7 +702,7 @@ function RegisterUser() {
                       </div>
 
                       <div className="col-lg-6 col-md-6">
-                        <label>State:</label>
+                        <label>State</label>
                         <div className="input-area">
                           <select
                             className="form-control"
@@ -708,7 +713,7 @@ function RegisterUser() {
                                 required: 'Required'
                               })
                             }>
-                            <option value="">-- Select State --</option>
+                            <option value="">Select State</option>
                             {
                               states.map((data, index) => (
                                 <option key={index} value={data.stateId}>{data.name}</option>
@@ -720,7 +725,7 @@ function RegisterUser() {
                       </div>
 
                       <div className="col-lg-6 col-md-6">
-                        <label>City:</label>
+                        <label>City</label>
                         <div className="input-area">
                           <select
                             className="form-control"
@@ -731,7 +736,7 @@ function RegisterUser() {
                                 required: 'Required'
                               })
                             }>
-                            <option value="">-- Select City --</option>
+                            <option value="">Select City</option>
                             {
                               cities.map((data, index) => (
                                 <option key={index} value={data.cityId}>{data.name}</option>
@@ -743,7 +748,7 @@ function RegisterUser() {
                       </div>
 
                       <div className="col-lg-6 col-md-6">
-                        <label>Postal Code:</label>
+                        <label>Postal Code</label>
                         <div className="input-area">
                           <input type="text" placeholder="Postal Code"
                           {
@@ -756,7 +761,7 @@ function RegisterUser() {
                       </div>
 
                       <div className="col-lg-12 col-md-12">
-                        <label>Official Address:</label>
+                        <label>Official Address</label>
                         <div className="input-area">
                           <textarea placeholder="Official Address"
                           {
@@ -773,7 +778,7 @@ function RegisterUser() {
                       <h5>Responsibility Officer Details</h5>
 
                       <div className="col-lg-6 col-md-6">
-                        <label>First Name:</label>
+                        <label>First Name</label>
                         <div className="input-area">
                           <input type="text" placeholder="First Name"
                           {
@@ -786,7 +791,7 @@ function RegisterUser() {
                       </div>
 
                       <div className="col-lg-6 col-md-6">
-                        <label>Last Name:</label>
+                        <label>Last Name</label>
                         <div className="input-area">
                           <input type="text" placeholder="Last Name"
                           {
@@ -799,7 +804,7 @@ function RegisterUser() {
                       </div>
 
                       <div className="col-lg-6 col-md-6">
-                        <label>Email Address:</label>
+                        <label>Email Address</label>
                         <div className="input-area">
                           <input type="text" placeholder="Email Address"
                           {
@@ -812,7 +817,7 @@ function RegisterUser() {
                       </div>
 
                       <div className="col-lg-6 col-md-6">
-                        <label>Mobile Number:</label>
+                        <label>Mobile Number</label>
                         <div className="input-area">
                           <input type="text" placeholder="Mobile Number"
                           {
@@ -824,7 +829,7 @@ function RegisterUser() {
                         <p className='error-msg'>{ errors.Phone?.message }</p>
                       </div>
                       <div className="col-lg-6 col-md-6">
-                        <label>Gender:</label>
+                        <label>Gender</label>
                         <div className="input-area">
                           <select
                             className="form-control"
@@ -834,7 +839,7 @@ function RegisterUser() {
                               required: 'Required'
                             })
                           }>
-                          <option value="">-- Select Gender --</option>
+                          <option value="">Select Gender</option>
                           <option value="Male">Male</option>
                           <option value="Female">Female</option>
                           </select>
@@ -842,7 +847,7 @@ function RegisterUser() {
                         <p className='error-msg'>{ errors.Gender?.message }</p>
                       </div>
                       <div className="col-lg-6 col-md-6">
-                        <label>Date Of Birth:</label>
+                        <label>Date Of Birth</label>
                         <div className="input-area">
                           <input type="date" placeholder="Date Of Birth"
                           {
@@ -855,7 +860,7 @@ function RegisterUser() {
                       </div>
 
                       <div className="col-lg-6 col-md-6">
-                        <label>Position:</label>
+                        <label>Position</label>
                         <div className="input-area">
                           <input type="text" placeholder="Position"
                           {
@@ -867,7 +872,7 @@ function RegisterUser() {
                         <p className='error-msg'>{ errors.Position?.message }</p>
                       </div>
                       <div className="col-lg-6 col-md-6">
-                        <label>Profile Photo:</label>
+                        <label>Profile Photo</label>
                         <div className="input-area">
                         <input type="file" placeholder="Profile Photo"
                           className="form-control"
@@ -882,7 +887,7 @@ function RegisterUser() {
                       </div>
 
                       <div className="col-lg-6 col-md-6">
-                        <label>Password:</label>
+                        <label>Password</label>
                         <div className="input-area">
                           <input type="password" placeholder="Password"
                           {
@@ -896,7 +901,7 @@ function RegisterUser() {
                       </div>
 
                       <div className="col-lg-6 col-md-6">
-                        <label>Confirm Password:</label>
+                        <label>Confirm Password</label>
                         <div className="input-area">
                           <input type="password" placeholder="Confirm Password"
                              {...register('ConfirmPassword', {

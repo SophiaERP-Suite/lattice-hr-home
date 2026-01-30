@@ -7,7 +7,7 @@ interface HtmlRendererProps {
 export default function HtmlRenderer({ html }: HtmlRendererProps) {
   return (
     <div
-      className='details'
+      className='details text-wrap'
       dangerouslySetInnerHTML={{
         __html: DOMPurify.sanitize(html),
       }}

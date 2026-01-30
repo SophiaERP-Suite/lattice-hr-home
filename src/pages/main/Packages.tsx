@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { fetchAllPackages } from "../../utils/Requests";
 import HtmlRenderer from "../../layout/HTMLRenderer";
 import Hashids from "hashids";
+import { useAuth } from "../../utils/Auth/useAuth";
 
 interface PackageData {
   packageId: number;
@@ -27,6 +28,8 @@ const SelectPackage = () => {
   const [packages, setPackages] = useState<PackageData[]>([]);
   const hashIds = new Hashids('LatticeHumanResourceEncode', 10);
   const { id } = useParams();
+  const { user } = useAuth();
+  console.log(user)
   
   useEffect(() => {
     fetchAllPackages()
@@ -108,7 +111,7 @@ const SelectPackage = () => {
                       fill="#091E42"
                     />
                   </svg>{" "}
-                  Available Pacakges
+                  Available Packages
                 </h5>
                 <div className="space16"></div>
                 <h2
@@ -116,12 +119,12 @@ const SelectPackage = () => {
                   data-aos="zoom-in"
                   data-aos-duration="1000"
                 >
-                  Flexible Plans Built for your organization
+                  Flexible plans built for your business, { user?.businessName }
                 </h2>
                 <div className="space16"></div>
                 <p data-aos="zoom-in" data-aos-duration="1100">
-                  Choose a transparent pricing option designed to match your
-                  goals, budget, and hiring needs.
+                  { user && `Hello ${user.userFirstName}, `} Choose a transparent pricing option designed to match your
+                  business goals, budget, and hiring needs.
                 </p>
               </div>
             </div>
@@ -141,9 +144,10 @@ const SelectPackage = () => {
                             data-aos-duration="800"
                             >
                             <div className="single-pricing-area">
-                                <div className={`pricing-box ${index % 2 !== 0 && 'active'}`}>
+                                <div className={`pricing-box ${index % 2 !== 0 && 'active'}`}
+                                >
                                 <h3>{data.packageName}</h3>
-                                <p><HtmlRenderer html={data.packageDescription} /></p>
+                                <p style={{ height: '160px', overflowY: 'auto', scrollbarColor: '#fff #fff', scrollbarWidth: 'none' }}><HtmlRenderer html={data.packageDescription} /></p>
                                 <h2 style={{ fontSize: '30px' }}>
                                    { `${data.currency} ${data.amount.toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2})}` }
                                 </h2>
