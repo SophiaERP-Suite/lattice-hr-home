@@ -1,9 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ProfileContext } from "../../utils/main/Contexts";
-import hero7 from "../../assets/main/img/all-images/bg/hero-bg7.png";
-import hero11 from "../../assets/main/img/all-images/hero/hero-img11.webp";
-import { useForm } from "react-hook-form";
 import type { CandidateFormValues } from "../../types/candidateForm";
 import { createCandidateFirstStage } from "../../api/CandidateApi";
 import { toast, ToastContainer } from "react-toastify";
@@ -14,6 +11,20 @@ import {
   getAllStates,
 } from "../../api/LocationApi";
 import { getJobCategories, getJobSectors } from "../../api/JobMetaApi";
+import hero7 from "../../assets/main/img/all-images/bg/hero-bg7.png";
+import hero11 from "../../assets/main/img/all-images/hero/hero-img11.webp";
+import { useForm, useWatch } from "react-hook-form";
+import {
+  fetchCitiesByStateId,
+  fetchCountries,
+  fetchJobSectors,
+  fetchStatesByCountryId,
+  submitEmployerData,
+} from "../../utils/Requests";
+import { handleCreateEmployer } from "../../utils/ReponseHandlers";
+import Hashids from "hashids";
+import { useAuth } from "../../utils/Auth/useAuth";
+import type { AuthData } from "../../utils/Auth/auth.types";
 
 export interface JobCategory {
   jobCategoryId: number;
@@ -24,17 +35,104 @@ export interface JobSector {
   sectorName: string;
 }
 
-const Register = () => {
+interface EmployerRegister {
+  BusinessName: string;
+  JobSectorId: string;
+  CompanySize: string;
+  RegistrationNo: string;
+  WebsiteUrl: string;
+  CountryId: string;
+  StateId: string;
+  CityId: string;
+  Address: string;
+  PostCode: string;
+  Email: string;
+  FirstName: string;
+  LastName: string;
+  Phone: string;
+  Position: string;
+  Password: string;
+  ConfirmPassword: string;
+  Gender: string;
+  DateOfBirth: string;
+  EmployerLogo: string;
+  ProfilePhoto: string;
+  Terms: boolean;
+  Declaration: boolean;
+}
+
+interface CountryData {
+  countryId: number;
+  name: string;
+  code: string;
+}
+
+interface StateData {
+  stateId: number;
+  name: string;
+  code: string;
+}
+
+interface CityData {
+  cityId: number;
+  name: string;
+  code: string;
+}
+
+interface JobSectorData {
+  jobSectorId: number;
+  name: string;
+}
+
+function RegisterUser() {
   const [registerType, setRegisterType] = useState<"candidate" | "employer">(
     "candidate",
   );
   const [state, setState] = useState<StateDto[] | null>(null);
   const [country, setCountry] = useState<CountryDto[] | null>(null);
-  const [selectedState, setselectedState] = useState<number>(0);
-  const [selectedCountry, setselectedCountry] = useState<number>(0);
+  const [selectedState2, setselectedState2] = useState<number>(0);
+  const [selectedCountry2, setselectedCountry2] = useState<number>(0);
   const [city, setCity] = useState<CityDto[] | null>(null);
   const [jobCategory, setJobCategory] = useState<JobCategory[] | null>(null);
   const [jobSector, setJobSector] = useState<JobSector[] | null>(null);
+
+  // Candidate form
+  const {
+    register: registerCandidate,
+    handleSubmit: handleCandidateSubmit,
+    formState: { errors: candidateErrors },
+  } = useForm<CandidateFormValues>();
+
+  // Employer form
+  const {
+    register: registerEmployer,
+    formState: { errors: employerErrors },
+    handleSubmit: handleEmployerSubmit,
+    reset: resetEmployer,
+    setValue: setEmployerValue,
+    control: employerControl,
+  } = useForm<EmployerRegister>();
+
+  const employerPassword = useWatch({
+    control: employerControl,
+    name: "Password",
+  });
+
+  const hashIds = new Hashids("LatticeHumanResourceEncode", 10);
+  const [countries, setCountries] = useState<CountryData[]>([]);
+  const [states, setStates] = useState<StateData[]>([]);
+  const [cities, setCities] = useState<CityData[]>([]);
+  const [jobSectors, setJobSectors] = useState<JobSectorData[]>([]);
+
+  const selectedCountry = useWatch({
+    control: employerControl,
+    name: "CountryId",
+  });
+  const selectedState = useWatch({
+    control: employerControl,
+    name: "StateId",
+  });
+  const { login } = useAuth();
 
   useEffect(() => {
     fetchJobCategory();
@@ -42,9 +140,90 @@ const Register = () => {
     fetchCountry();
   }, []);
 
+  // Fetch countries for employer
+  useEffect(() => {
+    fetchCountries()
+      .then((res) => {
+        if (res.status === 200) {
+          res.json().then((data) => {
+            setCountries(data.data);
+          });
+        } else {
+          res.text().then((data) => {
+            console.log(JSON.parse(data));
+          });
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  // Fetch states based on selected country for employer
+  useEffect(() => {
+    if (!selectedCountry || selectedCountry == "") {
+      setStates([]);
+      setEmployerValue("StateId", "");
+      setEmployerValue("CityId", "");
+      return;
+    }
+    fetchStatesByCountryId(Number(selectedCountry))
+      .then((res) => {
+        if (res.status === 200) {
+          res.json().then((data) => {
+            setStates(data.data);
+          });
+        } else {
+          res.text().then((data) => {
+            console.log(JSON.parse(data));
+          });
+        }
+      })
+      .catch((err) => console.log(err));
+  }, [selectedCountry, setEmployerValue]);
+
+  // Fetch cities based on selected state for employer
+  useEffect(() => {
+    if (!selectedState || selectedState == "") {
+      setCities([]);
+      setEmployerValue("CityId", "");
+      return;
+    }
+    fetchCitiesByStateId(Number(selectedState))
+      .then((res) => {
+        if (res.status === 200) {
+          res.json().then((data) => {
+            console.log(data);
+            setCities(data.data);
+          });
+        } else {
+          res.text().then((data) => {
+            console.log(JSON.parse(data));
+          });
+        }
+      })
+      .catch((err) => console.log(err));
+  }, [selectedState, setEmployerValue]);
+
+  // Fetch job sectors for employer
+  useEffect(() => {
+    fetchJobSectors()
+      .then((res) => {
+        if (res.status === 200) {
+          res.json().then((data) => {
+            setJobSectors(data.data);
+          });
+        } else {
+          res.text().then((data) => {
+            console.log(JSON.parse(data));
+          });
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  // Original functions for candidate
   const getState = async (countryId: string) => {
-    setselectedCountry(parseInt(countryId));
-    fetchState(selectedCountry);
+    setselectedCountry2(parseInt(countryId));
+    fetchState(selectedCountry2);
   };
 
   const fetchCountry = async () => {
@@ -76,8 +255,8 @@ const Register = () => {
   };
 
   const getCity = async (stateId: string) => {
-    setselectedState(parseInt(stateId));
-    fetchCity(selectedState);
+    setselectedState2(parseInt(stateId));
+    fetchCity(selectedState2);
   };
 
   const fetchCity = async (stateId: number) => {
@@ -121,10 +300,6 @@ const Register = () => {
       setJobSector(null);
     }
   };
-
-  const { register, handleSubmit, formState } = useForm<CandidateFormValues>();
-
-  const { errors } = formState;
 
   const [registerStage, setRegisterStage] = useState<{
     candidate: number;
@@ -178,13 +353,13 @@ const Register = () => {
 
   const addJobSeeker = async (data: CandidateFormValues) => {
     if (
-      !errors.FirstName &&
-      !errors.LastName &&
-      !errors.MobileNo &&
-      !errors.Email &&
-      !errors.DateOfBirth &&
-      !errors.Gender &&
-      !errors.ProfilePhoto
+      !candidateErrors.FirstName &&
+      !candidateErrors.LastName &&
+      !candidateErrors.MobileNo &&
+      !candidateErrors.Email &&
+      !candidateErrors.DateOfBirth &&
+      !candidateErrors.Gender &&
+      !candidateErrors.ProfilePhoto
     ) {
       const formData = new FormData();
       formData.append("FirstName", data.FirstName);
@@ -214,8 +389,78 @@ const Register = () => {
     }
   };
 
+  const submitEmployerRegistration = async (data: EmployerRegister) => {
+    if (
+      !employerErrors.FirstName &&
+      !employerErrors.LastName &&
+      !employerErrors.ProfilePhoto &&
+      !employerErrors.Phone &&
+      !employerErrors.Email &&
+      !employerErrors.RegistrationNo &&
+      !employerErrors.DateOfBirth &&
+      !employerErrors.Gender &&
+      !employerErrors.Address &&
+      !employerErrors.CountryId &&
+      !employerErrors.BusinessName &&
+      !employerErrors.StateId &&
+      !employerErrors.JobSectorId &&
+      !employerErrors.CompanySize &&
+      !employerErrors.CityId &&
+      !employerErrors.Password &&
+      !employerErrors.Position &&
+      !employerErrors.WebsiteUrl &&
+      !employerErrors.PostCode &&
+      !employerErrors.EmployerLogo
+    ) {
+      const loader = document.getElementById("query-loader");
+      const text = document.getElementById("query-text");
+      if (loader) {
+        loader.style.display = "flex";
+      }
+      if (text) {
+        text.style.display = "none";
+      }
+      const formData = new FormData();
+      formData.append("FirstName", data.FirstName);
+      formData.append("LastName", data.LastName);
+      formData.append("ProfilePhoto", data.ProfilePhoto[0]);
+      formData.append("Phone", data.Phone);
+      formData.append("Email", data.Email);
+      formData.append("RegistrationNo", data.RegistrationNo);
+      formData.append("DateOfBirth", data.DateOfBirth);
+      formData.append("Gender", data.Gender);
+      formData.append("Address", data.Address);
+      formData.append("StateId", data.StateId);
+      formData.append("CountryId", data.CountryId);
+      formData.append("CityId", data.CityId);
+      formData.append("JobSectorId", data.JobSectorId);
+      formData.append("Position", data.Position);
+      formData.append("BusinessName", data.BusinessName);
+      formData.append("CompanySize", data.CompanySize);
+      formData.append("WebsiteUrl", data.WebsiteUrl);
+      formData.append("PostCode", data.PostCode);
+      formData.append("Password", data.Password);
+      formData.append("EmployerLogo", data.EmployerLogo[0]);
+      const res = await submitEmployerData(formData);
+      const resStat = await handleCreateEmployer(
+        res,
+        loader,
+        text,
+        { toast },
+        resetEmployer,
+      );
+      if (resStat?.status === 200 || resStat?.status === 201) {
+        const data: AuthData = resStat.data as unknown as AuthData;
+        login(data);
+        const orgId = data.user.employerId ?? 0;
+        navigate(`/package/${hashIds.encode(orgId)}`);
+      }
+    }
+  };
+
   return (
     <>
+      <ToastContainer />
       {/*===== HERO AREA STARTS =======*/}
       <div
         className="inner-header-area"
@@ -343,12 +588,14 @@ const Register = () => {
                         <input
                           type="text"
                           placeholder="First Name"
-                          {...register("FirstName", {
+                          {...registerCandidate("FirstName", {
                             required: "Required",
                           })}
                           required
                         />
-                        <p className="error-msg">{errors.FirstName?.message}</p>
+                        <p className="error-msg">
+                          {candidateErrors.FirstName?.message}
+                        </p>
                       </div>
                     </div>
 
@@ -358,12 +605,14 @@ const Register = () => {
                         <input
                           type="text"
                           placeholder="Last Name"
-                          {...register("LastName", {
+                          {...registerCandidate("LastName", {
                             required: "Required",
                           })}
                           required
                         />
-                        <p className="error-msg">{errors.LastName?.message}</p>
+                        <p className="error-msg">
+                          {candidateErrors.LastName?.message}
+                        </p>
                       </div>
                     </div>
 
@@ -373,7 +622,7 @@ const Register = () => {
                         <input
                           type="text"
                           placeholder="Email Address"
-                          {...register("Email", {
+                          {...registerCandidate("Email", {
                             required: "Required",
                             pattern: {
                               value: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
@@ -382,19 +631,11 @@ const Register = () => {
                           })}
                           required
                         />
-                        <p className="error-msg">{errors.Email?.message}</p>
+                        <p className="error-msg">
+                          {candidateErrors.Email?.message}
+                        </p>
                       </div>
                     </div>
-
-                    {/* <div className="col-lg-6 col-md-6">
-                      <label>Confirm Email Address:</label>
-                      <div className="input-area">
-                        <input
-                          type="text"
-                          placeholder="Confirm Email Address"
-                        />
-                      </div>
-                    </div> */}
 
                     <div className="col-lg-6 col-md-6">
                       <label>Mobile Number:</label>
@@ -402,12 +643,14 @@ const Register = () => {
                         <input
                           type="text"
                           placeholder="Mobile Number"
-                          {...register("MobileNo", {
+                          {...registerCandidate("MobileNo", {
                             required: "Required",
                           })}
                           required
                         />
-                        <p className="error-msg">{errors.MobileNo?.message}</p>
+                        <p className="error-msg">
+                          {candidateErrors.MobileNo?.message}
+                        </p>
                       </div>
                     </div>
 
@@ -415,7 +658,7 @@ const Register = () => {
                       <label>Gender:</label>
                       <div className="input-area">
                         <select
-                          {...register("Gender", {
+                          {...registerCandidate("Gender", {
                             required: "Required",
                           })}
                           required
@@ -424,7 +667,9 @@ const Register = () => {
                           <option value="Male">Male</option>
                           <option value="Female">Female</option>
                         </select>
-                        <p className="error-msg">{errors.Gender?.message}</p>
+                        <p className="error-msg">
+                          {candidateErrors.Gender?.message}
+                        </p>
                       </div>
                     </div>
 
@@ -433,13 +678,13 @@ const Register = () => {
                       <div className="input-area">
                         <input
                           type="date"
-                          {...register("DateOfBirth", {
+                          {...registerCandidate("DateOfBirth", {
                             required: "Required",
                           })}
                           required
                         />
                         <p className="error-msg">
-                          {errors.DateOfBirth?.message}
+                          {candidateErrors.DateOfBirth?.message}
                         </p>
                       </div>
                     </div>
@@ -450,10 +695,13 @@ const Register = () => {
                         <input
                           type="file"
                           accept="image/png, image/jpeg, image/jpg, image/webp"
-                          {...register("ProfilePhoto", {
+                          {...registerCandidate("ProfilePhoto", {
                             required: "Required",
                             validate: (value) => {
-                              if (!value || value.length === 0) {
+                              if (
+                                !value ||
+                                (value as unknown as FileList).length === 0
+                              ) {
                                 return "Required";
                               }
 
@@ -479,62 +727,10 @@ const Register = () => {
                           })}
                         />
                         <p className="error-msg">
-                          {errors.ProfilePhoto?.message}
+                          {candidateErrors.ProfilePhoto?.message}
                         </p>
                       </div>
                     </div>
-
-                    {/* <div className="col-lg-6 col-md-6">
-                      <label>Role:</label>
-                      <div className="input-area">
-                        <select name="role" id="role">
-                          <option value="">Select Role</option>
-                          <option value="software-engineer">
-                            Software Engineer
-                          </option>
-                          <option value="marketing-specialist">
-                            Marketing Specialist
-                          </option>
-                          <option value="sales-representative">
-                            Sales Representative
-                          </option>
-                          <option value="project-manager">
-                            Project Manager
-                          </option>
-                          <option value="customer-support">
-                            Customer Support
-                          </option>
-                          <option value="data-analyst">Data Analyst</option>
-                          <option value="accountant">Accountant</option>
-                          <option value="human-resources">
-                            Human Resources
-                          </option>
-                          <option value="graphic-designer">
-                            Graphic Designer
-                          </option>
-                          <option value="operations-officer">
-                            Operations Officer
-                          </option>
-                          <option value="business-analyst">
-                            Business Analyst
-                          </option>
-                          <option value="content-writer">Content Writer</option>
-                          <option value="product-manager">
-                            Product Manager
-                          </option>
-                          <option value="technician">Technician</option>
-                          <option value="intern">Intern</option>
-                          <option value={"others"}>Others</option>
-                        </select>
-                      </div>
-                    </div> */}
-
-                    {/* <div className="col-lg-12 col-md-12">
-                      <label>Full Address:</label>
-                      <div className="input-area">
-                        <input type="text" placeholder="Full Address" />
-                      </div>
-                    </div> */}
 
                     <div className="col-lg-6 col-md-6">
                       <label>Password:</label>
@@ -542,12 +738,14 @@ const Register = () => {
                         <input
                           type="password"
                           placeholder="Password"
-                          {...register("Password", {
+                          {...registerCandidate("Password", {
                             required: "Required",
                           })}
                           required
                         />
-                        <p className="error-msg">{errors.Password?.message}</p>
+                        <p className="error-msg">
+                          {candidateErrors.Password?.message}
+                        </p>
                       </div>
                     </div>
 
@@ -557,13 +755,13 @@ const Register = () => {
                         <input
                           type="password"
                           placeholder="Confirm Password"
-                          {...register("ConfirmPassword", {
+                          {...registerCandidate("ConfirmPassword", {
                             required: "Required",
                           })}
                           required
                         />
                         <p className="error-msg">
-                          {errors.ConfirmPassword?.message}
+                          {candidateErrors.ConfirmPassword?.message}
                         </p>
                       </div>
                     </div>
@@ -586,7 +784,7 @@ const Register = () => {
                     <div className="col-lg-12 col-md-12">
                       <div className="input-area">
                         <button
-                          onClick={handleSubmit(addJobSeeker)}
+                          onClick={handleCandidateSubmit(addJobSeeker)}
                           type="submit"
                           className="vl-btn1 w-100 text-center"
                           style={{ marginTop: "30px", cursor: "pointer" }}
@@ -614,209 +812,430 @@ const Register = () => {
               <div className="row align-items-center g-5 register-form">
                 <div className="col-lg-12">
                   <h2>Application Form</h2>
-                  <div className="contact-main-boxarea">
+                  <form
+                    className="contact-main-boxarea"
+                    noValidate
+                    onSubmit={handleEmployerSubmit(submitEmployerRegistration)}
+                  >
                     <div className="space16"></div>
 
                     <div className="space16"></div>
 
                     <div className="row" style={{ rowGap: "30px" }}>
-                      <h5>Company Details</h5>
+                      <h5>Business Details</h5>
 
                       <div className="col-lg-6 col-md-6">
-                        <label>Business Name:</label>
-                        <div className="input-area">
-                          <input type="text" placeholder="Business Name" />
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6 col-md-6">
-                        <label>Business Type:</label>
-                        <div className="input-area">
-                          <select>
-                            <option value="">-- Select Business Type --</option>
-                            <option value="technology">Technology / IT</option>
-                            <option value="healthcare">Healthcare</option>
-                            <option value="education">Education</option>
-                            <option value="finance">Finance</option>
-                            <option value="manufacturing">Manufacturing</option>
-                            <option value="retail">Retail / E-commerce</option>
-                            <option value="hospitality">Hospitality</option>
-                            <option value="construction">Construction</option>
-                            <option value="transport">
-                              Transport & Logistics
-                            </option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6 col-md-6">
-                        <label>Country:</label>
-                        <div className="input-area">
-                          <select>
-                            <option value="">-- Select Country --</option>
-                            <option value="nigeria">Nigeria</option>
-                            <option value="canada">Canada</option>
-                            <option value="usa">United States</option>
-                            <option value="uk">United Kingdom</option>
-                            <option value="south-africa">South Africa</option>
-                            <option value="ghana">Ghana</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6 col-md-6">
-                        <label>State / County:</label>
-                        <div className="input-area">
-                          <select>
-                            <option value="">-- Select State --</option>
-                            <option value="lagos">Lagos</option>
-                            <option value="abuja">Abuja (FCT)</option>
-                            <option value="rivers">Rivers</option>
-                            <option value="oyo">Oyo</option>
-                            <option value="kano">Kano</option>
-                            <option value="enugu">Enugu</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6 col-md-6">
-                        <label>City:</label>
-                        <div className="input-area">
-                          <select>
-                            <option value="">-- Select City --</option>
-                            <option value="ikeja">Ikeja</option>
-                            <option value="lekki">Lekki</option>
-                            <option value="surulere">Surulere</option>
-                            <option value="victoria-island">
-                              Victoria Island
-                            </option>
-                            <option value="ikorodu">Ikorodu</option>
-                            <option value="ajegunle">Ajegunle</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6 col-md-6">
-                        <label>Postal Code:</label>
-                        <div className="input-area">
-                          <input type="text" placeholder="Postal Code" />
-                        </div>
-                      </div>
-
-                      <div className="col-lg-12 col-md-12">
-                        <label>Official Address:</label>
-                        <div className="input-area">
-                          <input type="text" placeholder="Official Address" />
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6 col-md-6">
-                        <label>Company Registration Number:</label>
+                        <label>Business Name</label>
                         <div className="input-area">
                           <input
                             type="text"
-                            placeholder="Company Registration Number"
+                            placeholder="Business Name"
+                            className="form-control"
+                            {...registerEmployer("BusinessName", {
+                              required: "Required",
+                            })}
                           />
                         </div>
+                        <p className="error-msg">
+                          {employerErrors.BusinessName?.message}
+                        </p>
                       </div>
-
                       <div className="col-lg-6 col-md-6">
-                        <label>VAT Registration Number:</label>
+                        <label>Business Logo</label>
                         <div className="input-area">
                           <input
-                            type="text"
-                            placeholder="VAT Registration Number"
+                            type="file"
+                            placeholder="Business Logo"
+                            className="form-control"
+                            {...registerEmployer("EmployerLogo", {
+                              required: "Required",
+                            })}
                           />
                         </div>
+                        <p className="error-msg">
+                          {employerErrors.EmployerLogo?.message}
+                        </p>
                       </div>
 
                       <div className="col-lg-6 col-md-6">
-                        <label>Company Size:</label>
+                        <label>Job Sector</label>
                         <div className="input-area">
-                          <select>
-                            <option value="">-- Select Company Size --</option>
-                            <option value="micro">
-                              1 - 10 employees (Micro)
-                            </option>
+                          <select
+                            className="form-control"
+                            style={{
+                              paddingBottom: "15px",
+                              paddingTop: "15px",
+                            }}
+                            {...registerEmployer("JobSectorId", {
+                              required: "Required",
+                            })}
+                          >
+                            <option value="">-- Select Job Sector --</option>
+                            {jobSectors.map((data, index) => (
+                              <option key={index} value={data.jobSectorId}>
+                                {data.name}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <p className="error-msg">
+                          {employerErrors.JobSectorId?.message}
+                        </p>
+                      </div>
+                      <div className="col-lg-6 col-md-6">
+                        <label>Company Size</label>
+                        <div className="input-area">
+                          <select
+                            className="form-control"
+                            style={{
+                              paddingBottom: "15px",
+                              paddingTop: "15px",
+                            }}
+                            {...registerEmployer("CompanySize", {
+                              required: "Required",
+                            })}
+                          >
+                            <option value="">Select Company Size</option>
                             <option value="small">
-                              11 - 50 employees (Small)
+                              1 - 50 employees (Small)
                             </option>
                             <option value="medium">
                               51 - 250 employees (Medium)
                             </option>
                             <option value="large">
-                              251 - 1000 employees (Large)
-                            </option>
-                            <option value="enterprise">
-                              1000+ employees (Enterprise)
+                              250+ employees (Large)
                             </option>
                           </select>
                         </div>
+                        <p className="error-msg">
+                          {employerErrors.CompanySize?.message}
+                        </p>
                       </div>
 
                       <div className="col-lg-6 col-md-6">
-                        <label>Website:</label>
+                        <label>Business Registration Number</label>
                         <div className="input-area">
-                          <input type="text" placeholder="Website" />
+                          <input
+                            type="text"
+                            placeholder="Business Registration Number"
+                            {...registerEmployer("RegistrationNo", {
+                              required: "Required",
+                            })}
+                          />
                         </div>
+                        <p className="error-msg">
+                          {employerErrors.RegistrationNo?.message}
+                        </p>
+                      </div>
+
+                      <div className="col-lg-6 col-md-6">
+                        <label>Website</label>
+                        <div className="input-area">
+                          <input
+                            type="text"
+                            placeholder="Website"
+                            {...registerEmployer("WebsiteUrl", {
+                              required: "Required",
+                            })}
+                          />
+                        </div>
+                        <p className="error-msg">
+                          {employerErrors.WebsiteUrl?.message}
+                        </p>
+                      </div>
+
+                      <div className="col-lg-6 col-md-6">
+                        <label>Country</label>
+                        <div className="input-area">
+                          <select
+                            className="form-control"
+                            style={{
+                              paddingBottom: "15px",
+                              paddingTop: "15px",
+                            }}
+                            {...registerEmployer("CountryId", {
+                              required: "Required",
+                            })}
+                          >
+                            <option value="">Select Country</option>
+                            {countries.map((data, index) => (
+                              <option key={index} value={data.countryId}>
+                                {data.name}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <p className="error-msg">
+                          {employerErrors.CountryId?.message}
+                        </p>
+                      </div>
+
+                      <div className="col-lg-6 col-md-6">
+                        <label>State</label>
+                        <div className="input-area">
+                          <select
+                            className="form-control"
+                            disabled={states.length === 0}
+                            style={{
+                              paddingBottom: "15px",
+                              paddingTop: "15px",
+                            }}
+                            {...registerEmployer("StateId", {
+                              required: "Required",
+                            })}
+                          >
+                            <option value="">Select State</option>
+                            {states.map((data, index) => (
+                              <option key={index} value={data.stateId}>
+                                {data.name}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <p className="error-msg">
+                          {employerErrors.StateId?.message}
+                        </p>
+                      </div>
+
+                      <div className="col-lg-6 col-md-6">
+                        <label>City</label>
+                        <div className="input-area">
+                          <select
+                            className="form-control"
+                            disabled={cities.length === 0}
+                            style={{
+                              paddingBottom: "15px",
+                              paddingTop: "15px",
+                            }}
+                            {...registerEmployer("CityId", {
+                              required: "Required",
+                            })}
+                          >
+                            <option value="">Select City</option>
+                            {cities.map((data, index) => (
+                              <option key={index} value={data.cityId}>
+                                {data.name}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <p className="error-msg">
+                          {employerErrors.CityId?.message}
+                        </p>
+                      </div>
+
+                      <div className="col-lg-6 col-md-6">
+                        <label>Postal Code</label>
+                        <div className="input-area">
+                          <input
+                            type="text"
+                            placeholder="Postal Code"
+                            {...registerEmployer("PostCode", {
+                              required: "Required",
+                            })}
+                          />
+                        </div>
+                        <p className="error-msg">
+                          {employerErrors.PostCode?.message}
+                        </p>
+                      </div>
+
+                      <div className="col-lg-12 col-md-12">
+                        <label>Official Address</label>
+                        <div className="input-area">
+                          <textarea
+                            placeholder="Official Address"
+                            {...registerEmployer("Address", {
+                              required: "Required",
+                            })}
+                          ></textarea>
+                        </div>
+                        <p className="error-msg">
+                          {employerErrors.Address?.message}
+                        </p>
                       </div>
 
                       <h5>Responsibility Officer Details</h5>
 
                       <div className="col-lg-6 col-md-6">
-                        <label>First Name:</label>
+                        <label>First Name</label>
                         <div className="input-area">
-                          <input type="text" placeholder="First Name" />
+                          <input
+                            type="text"
+                            placeholder="First Name"
+                            {...registerEmployer("FirstName", {
+                              required: "Required",
+                            })}
+                          />
                         </div>
+                        <p className="error-msg">
+                          {employerErrors.FirstName?.message}
+                        </p>
                       </div>
 
                       <div className="col-lg-6 col-md-6">
-                        <label>Last Name:</label>
+                        <label>Last Name</label>
                         <div className="input-area">
-                          <input type="text" placeholder="Last Name" />
+                          <input
+                            type="text"
+                            placeholder="Last Name"
+                            {...registerEmployer("LastName", {
+                              required: "Required",
+                            })}
+                          />
                         </div>
+                        <p className="error-msg">
+                          {employerErrors.LastName?.message}
+                        </p>
                       </div>
 
                       <div className="col-lg-6 col-md-6">
-                        <label>Email Address:</label>
+                        <label>Email Address</label>
                         <div className="input-area">
-                          <input type="text" placeholder="Email Address" />
+                          <input
+                            type="text"
+                            placeholder="Email Address"
+                            {...registerEmployer("Email", {
+                              required: "Required",
+                            })}
+                          />
                         </div>
+                        <p className="error-msg">
+                          {employerErrors.Email?.message}
+                        </p>
                       </div>
 
                       <div className="col-lg-6 col-md-6">
-                        <label>Mobile Number:</label>
+                        <label>Mobile Number</label>
                         <div className="input-area">
-                          <input type="text" placeholder="Mobile Number" />
+                          <input
+                            type="text"
+                            placeholder="Mobile Number"
+                            {...registerEmployer("Phone", {
+                              required: "Required",
+                            })}
+                          />
                         </div>
+                        <p className="error-msg">
+                          {employerErrors.Phone?.message}
+                        </p>
                       </div>
-
-                      <div className="col-lg-12 col-md-12">
-                        <label>Position:</label>
+                      <div className="col-lg-6 col-md-6">
+                        <label>Gender</label>
                         <div className="input-area">
-                          <input type="text" placeholder="Position" />
+                          <select
+                            className="form-control"
+                            style={{
+                              paddingBottom: "15px",
+                              paddingTop: "15px",
+                            }}
+                            {...registerEmployer("Gender", {
+                              required: "Required",
+                            })}
+                          >
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                          </select>
                         </div>
+                        <p className="error-msg">
+                          {employerErrors.Gender?.message}
+                        </p>
+                      </div>
+                      <div className="col-lg-6 col-md-6">
+                        <label>Date Of Birth</label>
+                        <div className="input-area">
+                          <input
+                            type="date"
+                            placeholder="Date Of Birth"
+                            {...registerEmployer("DateOfBirth", {
+                              required: "Required",
+                            })}
+                          />
+                        </div>
+                        <p className="error-msg">
+                          {employerErrors.DateOfBirth?.message}
+                        </p>
                       </div>
 
                       <div className="col-lg-6 col-md-6">
-                        <label>Password:</label>
+                        <label>Position</label>
                         <div className="input-area">
-                          <input type="text" placeholder="Password" />
+                          <input
+                            type="text"
+                            placeholder="Position"
+                            {...registerEmployer("Position", {
+                              required: "Required",
+                            })}
+                          />
                         </div>
+                        <p className="error-msg">
+                          {employerErrors.Position?.message}
+                        </p>
+                      </div>
+                      <div className="col-lg-6 col-md-6">
+                        <label>Profile Photo</label>
+                        <div className="input-area">
+                          <input
+                            type="file"
+                            placeholder="Profile Photo"
+                            className="form-control"
+                            {...registerEmployer("ProfilePhoto", {
+                              required: "Required",
+                            })}
+                          />
+                        </div>
+                        <p className="error-msg">
+                          {employerErrors.ProfilePhoto?.message}
+                        </p>
                       </div>
 
                       <div className="col-lg-6 col-md-6">
-                        <label>Confirm Password:</label>
+                        <label>Password</label>
                         <div className="input-area">
-                          <input type="text" placeholder="Confirm Password" />
+                          <input
+                            type="password"
+                            placeholder="Password"
+                            {...registerEmployer("Password", {
+                              required: "Required",
+                            })}
+                          />
                         </div>
+                        <p className="error-msg">
+                          {employerErrors.Password?.message}
+                        </p>
+                      </div>
+
+                      <div className="col-lg-6 col-md-6">
+                        <label>Confirm Password</label>
+                        <div className="input-area">
+                          <input
+                            type="password"
+                            placeholder="Confirm Password"
+                            {...registerEmployer("ConfirmPassword", {
+                              required: "Confirm your password",
+                              validate: (value) =>
+                                value === employerPassword ||
+                                "Passwords do not match",
+                            })}
+                          />
+                        </div>
+                        <p className="error-msg">
+                          {employerErrors.ConfirmPassword?.message}
+                        </p>
                       </div>
 
                       <div
                         className="col-lg-12 col-md-12 checkbox-div"
                         style={{ marginTop: "10px" }}
                       >
-                        <input type="checkbox" id="declaration" />
+                        <input
+                          type="checkbox"
+                          id="declaration"
+                          {...registerEmployer("Declaration", {
+                            required: "Required",
+                          })}
+                        />
                         <label htmlFor="declaration">
                           I hereby confirm that I have the authority to sign up
                           on behalf of this company.
@@ -824,7 +1243,13 @@ const Register = () => {
                       </div>
 
                       <div className="col-lg-12 col-md-12 checkbox-div">
-                        <input type="checkbox" id="terms-and-condition" />
+                        <input
+                          type="checkbox"
+                          id="terms-and-condition"
+                          {...registerEmployer("Terms", {
+                            required: "Required",
+                          })}
+                        />
                         <label htmlFor="terms-and-condition">
                           I have read and agree to the{" "}
                           <a href="#">Terms & Conditions</a> and{" "}
@@ -849,23 +1274,26 @@ const Register = () => {
 
                       <div className="col-lg-12 col-md-12">
                         <div className="input-area">
-                          <button
-                            type="submit"
-                            className="vl-btn1 w-100"
-                            style={{ marginTop: "30px" }}
-                            onClick={changeStage("next")}
-                          >
-                            Next <i className="fa-solid fa-arrow-right"></i>
+                          <button type="submit" className="vl-btn1 w-100">
+                            <div className="dots hidden" id="query-loader">
+                              <div className="dot"></div>
+                              <div className="dot"></div>
+                              <div className="dot"></div>
+                            </div>
+                            <span id="query-text">
+                              Next <i className="fa-solid fa-arrow-right"></i>
+                            </span>
                           </button>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
         ) : registerStage.employer === 2 ? (
+          // ... rest of the employer stages remain the same
           <div
             className="contact-inner-area sp1"
             style={{ paddingTop: 0 }}
@@ -1743,6 +2171,6 @@ const Register = () => {
         ))}
     </>
   );
-};
+}
 
-export default Register;
+export default RegisterUser;
