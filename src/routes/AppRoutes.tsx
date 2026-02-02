@@ -12,6 +12,8 @@ import Pricing from "../pages/main/Pricing";
 import Login from "../pages/main/Login";
 import Register from "../pages/main/Register";
 import Profile from "../pages/main/Profile";
+import AccountSetup from "../pages/main/AccountSetup2";
+import EmailVerification from "../pages/main/EmailVerification";
 
 function AppRoutes() {
   return (
@@ -29,6 +31,8 @@ function AppRoutes() {
         <Route path="pricing" element={<Pricing />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
+        {/* <Route path="accountSetup" element={<AccountSetup />} /> */}
+        <Route path="emailVerification" element={<EmailVerification />} />
         <Route path="profile" element={<Profile />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />

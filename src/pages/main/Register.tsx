@@ -1,13 +1,130 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ProfileContext } from "../../utils/main/Contexts";
-import hero7 from "../../assets/main/img/all-images/bg/hero-bg7.png"
-import hero11 from "../../assets/main/img/all-images/hero/hero-img11.webp"
+import hero7 from "../../assets/main/img/all-images/bg/hero-bg7.png";
+import hero11 from "../../assets/main/img/all-images/hero/hero-img11.webp";
+import { useForm } from "react-hook-form";
+import type { CandidateFormValues } from "../../types/candidateForm";
+import { createCandidateFirstStage } from "../../api/CandidateApi";
+import { toast, ToastContainer } from "react-toastify";
+import type { CityDto, CountryDto, StateDto } from "../../types/location";
+import {
+  getAllCities,
+  getAllCountries,
+  getAllStates,
+} from "../../api/LocationApi";
+import { getJobCategories, getJobSectors } from "../../api/JobMetaApi";
+
+export interface JobCategory {
+  jobCategoryId: number;
+  categoryName: string;
+}
+export interface JobSector {
+  jobSectorId: number;
+  sectorName: string;
+}
 
 const Register = () => {
   const [registerType, setRegisterType] = useState<"candidate" | "employer">(
-    "candidate"
+    "candidate",
   );
+  const [state, setState] = useState<StateDto[] | null>(null);
+  const [country, setCountry] = useState<CountryDto[] | null>(null);
+  const [selectedState, setselectedState] = useState<number>(0);
+  const [selectedCountry, setselectedCountry] = useState<number>(0);
+  const [city, setCity] = useState<CityDto[] | null>(null);
+  const [jobCategory, setJobCategory] = useState<JobCategory[] | null>(null);
+  const [jobSector, setJobSector] = useState<JobSector[] | null>(null);
+
+  useEffect(() => {
+    fetchJobCategory();
+    fetchJobSector();
+    fetchCountry();
+  }, []);
+
+  const getState = async (countryId: string) => {
+    setselectedCountry(parseInt(countryId));
+    fetchState(selectedCountry);
+  };
+
+  const fetchCountry = async () => {
+    try {
+      const response = await getAllCountries();
+
+      if (!response) {
+        return;
+      }
+
+      setCountry(response);
+    } catch {
+      setCountry(null);
+    }
+  };
+
+  const fetchState = async (countryId: number) => {
+    try {
+      const response = await getAllStates(countryId);
+
+      if (!response) {
+        return;
+      }
+
+      setState(response);
+    } catch {
+      setState(null);
+    }
+  };
+
+  const getCity = async (stateId: string) => {
+    setselectedState(parseInt(stateId));
+    fetchCity(selectedState);
+  };
+
+  const fetchCity = async (stateId: number) => {
+    try {
+      const response = await getAllCities(Number(stateId));
+
+      if (!response) {
+        return;
+      }
+      console.log("city", response);
+      setCity(response);
+    } catch {
+      setCity(null);
+    }
+  };
+
+  const fetchJobCategory = async () => {
+    try {
+      const response = await getJobCategories();
+
+      if (!response) {
+        return;
+      }
+
+      setJobCategory(response);
+    } catch {
+      setJobCategory(null);
+    }
+  };
+
+  const fetchJobSector = async () => {
+    try {
+      const response = await getJobSectors();
+
+      if (!response) {
+        return;
+      }
+
+      setJobSector(response);
+    } catch {
+      setJobSector(null);
+    }
+  };
+
+  const { register, handleSubmit, formState } = useForm<CandidateFormValues>();
+
+  const { errors } = formState;
 
   const [registerStage, setRegisterStage] = useState<{
     candidate: number;
@@ -31,7 +148,7 @@ const Register = () => {
         { opacity: [0, 1] },
         {
           duration: 300,
-        }
+        },
       );
     }
   }, [registerType]);
@@ -59,6 +176,44 @@ const Register = () => {
     navigate("/profile");
   };
 
+  const addJobSeeker = async (data: CandidateFormValues) => {
+    if (
+      !errors.FirstName &&
+      !errors.LastName &&
+      !errors.MobileNo &&
+      !errors.Email &&
+      !errors.DateOfBirth &&
+      !errors.Gender &&
+      !errors.ProfilePhoto
+    ) {
+      const formData = new FormData();
+      formData.append("FirstName", data.FirstName);
+      formData.append("LastName", data.LastName);
+      formData.append("DateOfBirth", data.DateOfBirth);
+      formData.append("Gender", data.Gender);
+      formData.append("Password", data.Password);
+      formData.append("Email", data.Email);
+      formData.append("MobileNo", data.MobileNo);
+      formData.append("ProfilePhoto", data.ProfilePhoto[0]);
+
+      const response = await createCandidateFirstStage(formData);
+      console.log("i got here");
+      if (!response) {
+        toast.error(response.message);
+        return;
+      }
+
+      toast.success("User is logged in");
+      window.alert("Account is created");
+      console.log("user response ", response);
+      localStorage.setItem("token", response.result.data.token);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+
+      // navigate("http://localhost:5174/one/lhr_cdt/");
+      // window.open("http://localhost:5174/one/lhr_cdt/", "_blank");
+    }
+  };
+
   return (
     <>
       {/*===== HERO AREA STARTS =======*/}
@@ -71,6 +226,7 @@ const Register = () => {
           backgroundSize: "cover",
         }}
       >
+        <ToastContainer />
         <div className="container">
           <div className="row">
             <div className="col-lg-7">
@@ -88,10 +244,7 @@ const Register = () => {
             <div className="col-lg-1"></div>
             <div className="col-lg-4">
               <div className="imges">
-                <img
-                  src={hero11}
-                  alt=""
-                />
+                <img src={hero11} alt="" />
               </div>
             </div>
           </div>
@@ -177,7 +330,7 @@ const Register = () => {
           <div className="container">
             <div className="row align-items-center g-5 register-form">
               <div className="col-lg-12">
-                <h2>Application Form</h2>
+                <h2>Registration Form</h2>
                 <div className="contact-main-boxarea">
                   <div className="space16"></div>
 
@@ -187,25 +340,53 @@ const Register = () => {
                     <div className="col-lg-6 col-md-6">
                       <label>First Name:</label>
                       <div className="input-area">
-                        <input type="text" placeholder="First Name" />
+                        <input
+                          type="text"
+                          placeholder="First Name"
+                          {...register("FirstName", {
+                            required: "Required",
+                          })}
+                          required
+                        />
+                        <p className="error-msg">{errors.FirstName?.message}</p>
                       </div>
                     </div>
 
                     <div className="col-lg-6 col-md-6">
                       <label>Last Name:</label>
                       <div className="input-area">
-                        <input type="text" placeholder="Last Name" />
+                        <input
+                          type="text"
+                          placeholder="Last Name"
+                          {...register("LastName", {
+                            required: "Required",
+                          })}
+                          required
+                        />
+                        <p className="error-msg">{errors.LastName?.message}</p>
                       </div>
                     </div>
 
                     <div className="col-lg-6 col-md-6">
                       <label>Email Address:</label>
                       <div className="input-area">
-                        <input type="text" placeholder="Email Address" />
+                        <input
+                          type="text"
+                          placeholder="Email Address"
+                          {...register("Email", {
+                            required: "Required",
+                            pattern: {
+                              value: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
+                              message: "Invalid Email",
+                            },
+                          })}
+                          required
+                        />
+                        <p className="error-msg">{errors.Email?.message}</p>
                       </div>
                     </div>
 
-                    <div className="col-lg-6 col-md-6">
+                    {/* <div className="col-lg-6 col-md-6">
                       <label>Confirm Email Address:</label>
                       <div className="input-area">
                         <input
@@ -213,34 +394,97 @@ const Register = () => {
                           placeholder="Confirm Email Address"
                         />
                       </div>
-                    </div>
+                    </div> */}
 
                     <div className="col-lg-6 col-md-6">
                       <label>Mobile Number:</label>
                       <div className="input-area">
-                        <input type="text" placeholder="Mobile Number" />
+                        <input
+                          type="text"
+                          placeholder="Mobile Number"
+                          {...register("MobileNo", {
+                            required: "Required",
+                          })}
+                          required
+                        />
+                        <p className="error-msg">{errors.MobileNo?.message}</p>
                       </div>
                     </div>
 
                     <div className="col-lg-6 col-md-6">
                       <label>Gender:</label>
                       <div className="input-area">
-                        <select>
-                          <option>Select Gender</option>
-                          <option>Male</option>
-                          <option>Female</option>
+                        <select
+                          {...register("Gender", {
+                            required: "Required",
+                          })}
+                          required
+                        >
+                          <option value="default">Select Gender</option>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
                         </select>
+                        <p className="error-msg">{errors.Gender?.message}</p>
                       </div>
                     </div>
 
                     <div className="col-lg-6 col-md-6">
                       <label>Date of Birth:</label>
                       <div className="input-area">
-                        <input type="date" />
+                        <input
+                          type="date"
+                          {...register("DateOfBirth", {
+                            required: "Required",
+                          })}
+                          required
+                        />
+                        <p className="error-msg">
+                          {errors.DateOfBirth?.message}
+                        </p>
                       </div>
                     </div>
 
-                    <div className="col-lg-6 col-md-6">
+                    <div className="col-lg-12 col-md-12">
+                      <label>Passport:</label>
+                      <div className="input-area">
+                        <input
+                          type="file"
+                          accept="image/png, image/jpeg, image/jpg, image/webp"
+                          {...register("ProfilePhoto", {
+                            required: "Required",
+                            validate: (value) => {
+                              if (!value || value.length === 0) {
+                                return "Required";
+                              }
+
+                              const file = (value as unknown as FileList)[0];
+
+                              if (file.size > 2 * 1024 * 1024) {
+                                return "Max file size is 2MB";
+                              }
+
+                              const allowedTypes = [
+                                "image/jpeg",
+                                "image/png",
+                                "image/jpg",
+                                "image/webp",
+                              ];
+
+                              if (!allowedTypes.includes(file.type)) {
+                                return "Only JPG, PNG or WEBP images are allowed";
+                              }
+
+                              return true;
+                            },
+                          })}
+                        />
+                        <p className="error-msg">
+                          {errors.ProfilePhoto?.message}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* <div className="col-lg-6 col-md-6">
                       <label>Role:</label>
                       <div className="input-area">
                         <select name="role" id="role">
@@ -283,26 +527,44 @@ const Register = () => {
                           <option value={"others"}>Others</option>
                         </select>
                       </div>
-                    </div>
+                    </div> */}
 
-                    <div className="col-lg-12 col-md-12">
+                    {/* <div className="col-lg-12 col-md-12">
                       <label>Full Address:</label>
                       <div className="input-area">
                         <input type="text" placeholder="Full Address" />
                       </div>
-                    </div>
+                    </div> */}
 
                     <div className="col-lg-6 col-md-6">
                       <label>Password:</label>
                       <div className="input-area">
-                        <input type="text" placeholder="Password" />
+                        <input
+                          type="password"
+                          placeholder="Password"
+                          {...register("Password", {
+                            required: "Required",
+                          })}
+                          required
+                        />
+                        <p className="error-msg">{errors.Password?.message}</p>
                       </div>
                     </div>
 
                     <div className="col-lg-6 col-md-6">
                       <label>Confirm Password:</label>
                       <div className="input-area">
-                        <input type="text" placeholder="Confirm Password" />
+                        <input
+                          type="password"
+                          placeholder="Confirm Password"
+                          {...register("ConfirmPassword", {
+                            required: "Required",
+                          })}
+                          required
+                        />
+                        <p className="error-msg">
+                          {errors.ConfirmPassword?.message}
+                        </p>
                       </div>
                     </div>
 
@@ -312,7 +574,8 @@ const Register = () => {
                     >
                       <p>
                         Already have an account?{" "}
-                        <NavLink to="/login"
+                        <NavLink
+                          to="/login"
                           style={{ color: "var(--ztc-bg-bg-6)" }}
                         >
                           Login
@@ -322,14 +585,14 @@ const Register = () => {
 
                     <div className="col-lg-12 col-md-12">
                       <div className="input-area">
-                        <a
-                          onClick={navigateToProfile}
+                        <button
+                          onClick={handleSubmit(addJobSeeker)}
                           type="submit"
                           className="vl-btn1 w-100 text-center"
                           style={{ marginTop: "30px", cursor: "pointer" }}
                         >
                           Submit <i className="fa-solid fa-arrow-right"></i>
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -575,7 +838,8 @@ const Register = () => {
                       >
                         <p>
                           Already have an account?{" "}
-                          <NavLink to="/login"
+                          <NavLink
+                            to="/login"
                             style={{ color: "var(--ztc-bg-bg-6)" }}
                           >
                             Login
@@ -1367,7 +1631,7 @@ const Register = () => {
                           value={paymentMethod}
                           onChange={(e) =>
                             setPaymentMethod(
-                              e.target.value as "card" | "paypal" | "transfer"
+                              e.target.value as "card" | "paypal" | "transfer",
                             )
                           }
                         >
