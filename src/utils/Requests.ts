@@ -39,7 +39,7 @@ export const submitEmployerData = async (data: FormData) => {
 };
 
 export const submitContractRequest = async (data: FormData, employerId: number) => {
-  const response = await fetch(`${BaseURL}/contract-request/${employerId}`, {
+  const response = await fetch(`${BaseURL}/contract-requests/${employerId}`, {
     method: "POST",
     body: data,
   });

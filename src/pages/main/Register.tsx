@@ -445,7 +445,9 @@ function RegisterUser() {
         const data: AuthData = (resStat.data as unknown) as AuthData;
         login(data);
         const orgId = data.user.employerId ?? 0;
-        navigate(`/package/${hashIds.encode(orgId)}`);
+        setTimeout(() => {
+          navigate(`/package/${hashIds.encode(orgId)}`);
+        }, 2500);
       }
       
     }

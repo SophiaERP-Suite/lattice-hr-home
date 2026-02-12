@@ -78,7 +78,9 @@ const SelectPackage = () => {
       handleCreateEmployer(res, loader, text, { toast }, reset)
       .finally(() => {
         setAddModalState(false);
-        navigate('/');
+        setTimeout(() => {
+          navigate("/")
+        }, 2500);
       })
     }
   }
@@ -104,7 +106,7 @@ const SelectPackage = () => {
       }}
       >
           
-          <div className="h-fit w-100" style={{ maxHeight: '70vh' }}>
+          <div className="h-fit container mx-sm-w-85" style={{ maxHeight: '70vh' }}>
               <form noValidate onSubmit={handleSubmit(submitNewRequest)}>
                   <div className="d-flex justify-content-between border-bottom">
                       <h1 className="modal-title" style={{ fontSize: '16px' }} id="addNewTimeSheetLabel">Custom Engagement Request</h1>
