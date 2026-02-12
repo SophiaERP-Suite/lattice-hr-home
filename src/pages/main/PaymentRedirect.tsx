@@ -1,4 +1,4 @@
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import hero7 from "../../assets/main/img/all-images/bg/hero-bg7.png"
 import element5 from "../../assets/main/img/elements/elements5.png"
 import hero11 from "../../assets/main/img/all-images/hero/hero-img11.webp"
@@ -95,9 +95,9 @@ const PaymentRedirect = () => {
                     <h3  className="text-center">Payment Processing</h3>
                     <p className="text-center">Your Payment Is Being Processed. You would receive a mail once payment is confirmed</p>
                     <div className="flex justify-center mt-2">
-                        <NavLink to="/login" className="btn btn-success mr-2 mb-2">
-                            Proceed To Login <ArrowRightFromLine size={18} className="ml-2" />
-                        </NavLink>
+                        <a href="https://latticehr.techiefy.co.uk/one/lhr_emp/" className="btn btn-success mr-2 mb-2">
+                            Proceed To Your Portal <ArrowRightFromLine size={18} className="ml-2" />
+                        </a>
                     </div>
                 </div>
               </div>

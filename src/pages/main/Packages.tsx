@@ -123,7 +123,7 @@ const SelectPackage = () => {
                 </h2>
                 <div className="space16"></div>
                 <p data-aos="zoom-in" data-aos-duration="1100">
-                  { user && `Hello ${user.userFirstName}, `} Choose a transparent pricing option designed to match your
+                  { user && `Hello ${user.firstName}, `} Choose a transparent pricing option designed to match your
                   business goals, budget, and hiring needs.
                 </p>
               </div>

@@ -97,8 +97,8 @@ const Header = () => {
                     user ? (
                       <div className="vl-hero-btn d-none d-lg-block text-end">
                         <div className="hero-btn1">
-                          <a href="https://latticehr.techiefy.co.uk/one/lhr_emp/" className="vl-btn2">
-                            <User /> Hello, { user.userFirstName }
+                          <a href="https://latticehr.techiefy.co.uk/one/lhr_emp/" className="vl-btn2" style={{ textTransform: 'capitalize'}}>
+                            <User /> Hello, { user.firstName }
                           </a>
                         </div>
                       </div>
@@ -243,8 +243,8 @@ const Header = () => {
                     user ? (
                       <div className="vl-hero-btn d-none d-lg-block text-end">
                         <div className="hero-btn1">
-                          <a href="https://latticehr.techiefy.co.uk/one/lhr_emp/" className="vl-btn2">
-                            <User /> Hello, { user.userFirstName }
+                          <a href="https://latticehr.techiefy.co.uk/one/lhr_emp/" className="vl-btn2" style={{ textTransform: 'capitalize'}}>
+                            <User /> Hello, { user.firstName }
                           </a>
                         </div>
                       </div>
