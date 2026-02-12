@@ -1,13 +1,19 @@
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import hero7 from "../../assets/main/img/all-images/bg/hero-bg7.png"
 import element5 from "../../assets/main/img/elements/elements5.png"
 import hero11 from "../../assets/main/img/all-images/hero/hero-img11.webp"
 import cta1 from "../../assets/main/img/all-images/cta/cta-img1.png"
 import { useEffect, useState } from "react";
-import { fetchAllPackages } from "../../utils/Requests";
+import { fetchAllPackages, submitContractRequest } from "../../utils/Requests";
 import HtmlRenderer from "../../layout/HTMLRenderer";
 import Hashids from "hashids";
+import Modal from 'react-modal';
 import { useAuth } from "../../utils/Auth/useAuth";
+import { Controller, useForm } from "react-hook-form";
+import RichTextEditor from "../../layout/RichTextEditor";
+import { CheckCheck, X } from "lucide-react";
+import { toast, ToastContainer } from "react-toastify";
+import { handleCreateEmployer } from "../../utils/ReponseHandlers";
 
 interface PackageData {
   packageId: number;
@@ -23,14 +29,21 @@ interface PackageData {
   isActive: boolean;
 }
 
+interface ContractRequestFormData {
+  Description: string;
+}
+
 
 const SelectPackage = () => {
   const [packages, setPackages] = useState<PackageData[]>([]);
   const hashIds = new Hashids('LatticeHumanResourceEncode', 10);
   const { id } = useParams();
+  const hashedId = id ? Number(hashIds.decode(id ?? "")) : 0;
   const { user } = useAuth();
-  console.log(user)
-  
+  const [addModalState, setAddModalState] = useState(false);
+  const { reset, formState: { errors }, control, handleSubmit } = useForm<ContractRequestFormData>();
+  const navigate = useNavigate();
+
   useEffect(() => {
     fetchAllPackages()
     .then(res => {
@@ -48,8 +61,94 @@ const SelectPackage = () => {
     }
     })
   }, []);
+
+  const submitNewRequest = async (data: ContractRequestFormData) => {
+    if (!errors.Description && hashedId) {
+      const loader = document.getElementById("query-loader");
+      const text = document.getElementById("query-text");
+      if (loader) {
+        loader.style.display = "flex";
+      }
+      if (text) {
+        text.style.display = "none";
+      }
+      const formData = new FormData();
+      formData.append('Description', data.Description);
+      const res = await submitContractRequest(formData, hashedId);
+      handleCreateEmployer(res, loader, text, { toast }, reset)
+      .finally(() => {
+        setAddModalState(false);
+        navigate('/');
+      })
+    }
+  }
   return (
     <>
+    <ToastContainer />
+      <Modal isOpen={addModalState} onRequestClose={() => { setAddModalState(false); }}
+          style={{
+          content: {
+            width: 'fit-content',
+            height: 'fit-content',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            backgroundColor: 'rgb(255 255 255)',
+            borderRadius: '0.5rem',
+            boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+            zIndex: '10'
+          },
+          overlay: {
+            backgroundColor: 'rgba(255, 255, 255, 0.7)'
+          }
+      }}
+      >
+          
+          <div className="h-fit w-100" style={{ maxHeight: '70vh' }}>
+              <form noValidate onSubmit={handleSubmit(submitNewRequest)}>
+                  <div className="d-flex justify-content-between border-bottom">
+                      <h1 className="modal-title" style={{ fontSize: '16px' }} id="addNewTimeSheetLabel">Custom Engagement Request</h1>
+                      <button type="button" className="btn-close"  onClick={() => setAddModalState(false)}></button>
+                  </div>
+                  <div className="mt-4">
+                      <div className="row gy-15 text-start">
+                          <div className="col-xl-12">
+                              <label className="form-label">Request Description</label>
+                              <Controller
+                                  name="Description"
+                                  control={control}
+                                  rules={{ required: 'Required' }}
+                                  render={({ field }) => (
+                                  <RichTextEditor
+                                      value={field.value}
+                                      onChange={field.onChange}
+                                  />
+                                  )}
+                              />
+                              <p className='error-msg'>{errors.Description?.message}</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div className="modal-footer">
+                      <div className="d-flex justify-content-end mt-20" style={{ gap: '10px'}}>
+                          <button type="button" className="btn btn-danger" onClick={() => setAddModalState(false)}>
+                              <X size={18} className="mr-2" /> Cancel
+                          </button>
+                          <button type="submit" className="btn btn-success">
+                              <div className="dots" id="query-loader">
+                                  <div className="dot"></div>
+                                  <div className="dot"></div>
+                                  <div className="dot"></div>
+                              </div>
+                              <span id="query-text">
+                                  <CheckCheck size={18} className="mr-2" /> Submit Request
+                              </span>
+                          </button>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </Modal>
       <div
         className="inner-header-area"
         style={{
@@ -81,7 +180,7 @@ const SelectPackage = () => {
       {/*===== HERO AREA ENDS =======*/}
 
       {/*===== PRICING AREA STARTS =======*/}
-      <div className="pricing1 sp1">
+      <div className="pricing1 sp1" style={{ zIndex: '0'}}>
         <div className="container">
           <div className="row">
             <div className="col-lg-5 m-auto">
@@ -124,6 +223,7 @@ const SelectPackage = () => {
                 <div className="space16"></div>
                 <p data-aos="zoom-in" data-aos-duration="1100">
                   { user && `Hello ${user.firstName}, `} Choose a transparent pricing option designed to match your
+                  { user && ` Organization - ${user.businessName}, `} Choose a transparent pricing option designed to match your
                   business goals, budget, and hiring needs.
                 </p>
               </div>
@@ -144,7 +244,7 @@ const SelectPackage = () => {
                             data-aos-duration="800"
                             >
                             <div className="single-pricing-area">
-                                <div className={`pricing-box ${index % 2 !== 0 && 'active'}`}
+                                <div className={`pricing-box ${index % 2 === 0 && 'active'}`}
                                 >
                                 <h3>{data.packageName}</h3>
                                 <p style={{ height: '160px', overflowY: 'auto', scrollbarColor: '#fff #fff', scrollbarWidth: 'none' }}><HtmlRenderer html={data.packageDescription} /></p>
@@ -162,6 +262,28 @@ const SelectPackage = () => {
                         </div>
                         ))
                     }
+                    <div
+                      className="col-lg-4 col-md-6"
+                      data-aos="flip-right"
+                      data-aos-duration="800"
+                      >
+                        <div className="single-pricing-area">
+                          <div className={`pricing-box ${packages.length % 2 === 0 && 'active'}`}
+                            >
+                            <h3>Custom Engagement</h3>
+                            <p style={{ height: '160px', overflowY: 'auto', scrollbarColor: '#fff #fff', scrollbarWidth: 'none' }}>A customized package created to fit your specific needs</p>
+                            <h2 style={{ fontSize: '30px' }}>
+                              Send Us A Message
+                            </h2>
+
+                            <div className="list-heading">
+                                <button type="button" className="vl-btn3" onClick={() => setAddModalState(true)}>
+                                  Send Request
+                                </button>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
                   </div>
                 </div>
               </div>

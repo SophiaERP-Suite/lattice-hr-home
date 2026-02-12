@@ -1,7 +1,7 @@
 const BaseURL = "http://localhost:5127";
 
 export const fetchCountries = async () => {
-  const response = await fetch(`${BaseURL}/countries/GetAll`, {
+  const response = await fetch(`${BaseURL}/countries`, {
     method: "GET",
   });
   console.log("new", response);
@@ -32,6 +32,14 @@ export const fetchCitiesByStateId = async (stateId: number) => {
 
 export const submitEmployerData = async (data: FormData) => {
   const response = await fetch(`${BaseURL}/employers`, {
+    method: "POST",
+    body: data,
+  });
+  return response;
+};
+
+export const submitContractRequest = async (data: FormData, employerId: number) => {
+  const response = await fetch(`${BaseURL}/contract-request/${employerId}`, {
     method: "POST",
     body: data,
   });

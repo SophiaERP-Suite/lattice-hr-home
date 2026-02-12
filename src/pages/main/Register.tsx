@@ -15,13 +15,14 @@ import {
   fetchCountries,
   fetchJobSectors,
   fetchStatesByCountryId,
+  fetchCitiesByStateId,
   submitEmployerData,
 } from "../../utils/Requests";
 import { handleCreateEmployer } from "../../utils/ReponseHandlers";
-// import Hashids from "hashids";
 import { useAuth } from "../../utils/Auth/useAuth";
 import type { AuthData } from "../../utils/Auth/auth.types";
 import { getJobCategories } from "../../api/JobMetaApi";
+import Hashids from "hashids";
 
 export interface JobCategory {
   jobCategoryId: number;
@@ -36,6 +37,8 @@ export interface JobSector {
 interface EmployerRegister {
   BusinessName: string;
   JobSectorId: string;
+  CompanyMail: string;
+  CompanyPhone: string;
   CompanySize: string;
   RegistrationNo: string;
   WebsiteUrl: string;
@@ -76,6 +79,7 @@ function RegisterUser() {
   const [employerStates, setEmployerStates] = useState<StateDto[]>([]);
   const [employerCities, setEmployerCities] = useState<CityDto[]>([]);
   const [jobSectors, setJobSectors] = useState<JobSectorData[]>([]);
+  const hashIds = new Hashids('LatticeHumanResourceEncode', 10);
   const [candidateJobCategories, setCandidateJobCategories] = useState<
     JobCategory[]
   >([]);
@@ -240,10 +244,10 @@ function RegisterUser() {
   // EMPLOYER: Fetch states when country changes
   useEffect(() => {
     const fetchEmployerStates = async () => {
-      if (!employerCountryId || employerCountryId === "0") {
+      if (!employerCountryId || employerCountryId === "") {
         setEmployerStates([]);
-        setEmployerValue("StateId", "0");
-        setEmployerValue("CityId", "0");
+        setEmployerValue("StateId", "");
+        setEmployerValue("CityId", "");
         return;
       }
 
@@ -271,20 +275,18 @@ function RegisterUser() {
   // EMPLOYER: Fetch cities when state changes
   useEffect(() => {
     const fetchEmployerCities = async () => {
-      if (!employerStateId || employerStateId === "0") {
+      if (!employerStateId || employerStateId === "") {
         setEmployerCities([]);
-        setEmployerValue("CityId", "0");
+        setEmployerValue("CityId", "");
         return;
       }
 
       try {
-        const response = await getAllCities(Number(employerStateId));
-
-        if (!response) {
-          return;
+        const response = await fetchCitiesByStateId(Number(employerStateId));
+        if (response.status === 200 || response.status === 201) {
+          const data = await response.json();
+          setEmployerCities(data ?? []);
         }
-
-        setEmployerCities(response);
       } catch (error) {
         console.error("Error fetching employer cities:", error);
         setEmployerCities([]);
@@ -392,54 +394,62 @@ function RegisterUser() {
   };
 
   const submitEmployerRegistration = async (data: EmployerRegister) => {
-    try {
-      const loader = document.getElementById("query-loader");
-      const text = document.getElementById("query-text");
-
-      if (loader) loader.style.display = "flex";
-      if (text) text.style.display = "none";
-
-      const formData = new FormData();
-      formData.append("VAT", data.VAT)
-
-      Object.keys(data).forEach((key) => {
-        const value = data[key as keyof EmployerRegister];
-
-        if (key === "ProfilePhoto" || key === "EmployerLogo") {
-          if (value && (value as unknown as FileList)[0]) {
-            formData.append(key, (value as unknown as FileList)[0]);
-          }
-        } else if (key === "Terms" || key === "Declaration") {
-          formData.append(key, value ? "true" : "false");
-        } else if (value !== undefined && value !== null) {
-          formData.append(key, value.toString());
-        }
-      });
-
-      const res = await submitEmployerData(formData);
-      const resStat = await handleCreateEmployer(
-        res,
-        loader,
-        text,
-        { toast },
-        resetEmployer,
-      );
-
-      if (resStat?.status === 200 || resStat?.status === 201) {
-        const authData: AuthData = resStat.data as unknown as AuthData;
-        login(authData);
-        // const orgId = authData.user.employerId ?? 0;
-        // navigate(`/package/${hashIds.encode(orgId)}`);
-        const token = authData.token;
-        window.open(
-          `http://localhost:5173/one/lhr_emp/auth-bridge?token=${token}`,
-        );
+    if (!employerErrors.FirstName && !employerErrors.LastName &&
+      !employerErrors.ProfilePhoto && !employerErrors.Phone &&
+      !employerErrors.Email && !employerErrors.RegistrationNo &&
+      !employerErrors.DateOfBirth && !employerErrors.Gender &&
+      !employerErrors.Address && !employerErrors.CountryId &&
+      !employerErrors.BusinessName && !employerErrors.StateId &&
+      !employerErrors.JobSectorId && !employerErrors.CompanySize &&
+      !employerErrors.CityId && !employerErrors.Password &&
+      !employerErrors.Position && !employerErrors.WebsiteUrl &&
+      !employerErrors.PostCode && !employerErrors.EmployerLogo &&
+      !employerErrors.CompanyMail && !employerErrors.CompanyPhone &&
+      !employerErrors.VAT
+    ) {
+      const loader = document.getElementById('query-loader');
+      const text = document.getElementById('query-text');
+      if (loader) {
+        loader.style.display = 'flex';
       }
-    } catch (error) {
-      console.error("Error submitting employer registration:", error);
-      toast.error("An error occurred during registration");
+      if (text) {
+        text.style.display = 'none';
+      }
+      const formData = new FormData();
+      formData.append('FirstName', data.FirstName);
+      formData.append('LastName', data.LastName);
+      formData.append('ProfilePhoto', data.ProfilePhoto[0]);
+      formData.append('Phone', data.Phone);
+      formData.append('Email', data.Email);
+      formData.append('RegistrationNo', data.RegistrationNo);
+      formData.append('DateOfBirth', data.DateOfBirth);
+      formData.append('Gender', data.Gender);
+      formData.append('Address', data.Address);
+      formData.append('StateId', data.StateId);
+      formData.append('CountryId', data.CountryId);
+      formData.append('CityId', data.CityId);
+      formData.append('JobSectorId', data.JobSectorId);
+      formData.append('Position', data.Position);
+      formData.append('BusinessName', data.BusinessName);
+      formData.append('CompanySize', data.CompanySize);
+      formData.append('WebsiteUrl', data.WebsiteUrl);
+      formData.append('PostCode', data.PostCode);
+      formData.append('Password', data.Password);
+      formData.append('CompanyPhone', data.CompanyPhone);
+      formData.append('CompanyMail', data.CompanyMail);
+      formData.append('VAT', data.VAT);
+      formData.append('EmployerLogo', data.EmployerLogo[0]);
+      const res = await submitEmployerData(formData);
+      const resStat = await handleCreateEmployer(res, loader, text, { toast }, resetEmployer);
+      if (resStat?.status === 200 || resStat?.status === 201) {
+        const data: AuthData = (resStat.data as unknown) as AuthData;
+        login(data);
+        const orgId = data.user.employerId ?? 0;
+        navigate(`/package/${hashIds.encode(orgId)}`);
+      }
+      
     }
-  };
+  }
 
   // Show loading state
   if (isLoading) {
@@ -1011,7 +1021,7 @@ function RegisterUser() {
                   <div className="row" style={{ rowGap: "30px" }}>
                     <h5>Business Details</h5>
 
-                    <div className="col-lg-6 col-md-6">
+                    <div className="col-12">
                       <label>Business Name</label>
                       <div className="input-area">
                         <input
@@ -1025,6 +1035,37 @@ function RegisterUser() {
                       </div>
                       <p className="error-msg">
                         {employerErrors.BusinessName?.message}
+                      </p>
+                    </div>
+                    <div className="col-lg-6 col-md-6">
+                      <label>Company Mail</label>
+                      <div className="input-area">
+                        <input
+                          type="text"
+                          placeholder="Company Mail"
+                          {...registerEmployer("CompanyMail", {
+                            required: "Required",
+                          })}
+                        />
+                      </div>
+                      <p className="error-msg">
+                        {employerErrors.CompanyMail?.message}
+                      </p>
+                    </div>
+
+                    <div className="col-lg-6 col-md-6">
+                      <label>Company Phone</label>
+                      <div className="input-area">
+                        <input
+                          type="text"
+                          placeholder="Company Phone"
+                          {...registerEmployer("CompanyPhone", {
+                            required: "Required",
+                          })}
+                        />
+                      </div>
+                      <p className="error-msg">
+                        {employerErrors.CompanyPhone?.message}
                       </p>
                     </div>
                     <div className="col-lg-6 col-md-6">
@@ -1043,7 +1084,6 @@ function RegisterUser() {
                         {employerErrors.EmployerLogo?.message}
                       </p>
                     </div>
-
                     <div className="col-lg-6 col-md-6">
                       <label>Job Sector</label>
                       <div className="input-area">
