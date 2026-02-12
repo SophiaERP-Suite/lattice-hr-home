@@ -8,8 +8,8 @@ export const getJobSectors = async () => {
   return response.json();
 };
 
-export const getJobCategories = async () => {
-  const response = await fetch(`${BaseURL}/job-meta/categories`, {
+export const getJobCategories = async (jobSectorId: number) => {
+  const response = await fetch(`${BaseURL}/job-meta/${jobSectorId}/categories`, {
     method: "GET",
   });
 

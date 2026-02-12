@@ -1,7 +1,7 @@
 const BaseURL = "http://localhost:5127";
 
 export const getAllCountries = async () => {
-  const response = await fetch(`${BaseURL}/Country/GetAll`, {
+  const response = await fetch(`${BaseURL}/countries/GetAll`, {
     method: "GET",
   });
 
@@ -9,7 +9,7 @@ export const getAllCountries = async () => {
 };
 
 export const getAllStates = async (countryId: number) => {
-  const response = await fetch(`${BaseURL}/State/${countryId}/GetAll`, {
+  const response = await fetch(`${BaseURL}/states/${countryId}`, {
     method: "GET",
   });
 
@@ -17,7 +17,7 @@ export const getAllStates = async (countryId: number) => {
 };
 
 export const getAllCities = async (stateId: number) => {
-  const response = await fetch(`${BaseURL}/City/${stateId}/GetAll`, {
+  const response = await fetch(`${BaseURL}/cities/${stateId}`, {
     method: "GET",
   });
 

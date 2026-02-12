@@ -1,12 +1,12 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import hero7 from "../../assets/main/img/all-images/bg/hero-bg7.png";
 import hero11 from "../../assets/main/img/all-images/hero/hero-img11.webp";
 import ot11 from "../../assets/main/img/all-images/others/ot-img1.webp";
-import { useState } from "react";
+// import { useState } from "react";
 
 const EmailVerification = () => {
-  const [email, setEmail] = useState<string>("");
-  const [isVerified, setIsVerified] = useState(false);
+  // const [email, setEmail] = useState<string>("");
+  // const [isVerified, setIsVerified] = useState(false);
 
   return (
     <>

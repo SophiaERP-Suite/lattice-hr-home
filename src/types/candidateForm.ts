@@ -7,5 +7,11 @@ export interface CandidateFormValues {
   Gender: string;
   Password: string;
   ConfirmPassword: string;
-  ProfilePhoto: string
+  ProfilePhoto: string;
+  Address: string;
+  CountryId: string;
+  StateId: string;
+  CityId: string;
+  JobSectorId: string;
+  JobCategory: string
 }

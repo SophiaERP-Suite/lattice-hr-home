@@ -15,7 +15,7 @@ import EmailVerification from "../pages/main/EmailVerification";
 import SelectPackage from "../pages/main/Packages";
 import PackageDetailsView from "../pages/main/PackageDetails";
 import PaymentRedirect from "../pages/main/PaymentRedirect";
-import RegisterUser from "../pages/main/Register copy";
+import RegisterUser from "../pages/main/Register";
 
 function AppRoutes() {
   return (
