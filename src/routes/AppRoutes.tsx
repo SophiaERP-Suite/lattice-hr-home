@@ -10,11 +10,12 @@ import EmployerProfile from "../pages/main//EmployerProfile";
 import Candidates from "../pages/main/Candidates";
 import Pricing from "../pages/main/Pricing";
 import Login from "../pages/main/Login";
-import RegisterUser from "../pages/main/Register";
 import Profile from "../pages/main/Profile";
+import EmailVerification from "../pages/main/EmailVerification";
 import SelectPackage from "../pages/main/Packages";
 import PackageDetailsView from "../pages/main/PackageDetails";
 import PaymentRedirect from "../pages/main/PaymentRedirect";
+import RegisterUser from "../pages/main/Register";
 
 function AppRoutes() {
   return (
@@ -34,6 +35,9 @@ function AppRoutes() {
         <Route path="package/:id" element={<SelectPackage />} />
         <Route path="package/:id/:packageId" element={<PackageDetailsView />} />
         <Route path="login" element={<Login />} />
+        {/* <Route path="register" element={<Register />} /> */}
+        {/* <Route path="accountSetup" element={<AccountSetup />} /> */}
+        <Route path="emailVerification" element={<EmailVerification />} />
         <Route path="register" element={<RegisterUser />} />
         <Route path="profile" element={<Profile />} />
       </Route>
